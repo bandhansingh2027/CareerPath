@@ -62,7 +62,7 @@ export function Quiz() {
   const handleNext = () => {
     if (currentStep < totalSteps) {
       setCurrentStep(currentStep + 1);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setTimeout(() => window.scrollTo(0, 0), 10);
     } else {
       // Save answers in sessionStorage for Results page to pick up, or redirect to Results with state
       sessionStorage.setItem('careerpath_answers', JSON.stringify(answers));
@@ -73,7 +73,7 @@ export function Quiz() {
   const handleBack = () => {
     if (currentStep > 1) {
       setCurrentStep(currentStep - 1);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setTimeout(() => window.scrollTo(0, 0), 10);
     } else {
       navigate('/');
     }

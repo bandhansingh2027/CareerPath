@@ -75,7 +75,7 @@ export function CareerDetail() {
         <div className="grid-2" style={{ gap: 'var(--space-8)' }}>
 
           {/* Left Column */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-6)' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-6)', position: 'sticky', top: 100, height: 'max-content' }}>
 
             {/* Job Roles */}
             <div className="card">
