@@ -1,7 +1,7 @@
-export const API_BASE_URL = '/api';
+export const BASE_URL = '/api';
 
 async function fetchApi(endpoint: string, options: RequestInit = {}) {
-  const url = `${API_BASE_URL}${endpoint}`;
+  const url = `${BASE_URL}${endpoint}`;
   const headers: Record<string, string> = { 'Content-Type': 'application/json', ...(options.headers as Record<string, string> || {}) };
 
   const response = await fetch(url, { ...options, headers });

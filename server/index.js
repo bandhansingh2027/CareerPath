@@ -92,6 +92,10 @@ app.post('/api/compare', (req, res) => {
   res.json(careers);
 });
 
-app.listen(port, () => {
-  console.log(`CareerPath API Server running on http://localhost:${port}`);
-});
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(port, () => {
+    console.log(`CareerPath API Server running on http://localhost:${port}`);
+  });
+}
+
+export default app;
