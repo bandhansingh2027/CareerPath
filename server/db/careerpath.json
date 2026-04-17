@@ -1,0 +1,2557 @@
+{
+  "careers": [
+    {
+      "id": "fullstack-web-dev",
+      "title": "Full Stack Web Developer",
+      "category": "Technology",
+      "description": "Build complete web applications from frontend to backend, create responsive websites, and deploy scalable solutions.",
+      "demandLevel": "High",
+      "tier2Tier3Opportunities": "Excellent",
+      "salaryEntry": "₹3–6 LPA",
+      "salaryMid": "₹6–12 LPA",
+      "salarySenior": "₹12–25 LPA",
+      "jobRoles": [
+        "Frontend Developer",
+        "Backend Developer",
+        "Full Stack Developer",
+        "Web Developer",
+        "MERN Stack Developer",
+        "React Developer"
+      ],
+      "courses": [
+        {
+          "title": "The Complete Web Developer Bootcamp",
+          "provider": "Udemy (Free on YouTube)",
+          "url": "https://www.youtube.com/results?search_query=web+development+full+course",
+          "duration": "3-4 months",
+          "level": "Beginner"
+        },
+        {
+          "title": "Full Stack Open",
+          "provider": "University of Helsinki",
+          "url": "https://fullstackopen.com/en/",
+          "duration": "5-6 months",
+          "level": "Intermediate"
+        },
+        {
+          "title": "The Odin Project",
+          "provider": "The Odin Project",
+          "url": "https://www.theodinproject.com/",
+          "duration": "6-9 months",
+          "level": "Beginner"
+        },
+        {
+          "title": "freeCodeCamp Responsive Web Design",
+          "provider": "freeCodeCamp",
+          "url": "https://www.freecodecamp.org/",
+          "duration": "300 hours",
+          "level": "Beginner"
+        }
+      ],
+      "certifications": [
+        "freeCodeCamp Full Stack Certification (Free)",
+        "MongoDB Developer Certification",
+        "AWS Cloud Practitioner (Paid)"
+      ],
+      "roadmap": {
+        "sixMonths": [
+          {
+            "month": 1,
+            "title": "HTML, CSS & JavaScript Basics",
+            "description": "Master the fundamentals of web development",
+            "skills": [
+              "HTML5",
+              "CSS3",
+              "JavaScript ES6",
+              "Responsive Design"
+            ]
+          },
+          {
+            "month": 2,
+            "title": "Advanced JavaScript & Git",
+            "description": "Learn modern JavaScript and version control",
+            "skills": [
+              "ES6+",
+              "DOM Manipulation",
+              "Git",
+              "GitHub"
+            ]
+          },
+          {
+            "month": 3,
+            "title": "React Fundamentals",
+            "description": "Build interactive UIs with React",
+            "skills": [
+              "React",
+              "Components",
+              "State",
+              "Props",
+              "Hooks"
+            ]
+          },
+          {
+            "month": 4,
+            "title": "Backend with Node.js",
+            "description": "Create server-side applications",
+            "skills": [
+              "Node.js",
+              "Express",
+              "REST APIs",
+              "Authentication"
+            ]
+          },
+          {
+            "month": 5,
+            "title": "Database & Full Stack Integration",
+            "description": "Connect frontend to backend with databases",
+            "skills": [
+              "MongoDB",
+              "Mongoose",
+              "CRUD Operations",
+              "API Integration"
+            ]
+          },
+          {
+            "month": 6,
+            "title": "Portfolio Projects & Deployment",
+            "description": "Build 3-4 full stack projects and deploy them",
+            "skills": [
+              "Deployment",
+              "Netlify/Vercel",
+              "Heroku",
+              "Portfolio Building"
+            ]
+          }
+        ],
+        "oneYear": [
+          {
+            "month": 9,
+            "title": "Advanced React & State Management",
+            "description": "Learn complex state management and optimization",
+            "skills": [
+              "Redux",
+              "Context API",
+              "Performance Optimization",
+              "Testing"
+            ]
+          },
+          {
+            "month": 12,
+            "title": "TypeScript & Modern Tools",
+            "description": "Add type safety and modern development tools",
+            "skills": [
+              "TypeScript",
+              "Webpack",
+              "Vite",
+              "CI/CD"
+            ]
+          }
+        ],
+        "twoYears": [
+          {
+            "month": 18,
+            "title": "System Design & Scalability",
+            "description": "Learn to build scalable applications",
+            "skills": [
+              "System Design",
+              "Microservices",
+              "Docker",
+              "Redis"
+            ]
+          },
+          {
+            "month": 24,
+            "title": "Cloud & DevOps",
+            "description": "Master cloud deployment and DevOps practices",
+            "skills": [
+              "AWS",
+              "Azure",
+              "Kubernetes",
+              "DevOps"
+            ]
+          }
+        ]
+      },
+      "pros": [
+        "High demand in job market",
+        "Work from home opportunities",
+        "Good salary progression",
+        "Freelancing opportunities",
+        "Can start with just a laptop and internet"
+      ],
+      "cons": [
+        "Requires continuous learning",
+        "Can be stressful with deadlines",
+        "Sedentary lifestyle",
+        "Technology changes rapidly"
+      ]
+    },
+    {
+      "id": "data-analyst",
+      "title": "Data Analyst",
+      "category": "Data & Analytics",
+      "description": "Analyze data to help businesses make informed decisions using Excel, SQL, Python, and visualization tools.",
+      "demandLevel": "High",
+      "tier2Tier3Opportunities": "Good",
+      "salaryEntry": "₹3.5–6 LPA",
+      "salaryMid": "₹6–10 LPA",
+      "salarySenior": "₹10–20 LPA",
+      "jobRoles": [
+        "Data Analyst",
+        "Business Analyst",
+        "Market Research Analyst",
+        "Operations Analyst",
+        "SQL Developer"
+      ],
+      "courses": [
+        {
+          "title": "Google Data Analytics Professional Certificate",
+          "provider": "Coursera (Financial Aid Available)",
+          "url": "https://www.coursera.org/professional-certificates/google-data-analytics",
+          "duration": "6 months",
+          "level": "Beginner"
+        },
+        {
+          "title": "Data Analysis with Python",
+          "provider": "freeCodeCamp",
+          "url": "https://www.freecodecamp.org/learn/data-analysis-with-python/",
+          "duration": "300 hours",
+          "level": "Intermediate"
+        },
+        {
+          "title": "SQL for Data Analysis",
+          "provider": "Udacity (Free)",
+          "url": "https://www.udacity.com/course/sql-for-data-analysis--ud198",
+          "duration": "4 weeks",
+          "level": "Beginner"
+        },
+        {
+          "title": "Excel Skills for Business",
+          "provider": "Coursera - Macquarie University",
+          "url": "https://www.coursera.org/specializations/excel",
+          "duration": "6 months",
+          "level": "Beginner"
+        }
+      ],
+      "certifications": [
+        "Google Data Analytics Certificate (Free with Financial Aid)",
+        "Microsoft Power BI Data Analyst",
+        "Tableau Desktop Specialist"
+      ],
+      "roadmap": {
+        "sixMonths": [
+          {
+            "month": 1,
+            "title": "Excel Mastery",
+            "description": "Learn advanced Excel for data analysis",
+            "skills": [
+              "Formulas",
+              "Pivot Tables",
+              "VLOOKUP",
+              "Charts"
+            ]
+          },
+          {
+            "month": 2,
+            "title": "SQL Fundamentals",
+            "description": "Query databases effectively",
+            "skills": [
+              "SELECT",
+              "JOIN",
+              "GROUP BY",
+              "Subqueries"
+            ]
+          },
+          {
+            "month": 3,
+            "title": "Python for Data Analysis",
+            "description": "Use Python libraries for data work",
+            "skills": [
+              "Pandas",
+              "NumPy",
+              "Data Cleaning",
+              "Basic Stats"
+            ]
+          },
+          {
+            "month": 4,
+            "title": "Data Visualization",
+            "description": "Create compelling visualizations",
+            "skills": [
+              "Tableau",
+              "Power BI",
+              "Matplotlib",
+              "Dashboard Design"
+            ]
+          },
+          {
+            "month": 5,
+            "title": "Statistics & Business Context",
+            "description": "Understand statistical concepts for analysis",
+            "skills": [
+              "Descriptive Stats",
+              "Hypothesis Testing",
+              "Business Metrics"
+            ]
+          },
+          {
+            "month": 6,
+            "title": "Portfolio Projects",
+            "description": "Complete 3-4 real-world analysis projects",
+            "skills": [
+              "End-to-end Analysis",
+              "Storytelling",
+              "Presentation"
+            ]
+          }
+        ],
+        "oneYear": [
+          {
+            "month": 9,
+            "title": "Advanced SQL & Database Design",
+            "description": "Master complex queries and optimization",
+            "skills": [
+              "Window Functions",
+              "CTEs",
+              "Query Optimization",
+              "Database Design"
+            ]
+          },
+          {
+            "month": 12,
+            "title": "Machine Learning Basics",
+            "description": "Introduction to predictive analytics",
+            "skills": [
+              "Regression",
+              "Classification",
+              "Scikit-learn",
+              "Model Evaluation"
+            ]
+          }
+        ],
+        "twoYears": [
+          {
+            "month": 18,
+            "title": "Big Data Tools",
+            "description": "Work with large-scale data",
+            "skills": [
+              "Spark",
+              "Hadoop",
+              "Cloud Data Warehouses",
+              "ETL"
+            ]
+          },
+          {
+            "month": 24,
+            "title": "Data Science Transition",
+            "description": "Move towards data science roles",
+            "skills": [
+              "Advanced ML",
+              "Deep Learning",
+              "A/B Testing",
+              "Experimentation"
+            ]
+          }
+        ]
+      },
+      "pros": [
+        "High demand across industries",
+        "Clear career progression to Data Science",
+        "Mix of technical and business skills",
+        "Remote work opportunities",
+        "Applicable in any industry"
+      ],
+      "cons": [
+        "Repetitive tasks sometimes",
+        "Requires continuous learning",
+        "Can be deadline-heavy",
+        "Need strong communication to explain findings"
+      ]
+    },
+    {
+      "id": "digital-marketing",
+      "title": "Digital Marketing Specialist",
+      "category": "Marketing & Sales",
+      "description": "Help businesses grow online through SEO, social media, content marketing, and paid advertising campaigns.",
+      "demandLevel": "High",
+      "tier2Tier3Opportunities": "Excellent",
+      "salaryEntry": "₹2.5–5 LPA",
+      "salaryMid": "₹5–9 LPA",
+      "salarySenior": "₹9–20 LPA",
+      "jobRoles": [
+        "Digital Marketing Executive",
+        "SEO Specialist",
+        "Social Media Manager",
+        "Content Marketing Manager",
+        "Performance Marketing Specialist",
+        "Growth Hacker"
+      ],
+      "courses": [
+        {
+          "title": "Google Digital Marketing & E-commerce Certificate",
+          "provider": "Coursera (Financial Aid)",
+          "url": "https://www.coursera.org/professional-certificates/google-digital-marketing-ecommerce",
+          "duration": "6 months",
+          "level": "Beginner"
+        },
+        {
+          "title": "Digital Marketing Course",
+          "provider": "HubSpot Academy (Free)",
+          "url": "https://academy.hubspot.com/courses/digital-marketing",
+          "duration": "4 weeks",
+          "level": "Beginner"
+        },
+        {
+          "title": "SEO Training Course",
+          "provider": "Moz (Free)",
+          "url": "https://www.youtube.com/user/MozHQ",
+          "duration": "Self-paced",
+          "level": "Beginner"
+        },
+        {
+          "title": "Social Media Marketing",
+          "provider": "Meta Blueprint (Free)",
+          "url": "https://www.facebook.com/business/learn",
+          "duration": "Self-paced",
+          "level": "Beginner"
+        }
+      ],
+      "certifications": [
+        "Google Ads Certification (Free)",
+        "Google Analytics Certification (Free)",
+        "HubSpot Digital Marketing (Free)",
+        "Meta Blueprint Certification (Free)"
+      ],
+      "roadmap": {
+        "sixMonths": [
+          {
+            "month": 1,
+            "title": "Digital Marketing Fundamentals",
+            "description": "Understand digital marketing landscape",
+            "skills": [
+              "Marketing Basics",
+              "Customer Journey",
+              "Online Channels",
+              "Metrics"
+            ]
+          },
+          {
+            "month": 2,
+            "title": "SEO Basics",
+            "description": "Learn search engine optimization",
+            "skills": [
+              "On-page SEO",
+              "Keyword Research",
+              "Link Building",
+              "Technical SEO"
+            ]
+          },
+          {
+            "month": 3,
+            "title": "Social Media Marketing",
+            "description": "Master social platforms",
+            "skills": [
+              "Facebook/Instagram Ads",
+              "Content Strategy",
+              "Community Management"
+            ]
+          },
+          {
+            "month": 4,
+            "title": "Google Ads & PPC",
+            "description": "Run paid advertising campaigns",
+            "skills": [
+              "Search Ads",
+              "Display Ads",
+              "Campaign Optimization",
+              "Budget Management"
+            ]
+          },
+          {
+            "month": 5,
+            "title": "Content Marketing & Analytics",
+            "description": "Create content and measure results",
+            "skills": [
+              "Content Writing",
+              "Google Analytics",
+              "Reporting",
+              "A/B Testing"
+            ]
+          },
+          {
+            "month": 6,
+            "title": "Portfolio & Certifications",
+            "description": "Get certified and build portfolio",
+            "skills": [
+              "Case Studies",
+              "Google Certifications",
+              "Portfolio Website"
+            ]
+          }
+        ],
+        "oneYear": [
+          {
+            "month": 9,
+            "title": "Advanced Campaign Management",
+            "description": "Run complex multi-channel campaigns",
+            "skills": [
+              "Marketing Automation",
+              "Email Marketing",
+              "Lead Generation",
+              "CRM"
+            ]
+          },
+          {
+            "month": 12,
+            "title": "Conversion Optimization",
+            "description": "Improve campaign performance",
+            "skills": [
+              "Landing Pages",
+              "CRO",
+              "User Experience",
+              "Funnel Optimization"
+            ]
+          }
+        ],
+        "twoYears": [
+          {
+            "month": 18,
+            "title": "Growth Marketing",
+            "description": "Focus on rapid business growth",
+            "skills": [
+              "Growth Hacking",
+              "Product Marketing",
+              "Viral Marketing",
+              "Retention"
+            ]
+          },
+          {
+            "month": 24,
+            "title": "Marketing Strategy & Leadership",
+            "description": "Lead marketing initiatives",
+            "skills": [
+              "Strategy",
+              "Team Management",
+              "Budget Planning",
+              "ROI Analysis"
+            ]
+          }
+        ]
+      },
+      "pros": [
+        "Low barrier to entry",
+        "Many free certifications",
+        "Freelancing opportunities",
+        "Work with diverse brands",
+        "Great for entrepreneurship"
+      ],
+      "cons": [
+        "Constantly changing algorithms",
+        "Can be high pressure",
+        "Results-driven environment",
+        "Initially lower salaries"
+      ]
+    },
+    {
+      "id": "ui-ux-designer",
+      "title": "UI/UX Designer",
+      "category": "Design",
+      "description": "Design user-friendly interfaces and experiences for websites and apps, making products intuitive and beautiful.",
+      "demandLevel": "High",
+      "tier2Tier3Opportunities": "Good",
+      "salaryEntry": "₹3–6 LPA",
+      "salaryMid": "₹6–12 LPA",
+      "salarySenior": "₹12–25 LPA",
+      "jobRoles": [
+        "UI Designer",
+        "UX Designer",
+        "Product Designer",
+        "Interaction Designer",
+        "Visual Designer",
+        "UX Researcher"
+      ],
+      "courses": [
+        {
+          "title": "Google UX Design Certificate",
+          "provider": "Coursera (Financial Aid)",
+          "url": "https://www.coursera.org/professional-certificates/google-ux-design",
+          "duration": "6 months",
+          "level": "Beginner"
+        },
+        {
+          "title": "UI/UX Design Specialization",
+          "provider": "Coursera - CalArts",
+          "url": "https://www.coursera.org/specializations/ui-ux-design",
+          "duration": "5 months",
+          "level": "Beginner"
+        },
+        {
+          "title": "Figma Tutorial for UI Design",
+          "provider": "YouTube - Free",
+          "url": "https://www.youtube.com/results?search_query=figma+ui+design+course",
+          "duration": "2 weeks",
+          "level": "Beginner"
+        },
+        {
+          "title": "Design Principles",
+          "provider": "Interaction Design Foundation",
+          "url": "https://www.interaction-design.org/",
+          "duration": "Self-paced",
+          "level": "Beginner"
+        }
+      ],
+      "certifications": [
+        "Google UX Design Certificate (Free with Aid)",
+        "Adobe Certified Professional",
+        "Nielsen Norman Group UX Certification (Paid)"
+      ],
+      "roadmap": {
+        "sixMonths": [
+          {
+            "month": 1,
+            "title": "Design Fundamentals",
+            "description": "Learn core design principles",
+            "skills": [
+              "Color Theory",
+              "Typography",
+              "Layout",
+              "Visual Hierarchy"
+            ]
+          },
+          {
+            "month": 2,
+            "title": "Figma & Tools",
+            "description": "Master design software",
+            "skills": [
+              "Figma",
+              "Adobe XD",
+              "Components",
+              "Auto Layout"
+            ]
+          },
+          {
+            "month": 3,
+            "title": "User Research & Psychology",
+            "description": "Understand users",
+            "skills": [
+              "User Interviews",
+              "Personas",
+              "User Flows",
+              "Cognitive Psychology"
+            ]
+          },
+          {
+            "month": 4,
+            "title": "Wireframing & Prototyping",
+            "description": "Create low and high-fidelity designs",
+            "skills": [
+              "Wireframes",
+              "Mockups",
+              "Prototypes",
+              "Interaction Design"
+            ]
+          },
+          {
+            "month": 5,
+            "title": "Usability Testing",
+            "description": "Test and improve designs",
+            "skills": [
+              "User Testing",
+              "Feedback Analysis",
+              "Iteration",
+              "A/B Testing"
+            ]
+          },
+          {
+            "month": 6,
+            "title": "Portfolio Building",
+            "description": "Create 3-5 case studies",
+            "skills": [
+              "Case Studies",
+              "Portfolio Website",
+              "Presentation Skills"
+            ]
+          }
+        ],
+        "oneYear": [
+          {
+            "month": 9,
+            "title": "Advanced Interaction Design",
+            "description": "Create complex interactions",
+            "skills": [
+              "Micro-interactions",
+              "Animation",
+              "Advanced Prototyping",
+              "Design Systems"
+            ]
+          },
+          {
+            "month": 12,
+            "title": "Front-end Basics",
+            "description": "Understand implementation",
+            "skills": [
+              "HTML",
+              "CSS",
+              "Basic JavaScript",
+              "Responsive Design"
+            ]
+          }
+        ],
+        "twoYears": [
+          {
+            "month": 18,
+            "title": "Product Thinking",
+            "description": "Design for business outcomes",
+            "skills": [
+              "Product Strategy",
+              "Business Metrics",
+              "Stakeholder Management"
+            ]
+          },
+          {
+            "month": 24,
+            "title": "Leadership & Mentoring",
+            "description": "Lead design projects",
+            "skills": [
+              "Team Leadership",
+              "Design Reviews",
+              "Mentoring",
+              "Process Improvement"
+            ]
+          }
+        ]
+      },
+      "pros": [
+        "Creative and technical mix",
+        "High demand in tech industry",
+        "Remote work opportunities",
+        "Directly impact user satisfaction",
+        "Continuous creative challenges"
+      ],
+      "cons": [
+        "Subjective feedback can be challenging",
+        "Need to balance aesthetics and functionality",
+        "Portfolio building takes time",
+        "Deadline pressure"
+      ]
+    },
+    {
+      "id": "content-writer",
+      "title": "Content Writer / Copywriter",
+      "category": "Writing & Content",
+      "description": "Create engaging content for websites, blogs, social media, and marketing materials to help businesses communicate effectively.",
+      "demandLevel": "Medium",
+      "tier2Tier3Opportunities": "Excellent",
+      "salaryEntry": "₹2–4 LPA",
+      "salaryMid": "₹4–8 LPA",
+      "salarySenior": "₹8–15 LPA",
+      "jobRoles": [
+        "Content Writer",
+        "Copywriter",
+        "Technical Writer",
+        "Blog Writer",
+        "Social Media Content Creator",
+        "Content Strategist"
+      ],
+      "courses": [
+        {
+          "title": "Content Writing Masterclass",
+          "provider": "YouTube - Free",
+          "url": "https://www.youtube.com/results?search_query=content+writing+course",
+          "duration": "2-3 weeks",
+          "level": "Beginner"
+        },
+        {
+          "title": "SEO Writing Course",
+          "provider": "HubSpot Academy (Free)",
+          "url": "https://academy.hubspot.com/courses/content-marketing",
+          "duration": "3 weeks",
+          "level": "Beginner"
+        },
+        {
+          "title": "Technical Writing",
+          "provider": "Google Technical Writing (Free)",
+          "url": "https://developers.google.com/tech-writing",
+          "duration": "4 weeks",
+          "level": "Intermediate"
+        },
+        {
+          "title": "Copywriting Secrets",
+          "provider": "Copyblogger (Free)",
+          "url": "https://copyblogger.com/",
+          "duration": "Self-paced",
+          "level": "Beginner"
+        }
+      ],
+      "certifications": [
+        "HubSpot Content Marketing (Free)",
+        "Google Technical Writing (Free)",
+        "Content Marketing Institute (Paid)"
+      ],
+      "roadmap": {
+        "sixMonths": [
+          {
+            "month": 1,
+            "title": "Writing Fundamentals",
+            "description": "Master basic writing skills",
+            "skills": [
+              "Grammar",
+              "Style",
+              "Tone",
+              "Audience Analysis"
+            ]
+          },
+          {
+            "month": 2,
+            "title": "SEO & Web Writing",
+            "description": "Learn to write for search engines",
+            "skills": [
+              "SEO Basics",
+              "Keywords",
+              "Meta Descriptions",
+              "Readability"
+            ]
+          },
+          {
+            "month": 3,
+            "title": "Content Types",
+            "description": "Write different content formats",
+            "skills": [
+              "Blog Posts",
+              "Social Media",
+              "Email",
+              "Website Copy"
+            ]
+          },
+          {
+            "month": 4,
+            "title": "Research & Fact-checking",
+            "description": "Write authoritative content",
+            "skills": [
+              "Research Methods",
+              "Citations",
+              "Fact-checking",
+              "Credibility"
+            ]
+          },
+          {
+            "month": 5,
+            "title": "Copywriting & Persuasion",
+            "description": "Write compelling marketing copy",
+            "skills": [
+              "Persuasive Writing",
+              "Headlines",
+              "CTAs",
+              "AIDA Framework"
+            ]
+          },
+          {
+            "month": 6,
+            "title": "Portfolio & Freelancing",
+            "description": "Build portfolio and get clients",
+            "skills": [
+              "Portfolio Samples",
+              "Upwork/Fiverr",
+              "Client Communication"
+            ]
+          }
+        ],
+        "oneYear": [
+          {
+            "month": 9,
+            "title": "Content Strategy",
+            "description": "Plan content campaigns",
+            "skills": [
+              "Content Calendar",
+              "Strategy",
+              "Distribution",
+              "Analytics"
+            ]
+          },
+          {
+            "month": 12,
+            "title": "Niche Specialization",
+            "description": "Become expert in a niche",
+            "skills": [
+              "Technical Writing",
+              "SaaS",
+              "Finance",
+              "Healthcare (choose one)"
+            ]
+          }
+        ],
+        "twoYears": [
+          {
+            "month": 18,
+            "title": "Content Marketing",
+            "description": "Drive business results with content",
+            "skills": [
+              "Content Marketing",
+              "Lead Generation",
+              "Conversion",
+              "ROI"
+            ]
+          },
+          {
+            "month": 24,
+            "title": "Team Leadership",
+            "description": "Manage content teams",
+            "skills": [
+              "Managing Writers",
+              "Editorial Calendar",
+              "Quality Control"
+            ]
+          }
+        ]
+      },
+      "pros": [
+        "Very low barrier to entry",
+        "Excellent work from home opportunities",
+        "Flexible freelancing options",
+        "Can start earning quickly",
+        "Diverse industries to work in"
+      ],
+      "cons": [
+        "Initially lower salaries",
+        "Competitive field",
+        "Tight deadlines",
+        "Rejection and revisions common",
+        "Need consistent practice"
+      ]
+    }
+  ],
+  "quizQuestions": [
+    {
+      "id": "primary-interest",
+      "step": 1,
+      "category": "interests",
+      "question": "What excites you the most?",
+      "description": "Choose the area that naturally interests you",
+      "type": "single",
+      "required": true,
+      "options": [
+        {
+          "id": "tech-building",
+          "label": "Building websites and apps",
+          "value": "technology"
+        },
+        {
+          "id": "data-numbers",
+          "label": "Working with data and numbers",
+          "value": "data"
+        },
+        {
+          "id": "creative-design",
+          "label": "Creating visual designs",
+          "value": "design"
+        },
+        {
+          "id": "marketing-sales",
+          "label": "Marketing and growing businesses",
+          "value": "marketing"
+        },
+        {
+          "id": "writing-communication",
+          "label": "Writing and communication",
+          "value": "writing"
+        }
+      ]
+    },
+    {
+      "id": "work-style",
+      "step": 1,
+      "category": "interests",
+      "question": "What kind of work do you enjoy?",
+      "description": "Select all that apply",
+      "type": "multiple",
+      "required": true,
+      "options": [
+        {
+          "id": "problem-solving",
+          "label": "Solving complex problems",
+          "value": "problem-solving"
+        },
+        {
+          "id": "creative-work",
+          "label": "Creative and artistic work",
+          "value": "creative"
+        },
+        {
+          "id": "analytical-work",
+          "label": "Analyzing and interpreting information",
+          "value": "analytical"
+        },
+        {
+          "id": "people-interaction",
+          "label": "Interacting with people",
+          "value": "people"
+        },
+        {
+          "id": "independent-work",
+          "label": "Working independently",
+          "value": "independent"
+        }
+      ]
+    },
+    {
+      "id": "learning-preference",
+      "step": 1,
+      "category": "interests",
+      "question": "How do you prefer to learn new things?",
+      "description": null,
+      "type": "single",
+      "required": true,
+      "options": [
+        {
+          "id": "hands-on",
+          "label": "Building and experimenting",
+          "value": "hands-on"
+        },
+        {
+          "id": "reading-research",
+          "label": "Reading and researching",
+          "value": "reading"
+        },
+        {
+          "id": "watching-tutorials",
+          "label": "Watching tutorials and courses",
+          "value": "watching"
+        },
+        {
+          "id": "trial-error",
+          "label": "Trial and error",
+          "value": "trial"
+        }
+      ]
+    },
+    {
+      "id": "daily-activity",
+      "step": 1,
+      "category": "interests",
+      "question": "Which activity sounds most appealing for your daily work?",
+      "description": null,
+      "type": "single",
+      "required": true,
+      "options": [
+        {
+          "id": "coding-building",
+          "label": "Writing code and building features",
+          "value": "coding"
+        },
+        {
+          "id": "data-analysis",
+          "label": "Analyzing data and creating reports",
+          "value": "analysis"
+        },
+        {
+          "id": "designing",
+          "label": "Designing interfaces and user experiences",
+          "value": "designing"
+        },
+        {
+          "id": "campaign-management",
+          "label": "Running marketing campaigns",
+          "value": "campaigns"
+        },
+        {
+          "id": "content-creation",
+          "label": "Writing and creating content",
+          "value": "writing"
+        }
+      ]
+    },
+    {
+      "id": "current-skills",
+      "step": 2,
+      "category": "skills",
+      "question": "What skills do you already have?",
+      "description": "Select all that apply (even basic level)",
+      "type": "multiple",
+      "required": true,
+      "options": [
+        {
+          "id": "computer-basics",
+          "label": "Basic computer skills",
+          "value": "computer-basics"
+        },
+        {
+          "id": "english-communication",
+          "label": "Good English communication",
+          "value": "english"
+        },
+        {
+          "id": "math-logic",
+          "label": "Math and logical thinking",
+          "value": "math"
+        },
+        {
+          "id": "creative-thinking",
+          "label": "Creative and artistic thinking",
+          "value": "creative"
+        },
+        {
+          "id": "excel-spreadsheets",
+          "label": "Excel or Google Sheets",
+          "value": "excel"
+        },
+        {
+          "id": "social-media",
+          "label": "Social media savvy",
+          "value": "social-media"
+        },
+        {
+          "id": "no-special-skills",
+          "label": "None of the above (that's okay!)",
+          "value": "none"
+        }
+      ]
+    },
+    {
+      "id": "tech-comfort",
+      "step": 2,
+      "category": "skills",
+      "question": "How comfortable are you with technology?",
+      "description": null,
+      "type": "single",
+      "required": true,
+      "options": [
+        {
+          "id": "very-comfortable",
+          "label": "Very comfortable - I love learning new tools",
+          "value": "very-comfortable"
+        },
+        {
+          "id": "somewhat-comfortable",
+          "label": "Somewhat comfortable - I can learn",
+          "value": "comfortable"
+        },
+        {
+          "id": "basic-level",
+          "label": "Basic - I know the essentials",
+          "value": "basic"
+        },
+        {
+          "id": "not-comfortable",
+          "label": "Not very comfortable with tech",
+          "value": "not-comfortable"
+        }
+      ]
+    },
+    {
+      "id": "learning-willingness",
+      "step": 2,
+      "category": "skills",
+      "question": "Are you willing to spend 3-6 months learning new skills?",
+      "description": null,
+      "type": "single",
+      "required": true,
+      "options": [
+        {
+          "id": "yes-fulltime",
+          "label": "Yes, I can dedicate 6-8 hours daily",
+          "value": "fulltime"
+        },
+        {
+          "id": "yes-parttime",
+          "label": "Yes, but only 2-4 hours daily",
+          "value": "parttime"
+        },
+        {
+          "id": "limited-time",
+          "label": "I have very limited time",
+          "value": "limited"
+        }
+      ]
+    },
+    {
+      "id": "education",
+      "step": 3,
+      "category": "background",
+      "question": "What is your educational background?",
+      "description": null,
+      "type": "single",
+      "required": true,
+      "options": [
+        {
+          "id": "engineering-tech",
+          "label": "Engineering / Technology",
+          "value": "engineering"
+        },
+        {
+          "id": "commerce-business",
+          "label": "Commerce / Business",
+          "value": "commerce"
+        },
+        {
+          "id": "arts-humanities",
+          "label": "Arts / Humanities",
+          "value": "arts"
+        },
+        {
+          "id": "science",
+          "label": "Science (BSc, MSc)",
+          "value": "science"
+        },
+        {
+          "id": "other-education",
+          "label": "Other / Still studying",
+          "value": "other"
+        }
+      ]
+    },
+    {
+      "id": "experience-level",
+      "step": 3,
+      "category": "background",
+      "question": "Do you have any work experience?",
+      "description": null,
+      "type": "single",
+      "required": true,
+      "options": [
+        {
+          "id": "no-experience",
+          "label": "No, I'm a fresher",
+          "value": "fresher"
+        },
+        {
+          "id": "internship",
+          "label": "Yes, internship(s)",
+          "value": "internship"
+        },
+        {
+          "id": "some-experience",
+          "label": "Yes, 1-2 years",
+          "value": "1-2-years"
+        },
+        {
+          "id": "experienced",
+          "label": "Yes, 2+ years",
+          "value": "2plus-years"
+        }
+      ]
+    },
+    {
+      "id": "english-proficiency",
+      "step": 3,
+      "category": "background",
+      "question": "How would you rate your English proficiency?",
+      "description": null,
+      "type": "single",
+      "required": true,
+      "options": [
+        {
+          "id": "excellent-english",
+          "label": "Excellent - I can write and speak fluently",
+          "value": "excellent"
+        },
+        {
+          "id": "good-english",
+          "label": "Good - I can communicate well",
+          "value": "good"
+        },
+        {
+          "id": "average-english",
+          "label": "Average - Basic communication",
+          "value": "average"
+        }
+      ]
+    },
+    {
+      "id": "work-location",
+      "step": 4,
+      "category": "preferences",
+      "question": "What is your preferred work location?",
+      "description": "Think about your current situation",
+      "type": "single",
+      "required": true,
+      "options": [
+        {
+          "id": "remote-only",
+          "label": "Work from home / Remote only",
+          "value": "remote"
+        },
+        {
+          "id": "office-preferred",
+          "label": "Office environment preferred",
+          "value": "office"
+        },
+        {
+          "id": "hybrid-flexible",
+          "label": "Flexible / Hybrid",
+          "value": "hybrid"
+        },
+        {
+          "id": "freelance",
+          "label": "Freelancing / Own business",
+          "value": "freelance"
+        }
+      ]
+    },
+    {
+      "id": "salary-expectation",
+      "step": 4,
+      "category": "preferences",
+      "question": "What is your expected starting salary? (Annual in INR)",
+      "description": null,
+      "type": "single",
+      "required": true,
+      "options": [
+        {
+          "id": "salary-2-3lpa",
+          "label": "2-3 LPA",
+          "value": "2-3"
+        },
+        {
+          "id": "salary-3-5lpa",
+          "label": "3-5 LPA",
+          "value": "3-5"
+        },
+        {
+          "id": "salary-5plus",
+          "label": "5+ LPA",
+          "value": "5plus"
+        },
+        {
+          "id": "salary-flexible",
+          "label": "Flexible - Learning is priority",
+          "value": "flexible"
+        }
+      ]
+    },
+    {
+      "id": "career-timeline",
+      "step": 4,
+      "category": "preferences",
+      "question": "When do you want to start earning?",
+      "description": null,
+      "type": "single",
+      "required": true,
+      "options": [
+        {
+          "id": "immediately",
+          "label": "As soon as possible",
+          "value": "immediate"
+        },
+        {
+          "id": "within-6months",
+          "label": "Within 3-6 months",
+          "value": "3-6months"
+        },
+        {
+          "id": "within-1year",
+          "label": "Within 6-12 months",
+          "value": "6-12months"
+        },
+        {
+          "id": "longterm",
+          "label": "I can take 1+ year to prepare",
+          "value": "1plus-year"
+        }
+      ]
+    },
+    {
+      "id": "internet-access",
+      "step": 5,
+      "category": "constraints",
+      "question": "Do you have reliable internet access?",
+      "description": null,
+      "type": "single",
+      "required": true,
+      "options": [
+        {
+          "id": "good-internet",
+          "label": "Yes, good internet connection",
+          "value": "good"
+        },
+        {
+          "id": "limited-internet",
+          "label": "Limited / Slow internet",
+          "value": "limited"
+        }
+      ]
+    },
+    {
+      "id": "financial-constraints",
+      "step": 5,
+      "category": "constraints",
+      "question": "Can you invest in paid courses if needed?",
+      "description": null,
+      "type": "single",
+      "required": true,
+      "options": [
+        {
+          "id": "can-invest",
+          "label": "Yes, I can invest in learning",
+          "value": "yes"
+        },
+        {
+          "id": "limited-budget",
+          "label": "Limited budget - prefer free resources",
+          "value": "limited"
+        },
+        {
+          "id": "free-only",
+          "label": "Only free resources",
+          "value": "free"
+        }
+      ]
+    }
+  ],
+  "scoringWeights": [
+    {
+      "optionValue": "technology",
+      "careerId": "fullstack-web-dev",
+      "weight": 10
+    },
+    {
+      "optionValue": "technology",
+      "careerId": "ui-ux-designer",
+      "weight": 5
+    },
+    {
+      "optionValue": "technology",
+      "careerId": "data-analyst",
+      "weight": 3
+    },
+    {
+      "optionValue": "data",
+      "careerId": "data-analyst",
+      "weight": 10
+    },
+    {
+      "optionValue": "data",
+      "careerId": "fullstack-web-dev",
+      "weight": 3
+    },
+    {
+      "optionValue": "data",
+      "careerId": "digital-marketing",
+      "weight": 4
+    },
+    {
+      "optionValue": "design",
+      "careerId": "ui-ux-designer",
+      "weight": 10
+    },
+    {
+      "optionValue": "design",
+      "careerId": "digital-marketing",
+      "weight": 5
+    },
+    {
+      "optionValue": "design",
+      "careerId": "content-writer",
+      "weight": 3
+    },
+    {
+      "optionValue": "marketing",
+      "careerId": "digital-marketing",
+      "weight": 10
+    },
+    {
+      "optionValue": "marketing",
+      "careerId": "content-writer",
+      "weight": 6
+    },
+    {
+      "optionValue": "marketing",
+      "careerId": "ui-ux-designer",
+      "weight": 2
+    },
+    {
+      "optionValue": "writing",
+      "careerId": "content-writer",
+      "weight": 10
+    },
+    {
+      "optionValue": "writing",
+      "careerId": "digital-marketing",
+      "weight": 6
+    },
+    {
+      "optionValue": "writing",
+      "careerId": "ui-ux-designer",
+      "weight": 3
+    },
+    {
+      "optionValue": "problem-solving",
+      "careerId": "fullstack-web-dev",
+      "weight": 8
+    },
+    {
+      "optionValue": "problem-solving",
+      "careerId": "data-analyst",
+      "weight": 7
+    },
+    {
+      "optionValue": "problem-solving",
+      "careerId": "ui-ux-designer",
+      "weight": 5
+    },
+    {
+      "optionValue": "creative",
+      "careerId": "ui-ux-designer",
+      "weight": 8
+    },
+    {
+      "optionValue": "creative",
+      "careerId": "content-writer",
+      "weight": 7
+    },
+    {
+      "optionValue": "creative",
+      "careerId": "digital-marketing",
+      "weight": 6
+    },
+    {
+      "optionValue": "analytical",
+      "careerId": "data-analyst",
+      "weight": 9
+    },
+    {
+      "optionValue": "analytical",
+      "careerId": "digital-marketing",
+      "weight": 5
+    },
+    {
+      "optionValue": "analytical",
+      "careerId": "fullstack-web-dev",
+      "weight": 4
+    },
+    {
+      "optionValue": "people",
+      "careerId": "digital-marketing",
+      "weight": 7
+    },
+    {
+      "optionValue": "people",
+      "careerId": "ui-ux-designer",
+      "weight": 6
+    },
+    {
+      "optionValue": "people",
+      "careerId": "content-writer",
+      "weight": 5
+    },
+    {
+      "optionValue": "independent",
+      "careerId": "content-writer",
+      "weight": 7
+    },
+    {
+      "optionValue": "independent",
+      "careerId": "fullstack-web-dev",
+      "weight": 6
+    },
+    {
+      "optionValue": "independent",
+      "careerId": "data-analyst",
+      "weight": 5
+    },
+    {
+      "optionValue": "hands-on",
+      "careerId": "fullstack-web-dev",
+      "weight": 8
+    },
+    {
+      "optionValue": "hands-on",
+      "careerId": "ui-ux-designer",
+      "weight": 7
+    },
+    {
+      "optionValue": "hands-on",
+      "careerId": "digital-marketing",
+      "weight": 5
+    },
+    {
+      "optionValue": "reading",
+      "careerId": "content-writer",
+      "weight": 8
+    },
+    {
+      "optionValue": "reading",
+      "careerId": "data-analyst",
+      "weight": 6
+    },
+    {
+      "optionValue": "reading",
+      "careerId": "ui-ux-designer",
+      "weight": 5
+    },
+    {
+      "optionValue": "watching",
+      "careerId": "fullstack-web-dev",
+      "weight": 7
+    },
+    {
+      "optionValue": "watching",
+      "careerId": "digital-marketing",
+      "weight": 7
+    },
+    {
+      "optionValue": "watching",
+      "careerId": "data-analyst",
+      "weight": 6
+    },
+    {
+      "optionValue": "trial",
+      "careerId": "fullstack-web-dev",
+      "weight": 7
+    },
+    {
+      "optionValue": "trial",
+      "careerId": "ui-ux-designer",
+      "weight": 6
+    },
+    {
+      "optionValue": "trial",
+      "careerId": "digital-marketing",
+      "weight": 5
+    },
+    {
+      "optionValue": "coding",
+      "careerId": "fullstack-web-dev",
+      "weight": 10
+    },
+    {
+      "optionValue": "coding",
+      "careerId": "data-analyst",
+      "weight": 4
+    },
+    {
+      "optionValue": "analysis",
+      "careerId": "data-analyst",
+      "weight": 10
+    },
+    {
+      "optionValue": "analysis",
+      "careerId": "digital-marketing",
+      "weight": 5
+    },
+    {
+      "optionValue": "designing",
+      "careerId": "ui-ux-designer",
+      "weight": 10
+    },
+    {
+      "optionValue": "designing",
+      "careerId": "fullstack-web-dev",
+      "weight": 3
+    },
+    {
+      "optionValue": "campaigns",
+      "careerId": "digital-marketing",
+      "weight": 10
+    },
+    {
+      "optionValue": "campaigns",
+      "careerId": "content-writer",
+      "weight": 4
+    },
+    {
+      "optionValue": "writing",
+      "careerId": "content-writer",
+      "weight": 10
+    },
+    {
+      "optionValue": "writing",
+      "careerId": "digital-marketing",
+      "weight": 5
+    },
+    {
+      "optionValue": "computer-basics",
+      "careerId": "fullstack-web-dev",
+      "weight": 5
+    },
+    {
+      "optionValue": "computer-basics",
+      "careerId": "digital-marketing",
+      "weight": 5
+    },
+    {
+      "optionValue": "computer-basics",
+      "careerId": "data-analyst",
+      "weight": 5
+    },
+    {
+      "optionValue": "computer-basics",
+      "careerId": "content-writer",
+      "weight": 5
+    },
+    {
+      "optionValue": "computer-basics",
+      "careerId": "ui-ux-designer",
+      "weight": 5
+    },
+    {
+      "optionValue": "english",
+      "careerId": "content-writer",
+      "weight": 8
+    },
+    {
+      "optionValue": "english",
+      "careerId": "digital-marketing",
+      "weight": 6
+    },
+    {
+      "optionValue": "english",
+      "careerId": "ui-ux-designer",
+      "weight": 5
+    },
+    {
+      "optionValue": "english",
+      "careerId": "data-analyst",
+      "weight": 4
+    },
+    {
+      "optionValue": "english",
+      "careerId": "fullstack-web-dev",
+      "weight": 4
+    },
+    {
+      "optionValue": "math",
+      "careerId": "fullstack-web-dev",
+      "weight": 7
+    },
+    {
+      "optionValue": "math",
+      "careerId": "data-analyst",
+      "weight": 8
+    },
+    {
+      "optionValue": "math",
+      "careerId": "digital-marketing",
+      "weight": 4
+    },
+    {
+      "optionValue": "creative",
+      "careerId": "ui-ux-designer",
+      "weight": 8
+    },
+    {
+      "optionValue": "creative",
+      "careerId": "content-writer",
+      "weight": 7
+    },
+    {
+      "optionValue": "creative",
+      "careerId": "digital-marketing",
+      "weight": 6
+    },
+    {
+      "optionValue": "excel",
+      "careerId": "data-analyst",
+      "weight": 8
+    },
+    {
+      "optionValue": "excel",
+      "careerId": "digital-marketing",
+      "weight": 5
+    },
+    {
+      "optionValue": "excel",
+      "careerId": "fullstack-web-dev",
+      "weight": 3
+    },
+    {
+      "optionValue": "social-media",
+      "careerId": "digital-marketing",
+      "weight": 8
+    },
+    {
+      "optionValue": "social-media",
+      "careerId": "content-writer",
+      "weight": 5
+    },
+    {
+      "optionValue": "social-media",
+      "careerId": "ui-ux-designer",
+      "weight": 3
+    },
+    {
+      "optionValue": "none",
+      "careerId": "digital-marketing",
+      "weight": 3
+    },
+    {
+      "optionValue": "none",
+      "careerId": "content-writer",
+      "weight": 3
+    },
+    {
+      "optionValue": "none",
+      "careerId": "fullstack-web-dev",
+      "weight": 2
+    },
+    {
+      "optionValue": "none",
+      "careerId": "data-analyst",
+      "weight": 2
+    },
+    {
+      "optionValue": "none",
+      "careerId": "ui-ux-designer",
+      "weight": 2
+    },
+    {
+      "optionValue": "very-comfortable",
+      "careerId": "fullstack-web-dev",
+      "weight": 8
+    },
+    {
+      "optionValue": "very-comfortable",
+      "careerId": "data-analyst",
+      "weight": 7
+    },
+    {
+      "optionValue": "very-comfortable",
+      "careerId": "ui-ux-designer",
+      "weight": 6
+    },
+    {
+      "optionValue": "very-comfortable",
+      "careerId": "digital-marketing",
+      "weight": 6
+    },
+    {
+      "optionValue": "comfortable",
+      "careerId": "digital-marketing",
+      "weight": 7
+    },
+    {
+      "optionValue": "comfortable",
+      "careerId": "data-analyst",
+      "weight": 6
+    },
+    {
+      "optionValue": "comfortable",
+      "careerId": "ui-ux-designer",
+      "weight": 6
+    },
+    {
+      "optionValue": "comfortable",
+      "careerId": "fullstack-web-dev",
+      "weight": 5
+    },
+    {
+      "optionValue": "comfortable",
+      "careerId": "content-writer",
+      "weight": 5
+    },
+    {
+      "optionValue": "basic",
+      "careerId": "content-writer",
+      "weight": 7
+    },
+    {
+      "optionValue": "basic",
+      "careerId": "digital-marketing",
+      "weight": 6
+    },
+    {
+      "optionValue": "basic",
+      "careerId": "ui-ux-designer",
+      "weight": 4
+    },
+    {
+      "optionValue": "basic",
+      "careerId": "data-analyst",
+      "weight": 3
+    },
+    {
+      "optionValue": "not-comfortable",
+      "careerId": "content-writer",
+      "weight": 8
+    },
+    {
+      "optionValue": "not-comfortable",
+      "careerId": "digital-marketing",
+      "weight": 4
+    },
+    {
+      "optionValue": "fulltime",
+      "careerId": "fullstack-web-dev",
+      "weight": 8
+    },
+    {
+      "optionValue": "fulltime",
+      "careerId": "data-analyst",
+      "weight": 8
+    },
+    {
+      "optionValue": "fulltime",
+      "careerId": "ui-ux-designer",
+      "weight": 8
+    },
+    {
+      "optionValue": "fulltime",
+      "careerId": "digital-marketing",
+      "weight": 7
+    },
+    {
+      "optionValue": "fulltime",
+      "careerId": "content-writer",
+      "weight": 6
+    },
+    {
+      "optionValue": "parttime",
+      "careerId": "digital-marketing",
+      "weight": 7
+    },
+    {
+      "optionValue": "parttime",
+      "careerId": "content-writer",
+      "weight": 7
+    },
+    {
+      "optionValue": "parttime",
+      "careerId": "data-analyst",
+      "weight": 6
+    },
+    {
+      "optionValue": "parttime",
+      "careerId": "ui-ux-designer",
+      "weight": 6
+    },
+    {
+      "optionValue": "parttime",
+      "careerId": "fullstack-web-dev",
+      "weight": 5
+    },
+    {
+      "optionValue": "limited",
+      "careerId": "content-writer",
+      "weight": 6
+    },
+    {
+      "optionValue": "limited",
+      "careerId": "digital-marketing",
+      "weight": 5
+    },
+    {
+      "optionValue": "engineering",
+      "careerId": "fullstack-web-dev",
+      "weight": 7
+    },
+    {
+      "optionValue": "engineering",
+      "careerId": "data-analyst",
+      "weight": 6
+    },
+    {
+      "optionValue": "engineering",
+      "careerId": "ui-ux-designer",
+      "weight": 5
+    },
+    {
+      "optionValue": "commerce",
+      "careerId": "digital-marketing",
+      "weight": 7
+    },
+    {
+      "optionValue": "commerce",
+      "careerId": "data-analyst",
+      "weight": 6
+    },
+    {
+      "optionValue": "commerce",
+      "careerId": "content-writer",
+      "weight": 5
+    },
+    {
+      "optionValue": "arts",
+      "careerId": "content-writer",
+      "weight": 7
+    },
+    {
+      "optionValue": "arts",
+      "careerId": "digital-marketing",
+      "weight": 6
+    },
+    {
+      "optionValue": "arts",
+      "careerId": "ui-ux-designer",
+      "weight": 6
+    },
+    {
+      "optionValue": "science",
+      "careerId": "data-analyst",
+      "weight": 7
+    },
+    {
+      "optionValue": "science",
+      "careerId": "fullstack-web-dev",
+      "weight": 6
+    },
+    {
+      "optionValue": "science",
+      "careerId": "ui-ux-designer",
+      "weight": 4
+    },
+    {
+      "optionValue": "other",
+      "careerId": "digital-marketing",
+      "weight": 5
+    },
+    {
+      "optionValue": "other",
+      "careerId": "content-writer",
+      "weight": 5
+    },
+    {
+      "optionValue": "other",
+      "careerId": "fullstack-web-dev",
+      "weight": 4
+    },
+    {
+      "optionValue": "other",
+      "careerId": "data-analyst",
+      "weight": 4
+    },
+    {
+      "optionValue": "other",
+      "careerId": "ui-ux-designer",
+      "weight": 4
+    },
+    {
+      "optionValue": "fresher",
+      "careerId": "fullstack-web-dev",
+      "weight": 6
+    },
+    {
+      "optionValue": "fresher",
+      "careerId": "digital-marketing",
+      "weight": 6
+    },
+    {
+      "optionValue": "fresher",
+      "careerId": "content-writer",
+      "weight": 6
+    },
+    {
+      "optionValue": "fresher",
+      "careerId": "data-analyst",
+      "weight": 5
+    },
+    {
+      "optionValue": "fresher",
+      "careerId": "ui-ux-designer",
+      "weight": 5
+    },
+    {
+      "optionValue": "internship",
+      "careerId": "fullstack-web-dev",
+      "weight": 7
+    },
+    {
+      "optionValue": "internship",
+      "careerId": "digital-marketing",
+      "weight": 7
+    },
+    {
+      "optionValue": "internship",
+      "careerId": "data-analyst",
+      "weight": 7
+    },
+    {
+      "optionValue": "internship",
+      "careerId": "content-writer",
+      "weight": 6
+    },
+    {
+      "optionValue": "internship",
+      "careerId": "ui-ux-designer",
+      "weight": 6
+    },
+    {
+      "optionValue": "1-2-years",
+      "careerId": "fullstack-web-dev",
+      "weight": 8
+    },
+    {
+      "optionValue": "1-2-years",
+      "careerId": "data-analyst",
+      "weight": 8
+    },
+    {
+      "optionValue": "1-2-years",
+      "careerId": "digital-marketing",
+      "weight": 7
+    },
+    {
+      "optionValue": "1-2-years",
+      "careerId": "ui-ux-designer",
+      "weight": 7
+    },
+    {
+      "optionValue": "1-2-years",
+      "careerId": "content-writer",
+      "weight": 6
+    },
+    {
+      "optionValue": "2plus-years",
+      "careerId": "data-analyst",
+      "weight": 8
+    },
+    {
+      "optionValue": "2plus-years",
+      "careerId": "fullstack-web-dev",
+      "weight": 8
+    },
+    {
+      "optionValue": "2plus-years",
+      "careerId": "digital-marketing",
+      "weight": 7
+    },
+    {
+      "optionValue": "2plus-years",
+      "careerId": "ui-ux-designer",
+      "weight": 7
+    },
+    {
+      "optionValue": "2plus-years",
+      "careerId": "content-writer",
+      "weight": 6
+    },
+    {
+      "optionValue": "excellent",
+      "careerId": "content-writer",
+      "weight": 10
+    },
+    {
+      "optionValue": "excellent",
+      "careerId": "digital-marketing",
+      "weight": 7
+    },
+    {
+      "optionValue": "excellent",
+      "careerId": "ui-ux-designer",
+      "weight": 6
+    },
+    {
+      "optionValue": "excellent",
+      "careerId": "data-analyst",
+      "weight": 5
+    },
+    {
+      "optionValue": "excellent",
+      "careerId": "fullstack-web-dev",
+      "weight": 5
+    },
+    {
+      "optionValue": "good",
+      "careerId": "digital-marketing",
+      "weight": 7
+    },
+    {
+      "optionValue": "good",
+      "careerId": "content-writer",
+      "weight": 6
+    },
+    {
+      "optionValue": "good",
+      "careerId": "ui-ux-designer",
+      "weight": 6
+    },
+    {
+      "optionValue": "good",
+      "careerId": "fullstack-web-dev",
+      "weight": 5
+    },
+    {
+      "optionValue": "good",
+      "careerId": "data-analyst",
+      "weight": 5
+    },
+    {
+      "optionValue": "average",
+      "careerId": "fullstack-web-dev",
+      "weight": 6
+    },
+    {
+      "optionValue": "average",
+      "careerId": "data-analyst",
+      "weight": 6
+    },
+    {
+      "optionValue": "average",
+      "careerId": "ui-ux-designer",
+      "weight": 5
+    },
+    {
+      "optionValue": "average",
+      "careerId": "digital-marketing",
+      "weight": 4
+    },
+    {
+      "optionValue": "average",
+      "careerId": "content-writer",
+      "weight": 3
+    },
+    {
+      "optionValue": "remote",
+      "careerId": "fullstack-web-dev",
+      "weight": 8
+    },
+    {
+      "optionValue": "remote",
+      "careerId": "content-writer",
+      "weight": 9
+    },
+    {
+      "optionValue": "remote",
+      "careerId": "digital-marketing",
+      "weight": 7
+    },
+    {
+      "optionValue": "remote",
+      "careerId": "data-analyst",
+      "weight": 7
+    },
+    {
+      "optionValue": "remote",
+      "careerId": "ui-ux-designer",
+      "weight": 6
+    },
+    {
+      "optionValue": "office",
+      "careerId": "data-analyst",
+      "weight": 6
+    },
+    {
+      "optionValue": "office",
+      "careerId": "ui-ux-designer",
+      "weight": 6
+    },
+    {
+      "optionValue": "office",
+      "careerId": "fullstack-web-dev",
+      "weight": 5
+    },
+    {
+      "optionValue": "office",
+      "careerId": "digital-marketing",
+      "weight": 5
+    },
+    {
+      "optionValue": "hybrid",
+      "careerId": "fullstack-web-dev",
+      "weight": 7
+    },
+    {
+      "optionValue": "hybrid",
+      "careerId": "digital-marketing",
+      "weight": 7
+    },
+    {
+      "optionValue": "hybrid",
+      "careerId": "data-analyst",
+      "weight": 6
+    },
+    {
+      "optionValue": "hybrid",
+      "careerId": "ui-ux-designer",
+      "weight": 6
+    },
+    {
+      "optionValue": "hybrid",
+      "careerId": "content-writer",
+      "weight": 6
+    },
+    {
+      "optionValue": "freelance",
+      "careerId": "content-writer",
+      "weight": 8
+    },
+    {
+      "optionValue": "freelance",
+      "careerId": "digital-marketing",
+      "weight": 8
+    },
+    {
+      "optionValue": "freelance",
+      "careerId": "ui-ux-designer",
+      "weight": 7
+    },
+    {
+      "optionValue": "freelance",
+      "careerId": "fullstack-web-dev",
+      "weight": 6
+    },
+    {
+      "optionValue": "2-3",
+      "careerId": "content-writer",
+      "weight": 7
+    },
+    {
+      "optionValue": "2-3",
+      "careerId": "digital-marketing",
+      "weight": 6
+    },
+    {
+      "optionValue": "2-3",
+      "careerId": "data-analyst",
+      "weight": 5
+    },
+    {
+      "optionValue": "3-5",
+      "careerId": "fullstack-web-dev",
+      "weight": 7
+    },
+    {
+      "optionValue": "3-5",
+      "careerId": "digital-marketing",
+      "weight": 7
+    },
+    {
+      "optionValue": "3-5",
+      "careerId": "data-analyst",
+      "weight": 7
+    },
+    {
+      "optionValue": "3-5",
+      "careerId": "content-writer",
+      "weight": 6
+    },
+    {
+      "optionValue": "3-5",
+      "careerId": "ui-ux-designer",
+      "weight": 6
+    },
+    {
+      "optionValue": "5plus",
+      "careerId": "fullstack-web-dev",
+      "weight": 8
+    },
+    {
+      "optionValue": "5plus",
+      "careerId": "data-analyst",
+      "weight": 8
+    },
+    {
+      "optionValue": "5plus",
+      "careerId": "ui-ux-designer",
+      "weight": 7
+    },
+    {
+      "optionValue": "5plus",
+      "careerId": "digital-marketing",
+      "weight": 6
+    },
+    {
+      "optionValue": "flexible",
+      "careerId": "fullstack-web-dev",
+      "weight": 6
+    },
+    {
+      "optionValue": "flexible",
+      "careerId": "ui-ux-designer",
+      "weight": 6
+    },
+    {
+      "optionValue": "flexible",
+      "careerId": "data-analyst",
+      "weight": 6
+    },
+    {
+      "optionValue": "flexible",
+      "careerId": "digital-marketing",
+      "weight": 6
+    },
+    {
+      "optionValue": "flexible",
+      "careerId": "content-writer",
+      "weight": 6
+    },
+    {
+      "optionValue": "immediate",
+      "careerId": "content-writer",
+      "weight": 8
+    },
+    {
+      "optionValue": "immediate",
+      "careerId": "digital-marketing",
+      "weight": 7
+    },
+    {
+      "optionValue": "immediate",
+      "careerId": "data-analyst",
+      "weight": 5
+    },
+    {
+      "optionValue": "3-6months",
+      "careerId": "digital-marketing",
+      "weight": 7
+    },
+    {
+      "optionValue": "3-6months",
+      "careerId": "content-writer",
+      "weight": 7
+    },
+    {
+      "optionValue": "3-6months",
+      "careerId": "data-analyst",
+      "weight": 6
+    },
+    {
+      "optionValue": "3-6months",
+      "careerId": "fullstack-web-dev",
+      "weight": 6
+    },
+    {
+      "optionValue": "3-6months",
+      "careerId": "ui-ux-designer",
+      "weight": 6
+    },
+    {
+      "optionValue": "6-12months",
+      "careerId": "fullstack-web-dev",
+      "weight": 8
+    },
+    {
+      "optionValue": "6-12months",
+      "careerId": "data-analyst",
+      "weight": 7
+    },
+    {
+      "optionValue": "6-12months",
+      "careerId": "ui-ux-designer",
+      "weight": 7
+    },
+    {
+      "optionValue": "6-12months",
+      "careerId": "digital-marketing",
+      "weight": 6
+    },
+    {
+      "optionValue": "1plus-year",
+      "careerId": "fullstack-web-dev",
+      "weight": 7
+    },
+    {
+      "optionValue": "1plus-year",
+      "careerId": "data-analyst",
+      "weight": 7
+    },
+    {
+      "optionValue": "1plus-year",
+      "careerId": "ui-ux-designer",
+      "weight": 7
+    },
+    {
+      "optionValue": "good",
+      "careerId": "fullstack-web-dev",
+      "weight": 5
+    },
+    {
+      "optionValue": "good",
+      "careerId": "data-analyst",
+      "weight": 5
+    },
+    {
+      "optionValue": "good",
+      "careerId": "ui-ux-designer",
+      "weight": 5
+    },
+    {
+      "optionValue": "good",
+      "careerId": "digital-marketing",
+      "weight": 5
+    },
+    {
+      "optionValue": "good",
+      "careerId": "content-writer",
+      "weight": 5
+    },
+    {
+      "optionValue": "limited",
+      "careerId": "content-writer",
+      "weight": 6
+    },
+    {
+      "optionValue": "limited",
+      "careerId": "digital-marketing",
+      "weight": 4
+    },
+    {
+      "optionValue": "limited",
+      "careerId": "fullstack-web-dev",
+      "weight": 3
+    },
+    {
+      "optionValue": "yes",
+      "careerId": "fullstack-web-dev",
+      "weight": 6
+    },
+    {
+      "optionValue": "yes",
+      "careerId": "data-analyst",
+      "weight": 6
+    },
+    {
+      "optionValue": "yes",
+      "careerId": "ui-ux-designer",
+      "weight": 6
+    },
+    {
+      "optionValue": "yes",
+      "careerId": "digital-marketing",
+      "weight": 6
+    },
+    {
+      "optionValue": "yes",
+      "careerId": "content-writer",
+      "weight": 5
+    },
+    {
+      "optionValue": "limited",
+      "careerId": "fullstack-web-dev",
+      "weight": 7
+    },
+    {
+      "optionValue": "limited",
+      "careerId": "content-writer",
+      "weight": 7
+    },
+    {
+      "optionValue": "limited",
+      "careerId": "digital-marketing",
+      "weight": 7
+    },
+    {
+      "optionValue": "limited",
+      "careerId": "data-analyst",
+      "weight": 6
+    },
+    {
+      "optionValue": "limited",
+      "careerId": "ui-ux-designer",
+      "weight": 6
+    },
+    {
+      "optionValue": "free",
+      "careerId": "content-writer",
+      "weight": 8
+    },
+    {
+      "optionValue": "free",
+      "careerId": "digital-marketing",
+      "weight": 7
+    },
+    {
+      "optionValue": "free",
+      "careerId": "fullstack-web-dev",
+      "weight": 7
+    },
+    {
+      "optionValue": "free",
+      "careerId": "data-analyst",
+      "weight": 6
+    },
+    {
+      "optionValue": "free",
+      "careerId": "ui-ux-designer",
+      "weight": 6
+    }
+  ]
+}
