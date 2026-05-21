@@ -96,7 +96,7 @@ export function SkillGapAnalyzer() {
           </div>
 
           {/* Right Column: Progress and Missing Skills */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-6)', position: 'sticky', top: 100, height: 'max-content' }}>
+          <div className="sticky-col">
             <div className="card">
               <div style={{ textAlign: 'center', marginBottom: 'var(--space-4)' }}>
                 <div className="match-score" style={{ fontSize: '3.5rem' }}>{progressPercentage}%</div>

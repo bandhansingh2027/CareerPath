@@ -54,14 +54,14 @@ export function CareerDetail() {
           <h1 style={{ color: 'var(--text-inverse)', fontSize: 'var(--text-3xl)', marginBottom: 'var(--space-2)' }}>{career.title}</h1>
           <p style={{ color: 'rgba(255,255,255,0.85)', maxWidth: 640 }}>{career.description}</p>
 
-          <div className="grid-4" style={{ marginTop: 'var(--space-6)' }}>
+          <div className="stats-row">
             {[
               { icon: TrendingUp, label: 'Demand', value: career.demandLevel },
               { icon: MapPin, label: 'Tier 2/3', value: career.tier2Tier3Opportunities },
               { icon: DollarSign, label: 'Entry Salary', value: career.salaryEntry },
               { icon: Clock, label: 'Time to Start', value: '3–6 months' }
             ].map((m, i) => (
-              <div key={i} style={{ backgroundColor: 'rgba(255,255,255,0.15)', borderRadius: 'var(--radius-lg)', padding: 'var(--space-4)', textAlign: 'center' }}>
+              <div key={i} className="stats-card">
                 <m.icon style={{ width: 20, height: 20, color: 'var(--text-inverse)', margin: '0 auto var(--space-2)' }} />
                 <div style={{ color: 'var(--text-inverse)', fontWeight: 'var(--font-semibold)', fontSize: 'var(--text-sm)' }}>{m.value}</div>
                 <div style={{ color: 'rgba(255,255,255,0.7)', fontSize: 'var(--text-xs)' }}>{m.label}</div>
@@ -75,7 +75,7 @@ export function CareerDetail() {
         <div className="grid-2" style={{ gap: 'var(--space-8)' }}>
 
           {/* Left Column */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-6)', position: 'sticky', top: 100, height: 'max-content' }}>
+          <div className="sticky-col">
 
             {/* Job Roles */}
             <div className="card">

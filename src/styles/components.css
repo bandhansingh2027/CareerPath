@@ -829,3 +829,55 @@
     font-size: var(--text-2xl);
   }
 }
+
+/* ---------- Enhanced Horizontal Scrolling ---------- */
+.stats-row {
+  display: flex;
+  gap: var(--space-4);
+  overflow-x: auto;
+  padding-bottom: var(--space-4);
+  margin-top: var(--space-6);
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.1);
+}
+
+.stats-row::-webkit-scrollbar {
+  height: 6px;
+}
+.stats-row::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+.stats-row::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+.stats-card {
+  flex: 1;
+  min-width: 140px;
+  scroll-snap-align: start;
+  background-color: rgba(255,255,255,0.15);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  text-align: center;
+}
+
+/* ---------- Sticky Columns ---------- */
+.sticky-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  position: sticky;
+  top: 100px;
+  height: max-content;
+}
+
+@media (max-width: 768px) {
+  .sticky-col {
+    position: static;
+    height: auto;
+  }
+}
