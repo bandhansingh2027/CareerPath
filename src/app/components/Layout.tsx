@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router';
 import { Target, Menu, X } from 'lucide-react';
-import { ThemeToggle } from './ThemeToggle';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -30,12 +29,10 @@ export function Layout({ children, showNav = true, showFooter = true }: LayoutPr
               <Link to="/resources" className="btn btn-ghost btn-sm">Resources</Link>
               <Link to="/compare" className="btn btn-ghost btn-sm">Compare</Link>
               <Link to="/about" className="btn btn-ghost btn-sm">About</Link>
-              <ThemeToggle />
               <Link to="/quiz" className="btn btn-primary btn-sm">Start Quiz</Link>
             </div>
 
             <div className="mobile-only" style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
-              <ThemeToggle />
               <button className="btn btn-icon" onClick={() => setIsMenuOpen(true)}>
                 <Menu />
               </button>

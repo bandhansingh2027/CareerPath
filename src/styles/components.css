@@ -561,33 +561,7 @@
   font-size: var(--text-xs);
 }
 
-/* ---------- Theme Toggle ---------- */
-.theme-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  background-color: transparent;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  transition: all var(--transition-fast);
-  color: var(--text-secondary);
-}
-
-.theme-toggle:hover {
-  background-color: var(--surface-hover);
-  color: var(--text-primary);
-  border-color: var(--border-hover);
-}
-
-.theme-toggle svg {
-  width: 18px;
-  height: 18px;
-}
-
-/* ---------- Grid Layouts ---------- */
+/* ---------- Navigation Actions ---------- */
 .grid-2 {
   display: grid;
   grid-template-columns: 1fr;
@@ -795,7 +769,7 @@
 }
 
 .sidebar {
-  background-color: var(--bg-default);
+  background-color: var(--bg-primary);
   width: 280px;
   max-width: 80vw;
   height: 100%;
