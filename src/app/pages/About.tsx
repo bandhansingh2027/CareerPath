@@ -113,27 +113,20 @@ export function About() {
           </section>
         )}
 
-        {/* Team */}
+        {/* Developer */}
         <section style={{ marginBottom: 'var(--space-12)' }}>
           <div className="section-header">
-            <h2 className="section-title">Team CODE TITANS</h2>
-            <p className="section-subtitle">Innovathon 2026 — RRGI, Batch 100</p>
+            <h2 className="section-title">About the Developer</h2>
           </div>
 
-          <div className="grid-3" style={{ maxWidth: 800, margin: '0 auto' }}>
-            {[
-              { name: 'Siddharth Singh', role: 'Full Stack Developer' },
-              { name: 'Team Member 2', role: 'UI/UX & Research' },
-              { name: 'Team Member 3', role: 'Data & Content' }
-            ].map((m, i) => (
-              <div key={i} className="card" style={{ textAlign: 'center' }}>
-                <div style={{ width: 64, height: 64, borderRadius: 'var(--radius-full)', backgroundColor: 'var(--accent-bg)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto var(--space-3)' }}>
-                  <Users style={{ width: 28, height: 28, color: 'var(--accent)' }} />
-                </div>
-                <div style={{ fontWeight: 'var(--font-semibold)' }}>{m.name}</div>
-                <div style={{ fontSize: 'var(--text-sm)', color: 'var(--text-muted)' }}>{m.role}</div>
+          <div style={{ maxWidth: 400, margin: '0 auto' }}>
+            <div className="card" style={{ textAlign: 'center' }}>
+              <div style={{ width: 64, height: 64, borderRadius: 'var(--radius-full)', backgroundColor: 'var(--accent-bg)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto var(--space-3)' }}>
+                <Users style={{ width: 28, height: 28, color: 'var(--accent)' }} />
               </div>
-            ))}
+              <div style={{ fontWeight: 'var(--font-semibold)' }}>Siddharth Singh</div>
+              <div style={{ fontSize: 'var(--text-sm)', color: 'var(--text-muted)' }}>Full Stack Developer</div>
+            </div>
           </div>
         </section>
 

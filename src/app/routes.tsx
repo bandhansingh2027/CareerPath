@@ -8,11 +8,13 @@ import { Resources } from './pages/Resources';
 import { Compare } from './pages/Compare';
 import { About } from './pages/About';
 import { NotFound } from './pages/NotFound';
+import { SkillGapAnalyzer } from './pages/SkillGapAnalyzer';
 
 export const router = createBrowserRouter([
   { path: '/', Component: Home },
   { path: '/careers', Component: Careers },
   { path: '/career/:id', Component: CareerDetail },
+  { path: '/skill-gap/:careerId', Component: SkillGapAnalyzer },
   { path: '/quiz', Component: Quiz },
   { path: '/results', Component: Results },
   { path: '/resources', Component: Resources },

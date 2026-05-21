@@ -2,7 +2,7 @@
 
 > **Bridging the career guidance gap for millions of students in Tier 2 and Tier 3 cities.**
 
-CareerPath is a data-driven web platform built for Innovathon 2026. It provides personalized career recommendations, actionable learning roadmaps, and free curated resources tailored specifically for students who lack access to professional career counseling.
+CareerPath is a data-driven personal project. It provides personalized career recommendations, actionable learning roadmaps, and free curated resources tailored specifically for students who lack access to professional career counseling.
 
 ## 🚀 Features
 
@@ -60,15 +60,9 @@ CareerPath/
 │   │   ├── services/       # API integration
 │   │   └── routes.tsx      # Application routing
 │   └── styles/             # Vanilla CSS Design System
-├── Innovathon_2026_Final_Presentation.md  # Hackathon Pitch Deck
-└── package.json            # Project configuration
+├── mvp.md                                 # Project generation chat logs
+└── package.json                           # Project configuration
 \`\`\`
-
-## 🏆 Hackathon Details
-* **Event**: Innovathon 2026
-* **Theme**: EdTech / AI Integration
-* **Problem Statement ID**: PS-A05
-* **Team**: CODE TITANS (RRGI 100)
 
 ---
 *Built with ❤️ for students in Tier 2/3 cities of India.*

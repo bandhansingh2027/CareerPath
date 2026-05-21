@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router';
 import {
   TrendingUp, MapPin, DollarSign, BookOpen, CheckCircle,
-  AlertCircle, ArrowLeft, ArrowRight
+  AlertCircle, ArrowLeft, ArrowRight, Target
 } from 'lucide-react';
 import { quizService } from '../services/api';
 import { Layout } from '../components/Layout';
@@ -98,9 +98,14 @@ export function Results() {
                 ))}
               </ul>
 
-              <Link to={`/career/${topCareer.id}`} className="btn btn-primary">
-                View Full Details <ArrowRight style={{ width: 16, height: 16 }} />
-              </Link>
+              <div style={{ display: 'flex', gap: 'var(--space-4)', flexWrap: 'wrap' }}>
+                <Link to={`/career/${topCareer.id}`} className="btn btn-primary">
+                  View Full Details <ArrowRight style={{ width: 16, height: 16 }} />
+                </Link>
+                <Link to={`/skill-gap/${topCareer.id}`} className="btn btn-secondary">
+                  <Target style={{ width: 16, height: 16 }} /> Analyze Skill Gap
+                </Link>
+              </div>
             </div>
 
             <div style={{ textAlign: 'center', flexShrink: 0 }}>

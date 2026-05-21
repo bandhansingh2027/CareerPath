@@ -45,7 +45,7 @@ export function Layout({ children, showNav = true, showFooter = true }: LayoutPr
               <Link to="/about" style={{ fontSize: 'var(--text-sm)', color: 'var(--text-muted)' }}>About</Link>
             </div>
             <p>© 2026 CareerPath Recommender — Built for Tier 2/3 Students</p>
-            <p>Team CODE TITANS | Innovathon 2026 | RRGI</p>
+            <p>Built by Siddharth Singh</p>
           </div>
         </footer>
       )}
