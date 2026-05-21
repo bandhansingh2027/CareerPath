@@ -124,7 +124,7 @@ export function About() {
               <div style={{ width: 64, height: 64, borderRadius: 'var(--radius-full)', backgroundColor: 'var(--accent-bg)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto var(--space-3)' }}>
                 <Users style={{ width: 28, height: 28, color: 'var(--accent)' }} />
               </div>
-              <div style={{ fontWeight: 'var(--font-semibold)' }}>Siddharth Singh</div>
+              <div style={{ fontWeight: 'var(--font-semibold)' }}>Bandhan Singh</div>
               <div style={{ fontSize: 'var(--text-sm)', color: 'var(--text-muted)' }}>Full Stack Developer</div>
             </div>
           </div>
