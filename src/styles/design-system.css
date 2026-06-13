@@ -23,6 +23,10 @@
   --bg-elevated: #FFFFFF;
   --bg-overlay: rgba(0, 0, 0, 0.4);
 
+  --grid-line: rgba(15, 118, 110, 0.05);
+  --glow-1: rgba(20, 184, 166, 0.06);
+  --glow-2: rgba(99, 102, 241, 0.06);
+
   /* Text */
   --text-primary: #111827;
   --text-secondary: #4B5563;
@@ -113,6 +117,129 @@
   --nav-height: 64px;
 }
 
+/* ---------- Dark Mode ---------- */
+[data-theme="dark"] {
+  --bg-primary: #0F172A;
+  --bg-secondary: #1E293B;
+  --bg-card: #1E293B;
+  --bg-elevated: #283548;
+  --bg-overlay: rgba(0, 0, 0, 0.6);
+
+  --text-primary: #F1F5F9;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+  --text-inverse: #0F172A;
+
+  --accent: #2DD4BF;
+  --accent-hover: #5EEAD4;
+  --accent-light: #5EEAD4;
+  --accent-bg: rgba(45, 212, 191, 0.1);
+  --accent-border: rgba(45, 212, 191, 0.3);
+
+  --border: #334155;
+  --border-hover: #475569;
+  --surface-hover: #334155;
+  --surface-active: #475569;
+
+  --success: #34D399;
+  --success-bg: rgba(52, 211, 153, 0.1);
+  --warning: #FBBF24;
+  --warning-bg: rgba(251, 191, 36, 0.1);
+  --error: #F87171;
+  --error-bg: rgba(248, 113, 113, 0.1);
+  --info: #38BDF8;
+  --info-bg: rgba(56, 189, 248, 0.1);
+
+  --grid-line: rgba(45, 212, 191, 0.04);
+  --glow-1: rgba(45, 212, 191, 0.1);
+  --glow-2: rgba(99, 102, 241, 0.15);
+}
+
+/* ---------- Cosmic Theme ---------- */
+[data-theme="cosmic"] {
+  --bg-primary: #0A071B;
+  --bg-secondary: #120E2E;
+  --bg-card: #151035;
+  --bg-elevated: #1F174D;
+  --bg-overlay: rgba(5, 3, 15, 0.75);
+
+  --text-primary: #F3E8FF;
+  --text-secondary: #C084FC;
+  --text-muted: #8B5CF6;
+  --text-inverse: #0A071B;
+
+  --accent: #A855F7;
+  --accent-hover: #C084FC;
+  --accent-light: #DDD6FE;
+  --accent-bg: rgba(168, 85, 247, 0.15);
+  --accent-border: rgba(168, 85, 247, 0.35);
+
+  --border: #2D1B4E;
+  --border-hover: #4A2E7D;
+  --surface-hover: #1F174D;
+  --surface-active: #2D1B4E;
+
+  --success: #34D399;
+  --success-bg: rgba(52, 211, 153, 0.1);
+  --warning: #FBBF24;
+  --warning-bg: rgba(251, 191, 36, 0.1);
+  --error: #F87171;
+  --error-bg: rgba(248, 113, 113, 0.1);
+  --info: #818CF8;
+  --info-bg: rgba(129, 140, 248, 0.1);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -2px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+
+  --grid-line: rgba(168, 85, 247, 0.05);
+  --glow-1: rgba(168, 85, 247, 0.15);
+  --glow-2: rgba(99, 102, 241, 0.2);
+}
+
+/* ---------- Blueprint Theme ---------- */
+[data-theme="blueprint"] {
+  --bg-primary: #051B33;
+  --bg-secondary: #0A2E54;
+  --bg-card: #0A2E54;
+  --bg-elevated: #0F3D6F;
+  --bg-overlay: rgba(2, 12, 24, 0.7);
+
+  --text-primary: #E6F1FC;
+  --text-secondary: #A0C4E8;
+  --text-muted: #5B8BBD;
+  --text-inverse: #051B33;
+
+  --accent: #EAB308;
+  --accent-hover: #FACC15;
+  --accent-light: #FEF08A;
+  --accent-bg: rgba(234, 179, 8, 0.1);
+  --accent-border: rgba(234, 179, 8, 0.3);
+
+  --border: #134478;
+  --border-hover: #1E60A3;
+  --surface-hover: #0F3D6F;
+  --surface-active: #134478;
+
+  --success: #34D399;
+  --success-bg: rgba(52, 211, 153, 0.1);
+  --warning: #FBBF24;
+  --warning-bg: rgba(251, 191, 36, 0.1);
+  --error: #F87171;
+  --error-bg: rgba(248, 113, 113, 0.1);
+  --info: #38BDF8;
+  --info-bg: rgba(56, 189, 248, 0.1);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+
+  --grid-line: rgba(234, 179, 8, 0.08);
+  --glow-1: rgba(234, 179, 8, 0.08);
+  --glow-2: rgba(56, 189, 248, 0.1);
+}
 /* ---------- Base Styles ---------- */
 html {
   font-size: 16px;
@@ -224,4 +351,120 @@ a:hover {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--text-muted);
+}
+
+/* ---------- Grid & Decorative Backgrounds ---------- */
+.bg-grid-layer {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background-image: 
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, #000 70%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, #000 70%, transparent 100%);
+  opacity: 0.85;
+}
+
+.bg-glow-layer {
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.bg-glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.6;
+  mix-blend-mode: plus-lighter;
+  animation: orb-pulse 15s ease-in-out infinite alternate;
+}
+
+.bg-glow-orb-1 {
+  top: -10%;
+  left: 10%;
+  width: 45vw;
+  height: 45vw;
+  background-color: var(--glow-1);
+}
+
+.bg-glow-orb-2 {
+  bottom: -10%;
+  right: 10%;
+  width: 40vw;
+  height: 40vw;
+  background-color: var(--glow-2);
+  animation-delay: -5s;
+}
+
+.bg-signs-layer {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.bg-sign-item {
+  position: absolute;
+  color: var(--accent);
+  opacity: 0.08;
+  transition: opacity var(--transition-slow), color var(--transition-slow);
+  animation: floating-float 12s ease-in-out infinite alternate;
+}
+
+[data-theme="cosmic"] .bg-sign-item {
+  opacity: 0.16;
+  color: var(--accent-light);
+}
+
+[data-theme="blueprint"] .bg-sign-item {
+  opacity: 0.14;
+  color: var(--accent);
+}
+
+[data-theme="blueprint"] .bg-grid-layer {
+  background-size: 30px 30px;
+  opacity: 1;
+}
+
+/* Animations */
+@keyframes orb-pulse {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(5%, 5%) scale(1.1);
+  }
+}
+
+@keyframes floating-float {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(3deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(-3deg);
+  }
+}
+
+/* Blueprint blueprint draft lines look */
+.blueprint-draft-circle {
+  position: absolute;
+  border: 1px dashed var(--accent-border);
+  border-radius: 50%;
+  animation: spin-slow 30s linear infinite;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
 }

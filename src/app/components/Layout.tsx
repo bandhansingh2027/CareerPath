@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router';
 import { Target, Menu, X } from 'lucide-react';
+import { ThemeToggle } from './ThemeToggle';
+import { BackgroundPatterns } from './BackgroundPatterns';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -16,7 +18,8 @@ export function Layout({ children, showNav = true, showFooter = true }: LayoutPr
     setIsMenuOpen(false);
   }, [location.pathname]);
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', position: 'relative', overflowX: 'hidden' }}>
+      <BackgroundPatterns />
       {showNav && (
         <nav className="nav">
           <div className="nav-inner">
@@ -29,10 +32,12 @@ export function Layout({ children, showNav = true, showFooter = true }: LayoutPr
               <Link to="/resources" className="btn btn-ghost btn-sm">Resources</Link>
               <Link to="/compare" className="btn btn-ghost btn-sm">Compare</Link>
               <Link to="/about" className="btn btn-ghost btn-sm">About</Link>
+              <ThemeToggle />
               <Link to="/quiz" className="btn btn-primary btn-sm">Start Quiz</Link>
             </div>
 
             <div className="mobile-only" style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
+              <ThemeToggle />
               <button className="btn btn-icon" onClick={() => setIsMenuOpen(true)}>
                 <Menu />
               </button>
@@ -59,6 +64,9 @@ export function Layout({ children, showNav = true, showFooter = true }: LayoutPr
               <Link to="/resources" className="btn btn-ghost">Resources</Link>
               <Link to="/compare" className="btn btn-ghost">Compare</Link>
               <Link to="/about" className="btn btn-ghost">About</Link>
+              <div style={{ display: 'flex', padding: 'var(--space-2) var(--space-4)' }}>
+                <ThemeToggle />
+              </div>
               <Link to="/quiz" className="btn btn-primary">Start Quiz</Link>
             </div>
           </div>

@@ -745,6 +745,7 @@
   color: var(--text-muted);
 }
 
+<<<<<<< Updated upstream
 /* ---------- Mobile Responsiveness ---------- */
 .desktop-only {
   display: flex !important;
@@ -880,4 +881,24 @@
     position: static;
     height: auto;
   }
+}
+
+/* ---------- Theme Select Dropdown ---------- */
+.theme-select-button:hover {
+  border-color: var(--accent-border) !important;
+  background-color: var(--surface-hover) !important;
+}
+
+.theme-option-item:hover {
+  background-color: var(--surface-hover) !important;
+}
+
+.theme-option-item:hover:not(.selected) div:first-child {
+  background-color: var(--surface-active) !important;
+  color: var(--text-primary) !important;
+}
+
+.theme-option-item.selected div:first-child {
+  background-color: var(--accent) !important;
+  color: var(--text-inverse) !important;
 }
