@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Homepage -->
+  <url>
+    <loc>https://careerpathh-ai.vercel.app/</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Dashboard & Job Recommendations -->
+  <url>
+    <loc>https://careerpathh-ai.vercel.app/dashboard</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Resume Analyzer -->
+  <url>
+    <loc>https://careerpathh-ai.vercel.app/resume-analyzer</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Roadmap Visuals (Study Plan) -->
+  <url>
+    <loc>https://careerpathh-ai.vercel.app/study-plan</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Skills Gap Analyzer -->
+  <url>
+    <loc>https://careerpathh-ai.vercel.app/skill-gap/fullstack-web-dev</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Career Report -->
+  <url>
+    <loc>https://careerpathh-ai.vercel.app/career-report/fullstack-web-dev</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Careers List -->
+  <url>
+    <loc>https://careerpathh-ai.vercel.app/careers</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Compare Careers -->
+  <url>
+    <loc>https://careerpathh-ai.vercel.app/compare</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- About -->
+  <url>
+    <loc>https://careerpathh-ai.vercel.app/about</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+</urlset>
