@@ -72,6 +72,23 @@ export function CareerDetail() {
       </div>
 
       <div className="container" style={{ padding: 'var(--space-8) var(--space-6)' }}>
+        <div style={{
+          display: 'flex',
+          gap: 'var(--space-3)',
+          marginBottom: 'var(--space-8)',
+          padding: 'var(--space-4)',
+          borderRadius: 'var(--radius-lg)',
+          backgroundColor: 'var(--bg-glass)',
+          backdropFilter: 'blur(10px)',
+          border: '1px solid var(--border)',
+          flexWrap: 'wrap'
+        }}>
+          <Link to={`/skill-gap/${career.id}`} className="btn btn-primary btn-sm">Analyze Skill Gap</Link>
+          <Link to={`/career-report/${career.id}`} className="btn btn-secondary btn-sm">Get Detailed Report</Link>
+          <Link to={`/study-plan?career=${career.id}`} className="btn btn-secondary btn-sm">Create Study Plan</Link>
+          <Link to={`/resume-analyzer`} className="btn btn-secondary btn-sm">Resume ATS Check</Link>
+        </div>
+
         <div className="grid-2" style={{ gap: 'var(--space-8)' }}>
 
           {/* Left Column */}

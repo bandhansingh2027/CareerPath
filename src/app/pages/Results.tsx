@@ -117,12 +117,18 @@ export function Results() {
                 ))}
               </ul>
 
-              <div style={{ display: 'flex', gap: 'var(--space-4)', flexWrap: 'wrap' }}>
-                <Link to={`/career/${topCareer.id}`} className="btn btn-primary">
-                  View Full Details <ArrowRight style={{ width: 16, height: 16 }} />
+              <div style={{ display: 'flex', gap: 'var(--space-3)', flexWrap: 'wrap' }}>
+                <Link to={`/career/${topCareer.id}`} className="btn btn-primary btn-sm">
+                  Full Details <ArrowRight style={{ width: 14, height: 14 }} />
                 </Link>
-                <Link to={`/skill-gap/${topCareer.id}`} className="btn btn-secondary">
-                  <Target style={{ width: 16, height: 16 }} /> Analyze Skill Gap
+                <Link to={`/skill-gap/${topCareer.id}`} className="btn btn-secondary btn-sm">
+                  <Target style={{ width: 14, height: 14 }} /> Skill Gap
+                </Link>
+                <Link to={`/career-report/${topCareer.id}`} className="btn btn-secondary btn-sm">
+                  Detailed Report
+                </Link>
+                <Link to={`/study-plan?career=${topCareer.id}`} className="btn btn-secondary btn-sm">
+                  Study Plan
                 </Link>
               </div>
             </div>

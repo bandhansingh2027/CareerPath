@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
-import { ArrowRight, Target, BookOpen, TrendingUp, Users, MapPin, Award, Briefcase, ChevronDown, ChevronUp } from 'lucide-react';
+import { ArrowRight, Target, BookOpen, TrendingUp, Users, MapPin, Award, Briefcase, ChevronDown, ChevronUp, FileText, MessageSquare } from 'lucide-react';
 import { Layout } from '../components/Layout';
 import { careerService, statsService } from '../services/api';
 import { CareerIcon } from '../components/CareerIcon';
@@ -77,20 +77,20 @@ export function Home() {
           </div>
           <div className="grid-4">
             {[
-              { icon: Target, title: 'Smart Matching', desc: 'Weighted algorithm matches you with ideal careers based on 15 data points' },
-              { icon: BookOpen, title: 'Free Resources', desc: 'Curated courses from Coursera, freeCodeCamp, Google, HubSpot and more' },
-              { icon: TrendingUp, title: 'Salary Data', desc: 'Real salary ranges for entry, mid, and senior levels in Indian market' },
-              { icon: MapPin, title: 'Tier 2/3 Focus', desc: 'Every career rated for remote and local opportunities in smaller cities' },
-              { icon: Award, title: 'Certifications', desc: 'Free and affordable certifications to boost your resume and credibility' },
-              { icon: Briefcase, title: 'Job Roles', desc: 'Detailed job roles you can target at each career stage' },
-              { icon: Users, title: 'Success Stories', desc: 'Real stories from students who found their path from similar backgrounds' },
-              { icon: ArrowRight, title: 'Step-by-Step Roadmap', desc: '6-month, 1-year, and 2-year learning roadmaps for each career' }
+              { icon: Target, title: 'Smart Matching Quiz', desc: 'Weighted algorithm matches you with ideal careers based on interests and aptitude.', link: '/quiz' },
+              { icon: FileText, title: 'ATS Resume Analyzer', desc: 'Paste your resume to calculate keyword matches and identify missing skills.', link: '/resume-analyzer' },
+              { icon: Award, title: 'AI Study Planner', desc: 'Get a week-by-week practice schedule tailored to your weekly study slots.', link: '/study-plan' },
+              { icon: Users, title: 'Progress Dashboard', desc: 'Track your learning streaks, completed milestones, and target badges.', link: '/dashboard' },
+              { icon: BookOpen, title: 'Free Resources Hub', desc: 'Explore curated learning resources and direct platform links.', link: '/resources' },
+              { icon: TrendingUp, title: 'Indian Salary Trends', desc: 'Real salary brackets for entry, mid, and senior levels in modern job roles.', link: '/careers' },
+              { icon: Briefcase, title: 'Job Openings Matrix', desc: 'Compare positions and view local hiring demands in smaller cities.', link: '/compare' },
+              { icon: MessageSquare, title: 'Student Feedback', desc: 'Provide ideas, report bugs, or share testimonials to help peers.', link: '/feedback' }
             ].map((f, i) => (
-              <div key={i} className="card">
+              <Link key={i} to={f.link} className="card card-interactive" style={{ textDecoration: 'none', color: 'inherit' }}>
                 <f.icon style={{ width: 28, height: 28, color: 'var(--accent)', marginBottom: 'var(--space-3)' }} />
-                <div className="card-title">{f.title}</div>
-                <p className="card-description">{f.desc}</p>
-              </div>
+                <div className="card-title" style={{ fontSize: 'var(--text-base)', marginBottom: 'var(--space-2)' }}>{f.title}</div>
+                <p className="card-description" style={{ fontSize: 'var(--text-xs)', margin: 0 }}>{f.desc}</p>
+              </Link>
             ))}
           </div>
         </div>
