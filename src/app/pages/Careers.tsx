@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import { TrendingUp, ArrowRight, Search } from 'lucide-react';
 import { careerService } from '../services/api';
 import { Layout } from '../components/Layout';
+import { CareerIcon } from '../components/CareerIcon';
 
 export function Careers() {
   const [careers, setCareers] = useState([]);
@@ -55,18 +56,33 @@ export function Careers() {
       <div className="container" style={{ padding: 'var(--space-8) var(--space-6)' }}>
         <div className="grid-3">
           {filtered.map(career => (
-            <Link key={career.id} to={`/career/${career.id}`} className="card card-interactive" style={{ textDecoration: 'none', color: 'inherit' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 'var(--space-3)' }}>
-                <div className="card-title" style={{ flex: 1 }}>{career.title}</div>
+            <Link key={career.id} to={`/career/${career.id}`} className="card card-interactive" style={{ textDecoration: 'none', color: 'inherit', display: 'flex', flexDirection: 'column', height: '100%' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 'var(--space-4)' }}>
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '44px',
+                  height: '44px',
+                  borderRadius: 'var(--radius-lg)',
+                  backgroundColor: 'var(--accent-bg)',
+                  color: 'var(--accent)',
+                  flexShrink: 0
+                }}>
+                  <CareerIcon id={career.id} category={career.category} style={{ width: 22, height: 22 }} />
+                </div>
                 <span className={`badge ${career.demandLevel === 'High' ? 'badge-success' : 'badge-neutral'}`} style={{ flexShrink: 0 }}>
                   <TrendingUp style={{ width: 12, height: 12 }} />
                   {career.demandLevel}
                 </span>
               </div>
 
-              <p style={{ fontSize: 'var(--text-sm)', color: 'var(--text-secondary)', marginBottom: 'var(--space-4)' }}>
-                {career.category}
-              </p>
+              <div style={{ flex: 1, marginBottom: 'var(--space-4)' }}>
+                <div className="card-title" style={{ fontSize: 'var(--text-lg)', marginBottom: 'var(--space-1)' }}>{career.title}</div>
+                <p style={{ fontSize: 'var(--text-xs)', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 'var(--font-semibold)', margin: 0 }}>
+                  {career.category}
+                </p>
+              </div>
 
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: 'var(--space-3)', borderTop: '1px solid var(--border)' }}>
                 <div>

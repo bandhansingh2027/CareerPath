@@ -40,12 +40,12 @@ export function analyzeProfile(db, answers) {
           description: c.description,
           demand_level: c.demandLevel,
           tier2_tier3_opportunities: c.tier2Tier3Opportunities,
-          salary_entry_min: parseInt(c.salaryEntry.replace(/[^0-9]/g, '')) * 100000,
-          salary_entry_max: parseInt(c.salaryEntry.split('–')[1]?.replace(/[^0-9]/g, '') || c.salaryEntry.replace(/[^0-9]/g, '')) * 100000,
-          salary_mid_min: parseInt(c.salaryMid.replace(/[^0-9]/g, '')) * 100000,
-          salary_mid_max: parseInt(c.salaryMid.split('–')[1]?.replace(/[^0-9]/g, '') || c.salaryMid.replace(/[^0-9]/g, '')) * 100000,
-          salary_senior_min: parseInt(c.salarySenior.replace(/[^0-9]/g, '')) * 100000,
-          salary_senior_max: parseInt(c.salarySenior.split('–')[1]?.replace(/[^0-9]/g, '') || c.salarySenior.replace(/[^0-9]/g, '')) * 100000,
+          salary_entry_min: parseSalaryRange(c.salaryEntry).min,
+          salary_entry_max: parseSalaryRange(c.salaryEntry).max,
+          salary_mid_min: parseSalaryRange(c.salaryMid).min,
+          salary_mid_max: parseSalaryRange(c.salaryMid).max,
+          salary_senior_min: parseSalaryRange(c.salarySenior).min,
+          salary_senior_max: parseSalaryRange(c.salarySenior).max,
           job_roles: c.jobRoles,
           roadmap: c.roadmap,
           courses: c.courses,
@@ -61,6 +61,15 @@ export function analyzeProfile(db, answers) {
     .slice(0, 5);
 
   return recommendations;
+}
+
+function parseSalaryRange(salaryStr) {
+  if (!salaryStr) return { min: 0, max: 0 };
+  const cleanStr = salaryStr.replace(/[₹\s]|LPA/gi, '');
+  const parts = cleanStr.split(/[–-]/);
+  const minVal = parseFloat(parts[0]) || 0;
+  const maxVal = parseFloat(parts[1] || parts[0]) || 0;
+  return { min: minVal * 100000, max: maxVal * 100000 };
 }
 
 function generateReasons(career, percentage) {

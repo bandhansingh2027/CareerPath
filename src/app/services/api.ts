@@ -39,3 +39,10 @@ export const compareService = {
     body: JSON.stringify({ ids })
   })
 };
+
+export const chatService = {
+  sendMessage: (message: string) => fetchApi('/chat', {
+    method: 'POST',
+    body: JSON.stringify({ message })
+  })
+};

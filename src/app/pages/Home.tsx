@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import { ArrowRight, Target, BookOpen, TrendingUp, Users, MapPin, Award, Briefcase, ChevronDown, ChevronUp } from 'lucide-react';
 import { Layout } from '../components/Layout';
 import { careerService, statsService } from '../services/api';
+import { CareerIcon } from '../components/CareerIcon';
 
 export function Home() {
   const [careers, setCareers] = useState<any[]>([]);
@@ -128,12 +129,31 @@ export function Home() {
           </div>
           <div className="grid-3">
             {careers.map(career => (
-              <Link key={career.id} to={`/career/${career.id}`} className="card card-interactive" style={{ textDecoration: 'none', color: 'inherit' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 'var(--space-2)' }}>
-                  <div className="card-title">{career.title}</div>
+              <Link key={career.id} to={`/career/${career.id}`} className="card card-interactive" style={{ textDecoration: 'none', color: 'inherit', display: 'flex', flexDirection: 'column', height: '100%' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 'var(--space-4)' }}>
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: '44px',
+                    height: '44px',
+                    borderRadius: 'var(--radius-lg)',
+                    backgroundColor: 'var(--accent-bg)',
+                    color: 'var(--accent)',
+                    flexShrink: 0
+                  }}>
+                    <CareerIcon id={career.id} category={career.category} style={{ width: 22, height: 22 }} />
+                  </div>
                   <span className={`badge ${career.demandLevel === 'High' ? 'badge-success' : 'badge-neutral'}`}>{career.demandLevel}</span>
                 </div>
-                <p style={{ fontSize: 'var(--text-sm)', color: 'var(--text-muted)', marginBottom: 'var(--space-3)' }}>{career.category}</p>
+                
+                <div style={{ flex: 1, marginBottom: 'var(--space-4)' }}>
+                  <div className="card-title" style={{ fontSize: 'var(--text-lg)', marginBottom: 'var(--space-1)' }}>{career.title}</div>
+                  <p style={{ fontSize: 'var(--text-xs)', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 'var(--font-semibold)', margin: 0 }}>
+                    {career.category}
+                  </p>
+                </div>
+
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: 'var(--space-3)', borderTop: '1px solid var(--border)' }}>
                   <span style={{ fontSize: 'var(--text-sm)', color: 'var(--accent)', fontWeight: 'var(--font-semibold)' }}>{career.salaryEntry}</span>
                   <span style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 'var(--text-sm)', color: 'var(--accent)' }}>Details <ArrowRight style={{ width: 14, height: 14 }} /></span>

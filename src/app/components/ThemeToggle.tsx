@@ -37,6 +37,14 @@ export function ThemeToggle() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  const toggleTheme = () => {
+    if (theme === 'light') {
+      setTheme('dark');
+    } else {
+      setTheme('light');
+    }
+  };
+
   const themeOptions = [
     { id: 'light' as Theme, label: 'Light', Icon: Sun, desc: 'Clean slate theme' },
     { id: 'dark' as Theme, label: 'Dark', Icon: Moon, desc: 'Sleek dark theme' },
@@ -44,34 +52,55 @@ export function ThemeToggle() {
     { id: 'blueprint' as Theme, label: 'Blueprint', Icon: Compass, desc: 'Technical drafting grid' },
   ];
 
-  const CurrentIcon = themeOptions.find(t => t.id === theme)?.Icon || Sun;
-
   return (
-    <div className="theme-select-container" ref={dropdownRef} style={{ position: 'relative' }}>
+    <div className="theme-select-container" ref={dropdownRef} style={{ position: 'relative', display: 'flex', alignItems: 'center', gap: '1px' }}>
       <button
-        className="theme-select-button"
-        onClick={() => setIsOpen(!isOpen)}
-        aria-label="Select theme"
-        title="Change theme"
+        onClick={toggleTheme}
+        aria-label="Toggle dark mode"
+        title="Toggle dark mode"
         style={{
           display: 'flex',
           alignItems: 'center',
-          gap: 'var(--space-2)',
-          padding: 'var(--space-1) var(--space-3)',
+          justifyContent: 'center',
+          padding: 'var(--space-1) var(--space-2)',
           border: '1.5px solid var(--border)',
-          borderRadius: 'var(--radius-lg)',
+          borderRight: 'none',
+          borderTopLeftRadius: 'var(--radius-lg)',
+          borderBottomLeftRadius: 'var(--radius-lg)',
           backgroundColor: 'var(--bg-card)',
           color: 'var(--text-primary)',
           cursor: 'pointer',
-          fontWeight: 'var(--font-medium)',
-          fontSize: 'var(--text-xs)',
           transition: 'all var(--transition-fast)',
           height: '36px',
+          width: '36px',
         }}
+        className="theme-select-button"
       >
-        <CurrentIcon style={{ width: 16, height: 16 }} />
-        <span style={{ textTransform: 'capitalize' }}>{theme}</span>
-        <ChevronDown style={{ width: 14, height: 14, opacity: 0.7, transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform var(--transition-fast)' }} />
+        {theme === 'light' ? <Moon style={{ width: 16, height: 16 }} /> : <Sun style={{ width: 16, height: 16 }} />}
+      </button>
+
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        aria-label="Select theme"
+        title="More themes"
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: 'var(--space-1) var(--space-1)',
+          border: '1.5px solid var(--border)',
+          borderTopRightRadius: 'var(--radius-lg)',
+          borderBottomRightRadius: 'var(--radius-lg)',
+          backgroundColor: 'var(--bg-card)',
+          color: 'var(--text-primary)',
+          cursor: 'pointer',
+          transition: 'all var(--transition-fast)',
+          height: '36px',
+          width: '24px',
+        }}
+        className="theme-select-button"
+      >
+        <ChevronDown style={{ width: 12, height: 12, opacity: 0.7, transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform var(--transition-fast)' }} />
       </button>
 
       {isOpen && (

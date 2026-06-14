@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router';
 import { Target, Menu, X } from 'lucide-react';
 import { ThemeToggle } from './ThemeToggle';
 import { BackgroundPatterns } from './BackgroundPatterns';
+import { Chatbot } from './Chatbot';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -76,6 +77,8 @@ export function Layout({ children, showNav = true, showFooter = true }: LayoutPr
       <main style={{ flex: 1 }}>
         {children}
       </main>
+
+      <Chatbot />
 
       {showFooter && (
         <footer className="footer">
