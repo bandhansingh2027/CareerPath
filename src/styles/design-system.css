@@ -448,11 +448,52 @@ a:hover {
     transform: translateY(0px) rotate(0deg);
   }
   50% {
-    transform: translateY(-15px) rotate(3deg);
+    transform: translateY(-12px) rotate(3deg);
   }
   100% {
     transform: translateY(0px) rotate(-3deg);
   }
+}
+
+@keyframes floating-float-reverse {
+  0% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(12px) translateX(-8px) rotate(-4deg);
+  }
+  100% {
+    transform: translateY(0px) translateX(0px) rotate(2deg);
+  }
+}
+
+@keyframes floating-float-spin {
+  0% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translateY(-8px) rotate(180deg) scale(1.04);
+  }
+  100% {
+    transform: translateY(0px) rotate(360deg) scale(1);
+  }
+}
+
+/* Distribute animations dynamically */
+.bg-sign-item:nth-child(2n) {
+  animation-name: floating-float-reverse;
+  animation-duration: 15s;
+}
+
+.bg-sign-item:nth-child(3n) {
+  animation-name: floating-float-spin;
+  animation-duration: 22s;
+  animation-timing-function: linear;
+}
+
+.bg-sign-item:nth-child(4n) {
+  animation-name: floating-float;
+  animation-duration: 18s;
 }
 
 /* Blueprint blueprint draft lines look */
@@ -468,3 +509,4 @@ a:hover {
 @keyframes spin-slow {
   to { transform: rotate(360deg); }
 }
+

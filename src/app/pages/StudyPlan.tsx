@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Layout } from '../components/Layout';
 import { careerService } from '../services/api';
 import { useSearchParams, Link } from 'react-router';
-import { Calendar, Clock, CheckCircle, ChevronDown, ChevronUp, Sparkles, BookOpen, AlertCircle, Trash2 } from 'lucide-react';
+import { Calendar, Clock, CheckCircle, CheckCircle2, ChevronDown, ChevronUp, Sparkles, BookOpen, AlertCircle, Trash2 } from 'lucide-react';
 
 export function StudyPlan() {
   const [searchParams] = useSearchParams();
@@ -397,18 +397,17 @@ export function StudyPlan() {
                         <h5 style={{ fontSize: 'var(--text-sm)', fontWeight: 'var(--font-bold)', marginBottom: 'var(--space-3)' }}>Practice Checklist</h5>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)', marginBottom: 'var(--space-6)' }}>
                           {week.tasks.map((task: any) => (
-                            <label key={task.id} className={`option-card ${task.completed ? 'option-card-selected' : ''}`} style={{ padding: '10px 14px' }}>
+                            <label key={task.id} className="task-checkbox-container option-card" style={{ padding: '10px 14px' }}>
                               <input
                                 type="checkbox"
+                                className="task-checkbox-input"
                                 checked={task.completed}
                                 onChange={() => handleToggleTask(wIdx, task.id)}
                               />
-                              <span style={{
-                                flex: 1,
-                                fontSize: 'var(--text-sm)',
-                                textDecoration: task.completed ? 'line-through' : 'none',
-                                color: task.completed ? 'var(--text-muted)' : 'var(--text-primary)'
-                              }}>
+                              <div className="task-checkbox-custom">
+                                <CheckCircle2 style={{ width: 12, height: 12 }} />
+                              </div>
+                              <span className={`task-text ${task.completed ? 'task-text-completed' : ''}`} style={{ flex: 1, fontSize: 'var(--text-sm)' }}>
                                 {task.label}
                               </span>
                               <span style={{ fontSize: 'var(--text-xs)', color: 'var(--text-muted)', display: 'inline-flex', alignItems: 'center', gap: '2px' }}>

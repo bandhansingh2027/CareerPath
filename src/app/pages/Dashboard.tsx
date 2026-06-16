@@ -9,11 +9,13 @@ import {
 import { Layout } from '../components/Layout';
 import { careersData } from '../data/careersData';
 import { quizService } from '../services/api';
+import { AnimatedCounter } from '../components/AnimatedCounter';
 
 export function Dashboard() {
   const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState<any>(null);
   const [activePlan, setActivePlan] = useState<any>(null);
+  const [animatedProgress, setAnimatedProgress] = useState(0);
   
   // Resume analysis state
   const [resumeText, setResumeText] = useState('');
@@ -83,6 +85,15 @@ export function Dashboard() {
       }
     }
   }, []);
+
+  useEffect(() => {
+    if (currentUser) {
+      const timer = setTimeout(() => {
+        setAnimatedProgress(currentUser.studyPlanProgress);
+      }, 150);
+      return () => clearTimeout(timer);
+    }
+  }, [currentUser?.studyPlanProgress]);
 
   if (!currentUser || !activePlan) return null;
 
@@ -309,13 +320,13 @@ Projects: Todo Web Application using React.`);
                   <TrendingUp style={{ color: 'var(--accent)', width: 20, height: 20 }} />
                 </div>
                 <div style={{ fontSize: '2.5rem', fontWeight: 'bold', color: 'var(--accent)', lineHeight: '1.1' }}>
-                  {currentUser.studyPlanProgress}%
+                  <AnimatedCounter value={currentUser.studyPlanProgress} suffix="%" />
                 </div>
                 <span style={{ fontSize: 'var(--text-xs)', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', marginTop: '4px' }}>
                   Roadmap Progress
                 </span>
                 <div className="progress-track" style={{ height: 6, marginTop: 'var(--space-3)' }}>
-                  <div className="progress-fill" style={{ width: `${currentUser.studyPlanProgress}%`, height: 6 }} />
+                  <div className="progress-fill" style={{ width: `${animatedProgress}%`, height: 6 }} />
                 </div>
               </div>
 
@@ -325,7 +336,7 @@ Projects: Todo Web Application using React.`);
                   <Activity style={{ color: 'var(--success)', width: 20, height: 20 }} />
                 </div>
                 <div style={{ fontSize: '2.5rem', fontWeight: 'bold', color: 'var(--success)', lineHeight: '1.1' }}>
-                  {careerScore}/100
+                  <AnimatedCounter value={careerScore} />/100
                 </div>
                 <span style={{ fontSize: 'var(--text-xs)', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', marginTop: '4px' }}>
                   Career Score
@@ -378,25 +389,24 @@ Projects: Todo Web Application using React.`);
               {nextTasks.length > 0 ? (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
                   {nextTasks.map((task) => (
-                    <label key={task.id} className="option-card" style={{
+                    <label key={task.id} className="task-checkbox-container option-card" style={{
                       padding: '12px 16px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '12px',
-                      cursor: 'pointer',
                       border: '1px solid var(--border)'
                     }}>
                       <input
                         type="checkbox"
+                        className="task-checkbox-input"
                         checked={task.completed}
                         onChange={() => handleToggleTask(task.weekIndex, task.id)}
-                        style={{ width: '18px', height: '18px', accentColor: 'var(--accent)' }}
                       />
+                      <div className="task-checkbox-custom">
+                        <CheckCircle2 style={{ width: 12, height: 12 }} />
+                      </div>
                       <div style={{ flex: 1 }}>
                         <span style={{ fontSize: 'var(--text-xs)', color: 'var(--accent)', fontWeight: 'bold', display: 'block' }}>
                           Week {task.weekNum} Objective
                         </span>
-                        <span style={{ fontSize: 'var(--text-sm)', color: 'var(--text-primary)' }}>
+                        <span className={`task-text ${task.completed ? 'task-text-completed' : ''}`} style={{ fontSize: 'var(--text-sm)' }}>
                           {task.label}
                         </span>
                       </div>

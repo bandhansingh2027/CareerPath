@@ -7,6 +7,9 @@ import { quizService } from '../services/api';
 export function Quiz() {
   const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState(1);
+  const [displayStep, setDisplayStep] = useState(1);
+  const [transitionClass, setTransitionClass] = useState('slide-active');
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const [answers, setAnswers] = useState<Record<string, any>>({
     education: '',
     interests: [],
@@ -38,7 +41,7 @@ export function Quiz() {
   }
 
   const totalSteps = questions.length || 3;
-  const currentQuestion = questions.find(q => q.step === currentStep);
+  const currentQuestion = questions.find(q => q.step === displayStep);
   const progress = (currentStep / totalSteps) * 100;
 
   const handleSelectSingle = (questionId: string, optionId: string) => {
@@ -71,9 +74,26 @@ export function Quiz() {
     return !!value;
   };
 
+  const navigateStep = (nextStep: number, direction: 'next' | 'prev') => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setTransitionClass(direction === 'next' ? 'slide-exit-left' : 'slide-exit-right');
+    
+    setTimeout(() => {
+      setCurrentStep(nextStep);
+      setDisplayStep(nextStep);
+      setTransitionClass(direction === 'next' ? 'slide-enter-right' : 'slide-enter-left');
+      
+      setTimeout(() => {
+        setTransitionClass('slide-active');
+        setIsTransitioning(false);
+      }, 30);
+    }, 250);
+  };
+
   const handleNext = () => {
     if (currentStep < totalSteps) {
-      setCurrentStep(currentStep + 1);
+      navigateStep(currentStep + 1, 'next');
     } else {
       // Save answers
       sessionStorage.setItem('careerpath_answers', JSON.stringify(answers));
@@ -129,7 +149,7 @@ export function Quiz() {
 
   const handleBack = () => {
     if (currentStep > 1) {
-      setCurrentStep(currentStep - 1);
+      navigateStep(currentStep - 1, 'prev');
     } else {
       navigate('/');
     }
@@ -165,8 +185,8 @@ export function Quiz() {
       </div>
 
       {/* Main onboarding container */}
-      <div className="container" style={{ maxWidth: 700, padding: 'var(--space-12) var(--space-4)' }}>
-        <div className="glass-card" style={{
+      <div className="container quiz-card-container" style={{ maxWidth: 700, padding: 'var(--space-12) var(--space-4)' }}>
+        <div className={`glass-card quiz-card ${transitionClass}`} style={{
           background: 'var(--bg-card)',
           boxShadow: 'var(--shadow-xl)',
           border: '1px solid var(--border)',

@@ -4,6 +4,7 @@ import { TrendingUp, ArrowRight, Search } from 'lucide-react';
 import { careerService } from '../services/api';
 import { Layout } from '../components/Layout';
 import { CareerIcon } from '../components/CareerIcon';
+import { ScrollReveal } from '../components/ScrollReveal';
 
 export function Careers() {
   const [careers, setCareers] = useState([]);
@@ -35,65 +36,73 @@ export function Careers() {
     <Layout>
       <div style={{ backgroundColor: 'var(--bg-secondary)', padding: 'var(--space-10) 0', borderBottom: '1px solid var(--border)' }}>
         <div className="container" style={{ textAlign: 'center' }}>
-          <h1 style={{ marginBottom: 'var(--space-3)' }}>Explore Career Paths</h1>
-          <p style={{ maxWidth: 600, margin: '0 auto var(--space-6)', color: 'var(--text-secondary)' }}>
-            Browse all available career paths with salary data, learning resources, and detailed roadmaps
-          </p>
-          <div style={{ maxWidth: 480, margin: '0 auto', position: 'relative' }}>
-            <Search style={{ width: 18, height: 18, position: 'absolute', left: 16, top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
-            <input
-              className="form-input"
-              type="text"
-              placeholder="Search careers..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              style={{ paddingLeft: 44 }}
-            />
-          </div>
+          <ScrollReveal direction="up">
+            <h1 style={{ marginBottom: 'var(--space-3)' }}>Explore Career Paths</h1>
+          </ScrollReveal>
+          <ScrollReveal direction="up" delay={100}>
+            <p style={{ maxWidth: 600, margin: '0 auto var(--space-6)', color: 'var(--text-secondary)' }}>
+              Browse all available career paths with salary data, learning resources, and detailed roadmaps
+            </p>
+          </ScrollReveal>
+          <ScrollReveal direction="up" delay={200}>
+            <div style={{ maxWidth: 480, margin: '0 auto', position: 'relative' }}>
+              <Search style={{ width: 18, height: 18, position: 'absolute', left: 16, top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
+              <input
+                className="form-input"
+                type="text"
+                placeholder="Search careers..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                style={{ paddingLeft: 44 }}
+              />
+            </div>
+          </ScrollReveal>
         </div>
       </div>
 
       <div className="container" style={{ padding: 'var(--space-8) var(--space-6)' }}>
         <div className="grid-3">
-          {filtered.map(career => (
-            <Link key={career.id} to={`/career/${career.id}`} className="card card-interactive" style={{ textDecoration: 'none', color: 'inherit', display: 'flex', flexDirection: 'column', height: '100%' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 'var(--space-4)' }}>
-                <div style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: '44px',
-                  height: '44px',
-                  borderRadius: 'var(--radius-lg)',
-                  backgroundColor: 'var(--accent-bg)',
-                  color: 'var(--accent)',
-                  flexShrink: 0
-                }}>
-                  <CareerIcon id={career.id} category={career.category} style={{ width: 22, height: 22 }} />
+          {filtered.map((career, i) => (
+            <ScrollReveal key={career.id} direction="up" delay={Math.min(i * 60, 400)} style={{ display: 'flex' }}>
+              <Link to={`/career/${career.id}`} className="card card-interactive" style={{ textDecoration: 'none', color: 'inherit', display: 'flex', flexDirection: 'column', height: '100%', width: '100%' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 'var(--space-4)' }}>
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: '44px',
+                    height: '44px',
+                    borderRadius: 'var(--radius-lg)',
+                    backgroundColor: 'var(--accent-bg)',
+                    color: 'var(--accent)',
+                    flexShrink: 0
+                  }}>
+                    <CareerIcon id={career.id} category={career.category} style={{ width: 22, height: 22 }} />
+                  </div>
+                  <span className={`badge ${career.demandLevel === 'High' ? 'badge-success' : 'badge-neutral'}`} style={{ flexShrink: 0 }}>
+                    <TrendingUp style={{ width: 12, height: 12 }} />
+                    {career.demandLevel}
+                  </span>
                 </div>
-                <span className={`badge ${career.demandLevel === 'High' ? 'badge-success' : 'badge-neutral'}`} style={{ flexShrink: 0 }}>
-                  <TrendingUp style={{ width: 12, height: 12 }} />
-                  {career.demandLevel}
-                </span>
-              </div>
 
-              <div style={{ flex: 1, marginBottom: 'var(--space-4)' }}>
-                <div className="card-title" style={{ fontSize: 'var(--text-lg)', marginBottom: 'var(--space-1)' }}>{career.title}</div>
-                <p style={{ fontSize: 'var(--text-xs)', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 'var(--font-semibold)', margin: 0 }}>
-                  {career.category}
-                </p>
-              </div>
+                <div style={{ flex: 1, marginBottom: 'var(--space-4)' }}>
+                  <div className="card-title" style={{ fontSize: 'var(--text-lg)', marginBottom: 'var(--space-1)' }}>{career.title}</div>
+                  <p style={{ fontSize: 'var(--text-xs)', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 'var(--font-semibold)', margin: 0 }}>
+                    {career.category}
+                  </p>
+                </div>
 
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: 'var(--space-3)', borderTop: '1px solid var(--border)' }}>
-                <div>
-                  <div style={{ fontSize: 'var(--text-xs)', color: 'var(--text-muted)' }}>Entry Salary</div>
-                  <div style={{ fontSize: 'var(--text-sm)', fontWeight: 'var(--font-semibold)', color: 'var(--accent)' }}>{career.salaryEntry}</div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: 'var(--space-3)', borderTop: '1px solid var(--border)' }}>
+                  <div>
+                    <div style={{ fontSize: 'var(--text-xs)', color: 'var(--text-muted)' }}>Entry Salary</div>
+                    <div style={{ fontSize: 'var(--text-sm)', fontWeight: 'var(--font-semibold)', color: 'var(--accent)' }}>{career.salaryEntry}</div>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-1)', fontSize: 'var(--text-sm)', color: 'var(--accent)' }}>
+                    View Details <ArrowRight style={{ width: 14, height: 14 }} />
+                  </div>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-1)', fontSize: 'var(--text-sm)', color: 'var(--accent)' }}>
-                  View Details <ArrowRight style={{ width: 14, height: 14 }} />
-                </div>
-              </div>
-            </Link>
+              </Link>
+            </ScrollReveal>
           ))}
         </div>
 

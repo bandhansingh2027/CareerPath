@@ -96,7 +96,7 @@ export function Layout({ children, showNav = true, showFooter = true }: LayoutPr
         </div>
       )}
 
-      <main style={{ flex: 1 }}>
+      <main key={location.pathname} style={{ flex: 1 }} className="animate-fade-in-up">
         {children}
       </main>
 

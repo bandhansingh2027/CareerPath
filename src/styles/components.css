@@ -1200,15 +1200,172 @@
   transition: all var(--transition-base);
 }
 .badge-item:hover {
-  transform: scale(1.03) translateX(4px);
+  transform: scale(1.05) translateX(6px);
+  box-shadow: var(--shadow-sm);
 }
 
 .option-card {
-  transition: all var(--transition-fast) !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 .option-card:hover {
   border-color: var(--accent) !important;
   background-color: var(--surface-hover) !important;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
 }
+
+/* ---------- Button Hover Enhancements ---------- */
+.btn {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(15, 118, 110, 0.15);
+}
+.btn-primary:hover {
+  box-shadow: 0 4px 12px var(--glow-1);
+}
+.btn:active {
+  transform: translateY(0) scale(0.97) !important;
+}
+
+/* ---------- Progress Fill Smooth Transition ---------- */
+.progress-fill {
+  transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* ---------- Card Interactive Hover spring ---------- */
+.card-interactive {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.card-interactive:hover {
+  border-color: var(--accent-border) !important;
+  box-shadow: var(--shadow-lg) !important;
+  transform: translateY(-6px) !important;
+}
+
+/* ---------- Glowing Hero Text Gradient & Shine ---------- */
+.hero-accent {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 40%, #4f46e5 60%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% auto;
+  animation: textShine 4s linear infinite;
+  display: inline-block;
+}
+@keyframes textShine {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ---------- Custom Animated Checkbox ---------- */
+.task-checkbox-container {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  gap: 12px;
+  width: 100%;
+}
+.task-checkbox-input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+.task-checkbox-custom {
+  height: 20px;
+  width: 20px;
+  background-color: transparent;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+.task-checkbox-container:hover .task-checkbox-input ~ .task-checkbox-custom {
+  border-color: var(--accent);
+  background-color: var(--accent-bg);
+}
+.task-checkbox-input:checked ~ .task-checkbox-custom {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  transform: scale(1.05);
+}
+.task-checkbox-custom svg {
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46);
+  color: var(--text-inverse);
+}
+.task-checkbox-input:checked ~ .task-checkbox-custom svg {
+  opacity: 1;
+  transform: scale(1);
+}
+.task-text {
+  transition: all 0.3s ease;
+}
+.task-text-completed {
+  color: var(--text-muted) !important;
+  text-decoration: line-through;
+}
+
+/* ---------- Quiz Slide Transitions ---------- */
+.quiz-card-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+.quiz-card {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+.quiz-card.slide-exit-left {
+  transform: translateX(-60px);
+  opacity: 0;
+}
+.quiz-card.slide-exit-right {
+  transform: translateX(60px);
+  opacity: 0;
+}
+.quiz-card.slide-enter-left {
+  transform: translateX(-60px);
+  opacity: 0;
+}
+.quiz-card.slide-enter-right {
+  transform: translateX(60px);
+  opacity: 0;
+}
+.quiz-card.slide-active {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* ---------- Page Entrance Animations ---------- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.stagger-1 { animation-delay: 0.08s; }
+.stagger-2 { animation-delay: 0.16s; }
+.stagger-3 { animation-delay: 0.24s; }
+.stagger-4 { animation-delay: 0.32s; }
+.stagger-5 { animation-delay: 0.4s; }
+
 
 
