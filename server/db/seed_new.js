@@ -1,0 +1,681 @@
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const dbPath = path.join(__dirname, 'careerpath.json');
+
+const careers = [
+  {
+    id: 'mern-stack-dev',
+    title: 'MERN Stack Developer',
+    category: 'Software Engineering',
+    description: 'Build complete web applications using MongoDB, Express.js, React, and Node.js. Learn database design, RESTful APIs, state management, and modern cloud deployments.',
+    demandLevel: 'High',
+    tier2Tier3Opportunities: 'Excellent',
+    salaryEntry: '₹3.5–7 LPA',
+    salaryMid: '₹7.5–15 LPA',
+    salarySenior: '₹16–35 LPA',
+    jobRoles: [
+      'Frontend React Developer',
+      'Backend Node.js Developer',
+      'Full Stack Developer',
+      'MERN Stack Engineer',
+      'JavaScript Developer'
+    ],
+    requiredSkills: [
+      'JavaScript ES6+',
+      'React.js',
+      'Node.js',
+      'Express.js',
+      'MongoDB',
+      'RESTful APIs',
+      'HTML5 & CSS3',
+      'Git & GitHub'
+    ],
+    recommendedProjects: [
+      {
+        title: 'Collaborative Kanban Task Board',
+        description: 'Create a Trello clone with drag-and-drop tasks, real-time board updates using WebSockets (Socket.io), and user authentication.',
+        difficulty: 'Intermediate',
+        technologies: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Socket.io']
+      },
+      {
+        title: 'Microservices E-Commerce System',
+        description: 'Build a scalable online marketplace with separate services for products, carts, payments (Stripe Integration), and order tracking.',
+        difficulty: 'Advanced',
+        technologies: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Docker', 'Stripe API']
+      }
+    ],
+    certifications: [
+      'freeCodeCamp Full Stack Developer Certification (Free)',
+      'MongoDB Certified Developer Associate (Paid)',
+      'OpenJS Node.js Application Developer (LFID)'
+    ],
+    weeklyLearningPlan: [
+      'Week 1: HTML5 semantics, CSS3 layouts (Flexbox & Grid), responsive media queries.',
+      'Week 2: Advanced responsive UI structures, Sass/Tailwind fundamentals, and CSS transitions.',
+      'Week 3: JavaScript fundamentals: variables, scoping, functions, array methods, and JSON.',
+      'Week 4: JavaScript ES6+: promises, async/await, DOM manipulations, and event handling.',
+      'Week 5: Version control with Git, repository staging, merging, branching, and GitHub workflows.',
+      'Week 6: React fundamentals: components, props, JSX, and file structure setup.',
+      'Week 7: State management: useState, useEffect hook, and handling forms in React.',
+      'Week 8: Custom React hooks, Context API for global state, and error boundaries.',
+      'Week 9: Client-side routing with React Router, nested paths, and navigation guards.',
+      'Week 10: Node.js core modules, event loop, NPM packages, and package.json management.',
+      'Week 11: Express.js: routing, handling request/response objects, and writing custom middlewares.',
+      'Week 12: RESTful API concepts, design patterns, status codes, and API testing with Postman.',
+      'Week 13: MongoDB database setup, collections, BSON documents, and shell CRUD queries.',
+      'Week 14: Mongoose ORM: schemas, validation, middleware, and database associations.',
+      'Week 15: User Authentication: password hashing (bcrypt) and JSON Web Token (JWT) strategies.',
+      'Week 16: Route protection, CORS configuration, and server-side request validations.',
+      'Week 17: Connecting React frontend to Express API, handling fetch errors and loading states.',
+      'Week 18: Redux Toolkit: slices, store setup, dispatch actions, and asynchronous thunks.',
+      'Week 19: File uploads: handling multipart form data with Multer and uploading to Cloudinary.',
+      'Week 20: Testing: unit tests for utilities and APIs using Jest, Supertest, and React Testing Library.',
+      'Week 21: Real-time sockets: integration of Socket.io for messaging or real-time progress checks.',
+      'Week 22: TypeScript in React: typing components, hooks, API responses, and custom props.',
+      'Week 23: Docker: containerizing the MERN app with docker-compose for dev and prod.',
+      'Week 24: Deployment: deploying frontend to Vercel/Netlify, backend to Render/AWS, and database to Mongo Atlas.'
+    ],
+    monthlyMilestones: [
+      {
+        month: 1,
+        title: 'Frontend Foundations',
+        description: 'Master HTML, CSS, JavaScript, and Git. Build interactive webpage clones.',
+        skills: ['HTML5', 'CSS3', 'JavaScript', 'Git']
+      },
+      {
+        month: 2,
+        title: 'React.js Component Architectures',
+        description: 'Build complex single-page apps using hooks, Context, and state management.',
+        skills: ['React.js', 'State Hooks', 'React Router']
+      },
+      {
+        month: 3,
+        title: 'Node.js & Express API Backend',
+        description: 'Write secure, structured REST APIs with authentication and routing.',
+        skills: ['Node.js', 'Express.js', 'REST APIs', 'Postman']
+      },
+      {
+        month: 4,
+        title: 'Database Integration & Security',
+        description: 'Connect databases and structure Mongoose schemas for production tables.',
+        skills: ['MongoDB', 'Mongoose ORM', 'JWT Security']
+      },
+      {
+        month: 5,
+        title: 'Advanced State & Socket Flows',
+        description: 'Implement Redux Toolkit, WebSockets, TypeScript, and write test suites.',
+        skills: ['Redux Toolkit', 'TypeScript', 'Socket.io', 'Jest']
+      },
+      {
+        month: 6,
+        title: 'Containerization & Cloud Deployment',
+        description: 'Dockerize applications and deploy frontend/backend/database to cloud platforms.',
+        skills: ['Docker', 'AWS/Render', 'Vercel', 'Portfolio']
+      }
+    ],
+    pros: [
+      'High freelance and remote work flexibility.',
+      'Single language stack (JavaScript/TypeScript) for both frontend and backend.',
+      'Massive open-source ecosystem and community support.'
+    ],
+    cons: [
+      'Highly saturated junior market; portfolio quality must be exceptional.',
+      'Frequent tool changes require constant upskilling.',
+      'Excluding SSR (Next.js) could limit certain enterpise roles.'
+    ]
+  },
+  {
+    id: 'ai-ml-engineer',
+    title: 'AI/ML Engineer',
+    category: 'Data Science & AI',
+    description: 'Design and deploy machine learning models, statistical analytics algorithms, and artificial intelligence solutions. Learn deep learning, computer vision, NLP, and model deployment.',
+    demandLevel: 'High',
+    tier2Tier3Opportunities: 'Good',
+    salaryEntry: '₹4.5–9 LPA',
+    salaryMid: '₹10–22 LPA',
+    salarySenior: '₹24–55 LPA',
+    jobRoles: [
+      'Machine Learning Engineer',
+      'Data Scientist',
+      'AI Product Engineer',
+      'NLP Specialist',
+      'Computer Vision Engineer'
+    ],
+    requiredSkills: [
+      'Python Programming',
+      'Mathematics (Linear Algebra, Calculus, Prob)',
+      'Scikit-learn / Pandas / NumPy',
+      'TensorFlow / PyTorch',
+      'Model Deployment (Flask/FastAPI, Docker)',
+      'Machine Learning Algorithms',
+      'Data Cleaning & Feature Engineering'
+    ],
+    recommendedProjects: [
+      {
+        title: 'AI Customer Sentiment Engine',
+        description: 'Create an end-to-end NLP pipeline that fetches product reviews and performs real-time classification using fine-tuned BERT models.',
+        difficulty: 'Intermediate',
+        technologies: ['Python', 'PyTorch', 'Hugging Face', 'FastAPI', 'React']
+      },
+      {
+        title: 'Edge Computer Vision Traffic Monitor',
+        description: 'Train a custom YOLOv8 model to detect and track vehicles in real-time video streams, deployed in a containerized environment.',
+        difficulty: 'Advanced',
+        technologies: ['Python', 'OpenCV', 'YOLOv8', 'Docker', 'AWS Stream']
+      }
+    ],
+    certifications: [
+      'DeepLearning.AI TensorFlow Developer Professional Certificate (Coursera)',
+      'AWS Certified Machine Learning - Specialty (Paid)',
+      'Google Professional Machine Learning Engineer'
+    ],
+    weeklyLearningPlan: [
+      'Week 1: Python syntax, object-oriented concepts, virtual environments, and standard libraries.',
+      'Week 2: Advanced data structures in Python, list comprehensions, lambda functions, and file I/O.',
+      'Week 3: Linear Algebra: vectors, matrices, matrix multiplication, and eigenvalues.',
+      'Week 4: Statistics & Calculus: probability distributions, Bayes theorem, derivatives, and gradients.',
+      'Week 5: NumPy arrays, vectorization, and data manipulation with Pandas DataFrames.',
+      'Week 6: Exploratory Data Analysis (EDA): data visualization with Matplotlib, Seaborn, and handling missing values.',
+      'Week 7: Data preprocessing: feature scaling, one-hot encoding, and train-test splitting.',
+      'Week 8: Regression algorithms: Linear, Polynomial, and Ridge regression with Scikit-learn.',
+      'Week 9: Classification models: Logistic Regression, Decision Trees, and Support Vector Machines.',
+      'Week 10: Ensemble methods: Random Forests, Gradient Boosting (XGBoost), and hyperparameter tuning.',
+      'Week 11: Clustering & Dim Reduction: K-Means, Hierarchical clustering, PCA, and t-SNE.',
+      'Week 12: Model evaluation: precision, recall, F1-score, ROC-AUC, and cross-validation techniques.',
+      'Week 13: Neural Networks foundations: perceptrons, activation functions, and backpropagation.',
+      'Week 14: PyTorch/TensorFlow core structures: tensors, autograd, and building custom neural networks.',
+      'Week 15: Computer Vision: Convolutional Neural Networks (CNNs), pooling layers, and image classification.',
+      'Week 16: Natural Language Processing (NLP): tokenization, word embeddings (Word2Vec), and Recurrent Neural Networks (RNNs/LSTMs).',
+      'Week 17: Transformers: self-attention mechanisms, BERT, GPT architecture, and Hugging Face pipelines.',
+      'Week 18: Transfer learning: fine-tuning pre-trained image and text models for niche domain problems.',
+      'Week 19: Database retrieval & vector DBs: SQL queries, vector embedding generation, and ChromaDB/Pinecode.',
+      'Week 20: Large Language Models: prompt engineering, Retrieval Augmented Generation (RAG) using LangChain.',
+      'Week 21: Serving models: building inference endpoints using FastAPI or Flask, handling JSON requests.',
+      'Week 22: MLOps: tracking experiments with MLflow, versioning datasets with DVC, and model registries.',
+      'Week 23: Deployment: containerizing inference code with Docker, deploying to AWS ECS or GCP Run.',
+      'Week 24: Final Capstone: deploying an interactive ML application with Streamlit or React frontend.'
+    ],
+    monthlyMilestones: [
+      {
+        month: 1,
+        title: 'Mathematical & Python Setup',
+        description: 'Learn Python programming and master essential math concepts like Linear Algebra and Probability.',
+        skills: ['Python OOP', 'Linear Algebra', 'Calculus']
+      },
+      {
+        month: 2,
+        title: 'Core Machine Learning & Scikit-learn',
+        description: 'Preprocess data and train basic regression, classification, and clustering models.',
+        skills: ['Pandas & NumPy', 'Exploratory Analysis', 'Scikit-learn']
+      },
+      {
+        month: 3,
+        title: 'Deep Learning & Neural Networks',
+        description: 'Understand deep architectures, write neural layers in PyTorch, and train CNNs for vision.',
+        skills: ['PyTorch / TensorFlow', 'CNN Architecture', 'Computer Vision']
+      },
+      {
+        month: 4,
+        title: 'Natural Language & Transformers',
+        description: 'Process textual datasets, fine-tune transformer models, and build RAG pipelines.',
+        skills: ['NLP tokenizers', 'Transformers', 'LangChain', 'Vector DBs']
+      },
+      {
+        month: 5,
+        title: 'Model Serving & FastAPI API',
+        description: 'Convert python scripts into active REST APIs capable of processing model weights in real-time.',
+        skills: ['FastAPI', 'Inference Coding', 'JSON schemas']
+      },
+      {
+        month: 6,
+        title: 'MLOps, Containers & Cloud Deployment',
+        description: 'Dockerize applications and launch scale models to production clusters with performance metrics.',
+        skills: ['Docker', 'AWS/GCP', 'MLflow', 'DVC']
+      }
+    ],
+    pros: [
+      'Intellectually challenging and offers some of the highest salaries in tech.',
+      'Immense growth potential as companies adopt AI workflows.',
+      'Ability to work on cutting-edge research and product features.'
+    ],
+    cons: [
+      'Requires strong mathematical background and problem-solving skills.',
+      'Compute resource requirements can be high and expensive.',
+      'Job postings often prefer postgraduate qualifications, making portfolio projects critical for self-taught engineers.'
+    ]
+  },
+  {
+    id: 'cybersecurity-analyst',
+    title: 'Cybersecurity Analyst',
+    category: 'IT & Security',
+    description: 'Monitor networks for security breaches, audit system configurations, install firewall blocks, perform vulnerability scans, and implement threat prevention strategies.',
+    demandLevel: 'High',
+    tier2Tier3Opportunities: 'Good',
+    salaryEntry: '₹3.5–6 LPA',
+    salaryMid: '₹6.5–13 LPA',
+    salarySenior: '₹14–30 LPA',
+    jobRoles: [
+      'SOC Analyst (L1/L2)',
+      'Information Security Specialist',
+      'Vulnerability Assessment Engineer',
+      'Penetration Tester',
+      'Security Administrator'
+    ],
+    requiredSkills: [
+      'Networking Protocols (TCP/IP, DNS, VPN)',
+      'Linux & Windows OS Administration',
+      'SIEM Tools (Splunk, Wireshark)',
+      'Ethical Hacking / Pentesting basics',
+      'Vulnerability Scanning (Nessus, Nmap)',
+      'Security Frameworks (NIST, ISO 27001)'
+    ],
+    recommendedProjects: [
+      {
+        title: 'Home Lab Active Security Audit',
+        description: 'Set up a virtual home lab with a pfSense firewall, vulnerable VMs, and Splunk SIEM to capture and report network penetration attempts.',
+        difficulty: 'Intermediate',
+        technologies: ['VirtualBox', 'pfSense', 'Splunk SIEM', 'Linux']
+      },
+      {
+        title: 'Automated Port Scanner & Vulnerability Reporter',
+        description: 'Write a Python utility that scans subnets using Nmap libraries, maps vulnerabilities against CVE databases, and exports PDF audit summaries.',
+        difficulty: 'Advanced',
+        technologies: ['Python', 'Nmap API', 'CVE Datasets', 'Linux Bash']
+      }
+    ],
+    certifications: [
+      'CompTIA Security+ (Global Industry Standard)',
+      'Certified Ethical Hacker (CEH)',
+      'Cisco Certified CyberOps Associate'
+    ],
+    weeklyLearningPlan: [
+      'Week 1: Networking Basics: OSI model, TCP/IP stack, routing tables, and subnets.',
+      'Week 2: Common protocols: DNS, HTTP/S, DHCP, SSH, SSL/TLS, and port states.',
+      'Week 3: Linux Command Line: file system traversal, user permissions, processes, and scripting.',
+      'Week 4: Windows Security: Active Directory, Event Viewer, registry security, and group policies.',
+      'Week 5: Threat Landscape: malware types, phishing, social engineering, and mitigation basics.',
+      'Week 6: Vulnerability assessment tools: performing active port scanning using Nmap.',
+      'Week 7: Metasploit, Nessus, and OpenVAS for automated security auditing.',
+      'Week 8: Network analysis: capturing and inspecting packets with Wireshark and filters.',
+      'Week 9: Firewalls: configuring pfSense, access control lists (ACLs), and VPN tunnels.',
+      'Week 10: Intrusion Detection Systems (IDS/IPS): writing Snort rules and alert routing.',
+      'Week 11: Endpoint Security: antivirus, EDR software, host firewalls, and patching policies.',
+      'Week 12: Encryption basics: symmetric vs asymmetric algorithms, hashing (MD5, SHA), and PKI.',
+      'Week 13: Identity and Access Management (IAM): OAuth, MFA, and access control models.',
+      'Week 14: Web App Vulnerabilities: OWASP Top 10, SQL injection, XSS, and CSRF.',
+      'Week 15: Penetration testing methodology: reconnaissance, scanning, gaining access, and reports.',
+      'Week 16: Security Information and Event Management (SIEM): Splunk setup and dashboard configuration.',
+      'Week 17: Log analysis: reading Apache, Linux syslog, and Windows security event logs.',
+      'Week 18: Incident Response: response lifecycles, containment strategies, and forensics basics.',
+      'Week 19: Incident management: reporting structures, SLAs, and case building.',
+      'Week 20: Cloud Security: AWS IAM policies, security groups, and shared responsibility model.',
+      'Week 21: Python for Security: writing automated host monitoring and password hashing checkers.',
+      'Week 22: Compliance and standards: NIST framework, ISO 27001, and SOC-2 reports.',
+      'Week 23: Interview prep: security case studies, scenarios, threat hunting scenarios.',
+      'Week 24: Final Capstone: conducting a full audit of a vulnerable system and compiling a professional security report.'
+    ],
+    monthlyMilestones: [
+      {
+        month: 1,
+        title: 'Networking & Operating Systems',
+        description: 'Master networking protocols and administration commands for Linux and Windows.',
+        skills: ['TCP/IP Routing', 'Linux Bash', 'Active Directory']
+      },
+      {
+        month: 2,
+        title: 'Vulnerability Assessment & Ports',
+        description: 'Conduct port scanning and automated threat assessments on sandbox networks.',
+        skills: ['Nmap scanning', 'Vulnerability audits', 'Security tools']
+      },
+      {
+        month: 3,
+        title: 'Network Traffic Analysis',
+        description: 'Capture packets, analyze logs, configure firewalls, and configure basic IDS rules.',
+        skills: ['Wireshark', 'pfSense firewalls', 'Snort IDS']
+      },
+      {
+        month: 4,
+        title: 'Web & Endpoint Vulnerabilities',
+        description: 'Mitigate web attacks based on the OWASP Top 10 and secure user endpoints.',
+        skills: ['OWASP Top 10', 'SQLi/XSS prevention', 'EDR security']
+      },
+      {
+        month: 5,
+        title: 'SIEM Log Monitoring & Analysis',
+        description: 'Deploy Splunk and build detection rules for user login anomalies.',
+        skills: ['Splunk SIEM', 'Log analysis', 'Incident containment']
+      },
+      {
+        month: 6,
+        title: 'Compliance & Audit Reporting',
+        description: 'Verify configuration rules against NIST frameworks and compile audit sheets.',
+        skills: ['NIST Standards', 'Security auditing', 'Technical writing']
+      }
+    ],
+    pros: [
+      'High job security; cybersecurity is a critical need for every business.',
+      'Diverse pathways including pentesting, auditing, governance, or response.',
+      'Clear, industry-accepted certifications that act as hiring entry passes.'
+    ],
+    cons: [
+      'On-call shifts or weekend alerts are common in SOC roles.',
+      'Can be stressful when dealing with active security incidents.',
+      'Requires constant vigilance as new hacking vectors emerge daily.'
+    ]
+  },
+  {
+    id: 'data-analyst',
+    title: 'Data Analyst',
+    category: 'Data & Analytics',
+    description: 'Transform raw data into meaningful business insights. Learn database querying using SQL, statistical analysis with Python, data modeling, and visualization with tools like Tableau and Power BI.',
+    demandLevel: 'High',
+    tier2Tier3Opportunities: 'Good',
+    salaryEntry: '₹3.5–6 LPA',
+    salaryMid: '₹6–11 LPA',
+    salarySenior: '₹12–25 LPA',
+    jobRoles: [
+      'Junior Data Analyst',
+      'Business Intelligence Analyst',
+      'SQL Developer',
+      'Reporting Specialist',
+      'Product Analyst'
+    ],
+    requiredSkills: [
+      'SQL (Queries, Joins, Aggregations)',
+      'Tableau / Power BI',
+      'Advanced Excel (VLOOKUP, Pivot Tables)',
+      'Python (Pandas, NumPy)',
+      'Statistics (Probability, Hypothesis Testing)',
+      'Data Cleaning & ETL'
+    ],
+    recommendedProjects: [
+      {
+        title: 'Sales Dashboard Performance Suite',
+        description: 'Clean sales CSV spreadsheets and compile a dynamic, interactive dashboard in Power BI tracking regional revenue performance.',
+        difficulty: 'Beginner',
+        technologies: ['Advanced Excel', 'Power BI', 'ETL Data Pipeline']
+      },
+      {
+        title: 'Real-Estate Price Predictor',
+        description: 'Perform Exploratory Data Analysis (EDA) on real-estate listings using Python, perform database storage using PostgreSQL, and build a dashboard.',
+        difficulty: 'Intermediate',
+        technologies: ['Python', 'Pandas', 'PostgreSQL', 'Tableau']
+      }
+    ],
+    certifications: [
+      'Google Data Analytics Professional Certificate (Coursera)',
+      'Microsoft Certified: Power BI Data Analyst Associate (PL-300)',
+      'Tableau Desktop Specialist'
+    ],
+    weeklyLearningPlan: [
+      'Week 1: Excel data typing, cellular formatting, filters, sorting, and conditional rules.',
+      'Week 2: Advanced Excel: nested formulas, VLOOKUP, INDEX-MATCH, and Pivot charts.',
+      'Week 3: Database concepts: schemas, tables, primary keys, and setting up PostgreSQL/MySQL.',
+      'Week 4: SQL basics: SELECT, WHERE, operators, filtering, and ordering statements.',
+      'Week 5: SQL grouping: GROUP BY, HAVING, and aggregate functions (SUM, AVG, COUNT).',
+      'Week 6: SQL joins: INNER, LEFT, RIGHT, FULL outer joins, and database relationships.',
+      'Week 7: SQL subqueries, Common Table Expressions (CTEs), and window functions.',
+      'Week 8: SQL optimization: indexes, query plans, and export formats.',
+      'Week 9: BI foundations: data modeling, star schemas, dimensions, and facts.',
+      'Week 10: Power BI desktop: loading data, Power Query, cleaning data (ETL).',
+      'Week 11: DAX formulas: calculated columns, measures, and time-intelligence in Power BI.',
+      'Week 12: Interactive visuals: maps, bar charts, gauge meters, and tooltip configuration.',
+      'Week 13: Tableau desktop basics: sheets, marks card, columns, rows, and dimensions.',
+      'Week 14: Tableau calculation fields, custom parameters, dual-axis charts, and stories.',
+      'Week 15: Publishing dashboards, gateway scheduling, and role-based data sharing.',
+      'Week 16: Python syntax for data: lists, loops, file loading, and basic functions.',
+      'Week 17: NumPy structures, Pandas DataFrames: loading CSVs, filtering rows, handling NaN cells.',
+      'Week 18: Pandas merging, grouping, reshaping, and lambda column mapping.',
+      'Week 19: Statistics: mean, median, mode, variance, standard deviation, and standard distributions.',
+      'Week 20: Hypothesis testing: t-tests, ANOVA, chi-square, p-values, and correlation coefficients.',
+      'Week 21: Data cleaning pipeline: end-to-end Python script processing messy log files.',
+      'Week 22: Business metrics: Customer Acquisition Cost (CAC), Lifetime Value (LTV), Churn, and ROI.',
+      'Week 23: Data Storytelling: formatting chart text, highlighting trends, and slides preparation.',
+      'Week 24: Final Capstone: building an end-to-end market research dataset, performing SQL/Python analysis, and publishing a Power BI report.'
+    ],
+    monthlyMilestones: [
+      {
+        month: 1,
+        title: 'Excel & Data Basics',
+        description: 'Master data cleaning and spreadsheet analysis with functions and Pivot tables.',
+        skills: ['Excel Formulas', 'Pivot Charts', 'Reporting']
+      },
+      {
+        month: 2,
+        title: 'SQL Database Mastery',
+        description: 'Write complex queries, join tables, use window functions, and optimize performance.',
+        skills: ['SQL Joins', 'CTEs & Subqueries', 'PostgreSQL']
+      },
+      {
+        month: 3,
+        title: 'BI Tools & Power BI Dashboards',
+        description: 'Perform ETL processes, model data schemas, write DAX formulas, and build interactive UIs.',
+        skills: ['Power BI', 'DAX Measures', 'Data Modeling']
+      },
+      {
+        month: 4,
+        title: 'Tableau Visual Analytics',
+        description: 'Design interactive corporate reports and map charts utilizing custom parameters.',
+        skills: ['Tableau Desktop', 'Visual Hierarchy', 'Storytelling']
+      },
+      {
+        month: 5,
+        title: 'Python Pandas & Statistics',
+        description: 'Leverage Python libraries to manipulate datasets and perform statistical validation.',
+        skills: ['Python Pandas', 'Exploratory Analytics', 'Statistics']
+      },
+      {
+        month: 6,
+        title: 'Business Context & Capstone',
+        description: 'Model business KPIs, compile research dashboards, and prepare client presentations.',
+        skills: ['KPI Analytics', 'Data Presentation', 'Portfolio']
+      }
+    ],
+    pros: [
+      'Very strong demand in tech, finance, marketing, and retail sectors.',
+      'Relatively low programming barrier to entry compared to software engineering.',
+      'Direct contribution to corporate decision-making provides high visibility.'
+    ],
+    cons: [
+      'Data preprocessing and cleaning can occupy up to 70% of your work hours.',
+      'Can be repetitive: preparing weekly/monthly reports for stakeholder meetings.',
+      'Growing automation toolings require learning advanced scripting to remain competitive.'
+    ]
+  },
+  {
+    id: 'java-backend-dev',
+    title: 'Java Backend Developer',
+    category: 'Software Engineering',
+    description: 'Design and implement robust server-side logic, enterprise database structures, and RESTful APIs using the Java ecosystem and the Spring Boot framework.',
+    demandLevel: 'High',
+    tier2Tier3Opportunities: 'Excellent',
+    salaryEntry: '₹4–7.5 LPA',
+    salaryMid: '₹8–17 LPA',
+    salarySenior: '₹18–38 LPA',
+    jobRoles: [
+      'Junior Java Developer',
+      'Backend Engineer',
+      'Spring Boot Developer',
+      'Enterprise Software Engineer',
+      'API Developer'
+    ],
+    requiredSkills: [
+      'Java Core & OOP',
+      'Spring Boot Framework',
+      'SQL Databases (PostgreSQL, MySQL)',
+      'Spring Data JPA / Hibernate',
+      'Maven / Gradle Build Tools',
+      'REST API Design',
+      'Microservices basics'
+    ],
+    recommendedProjects: [
+      {
+        title: 'Banking Ledger API Suite',
+        description: 'Build a secure, audit-compliant financial ledger backend with Spring Boot, handling transfers, statements, and transaction histories.',
+        difficulty: 'Intermediate',
+        technologies: ['Spring Boot', 'Spring Security', 'PostgreSQL', 'JUnit']
+      },
+      {
+        title: 'Enterprise Inventory Microservice',
+        description: 'Develop a stock tracking backend using Spring Cloud, integrating Eureka registry, API Gateway, and an event-driven Kafka message broker.',
+        difficulty: 'Advanced',
+        technologies: ['Spring Boot', 'Spring Cloud', 'Kafka', 'MySQL', 'Docker']
+      }
+    ],
+    certifications: [
+      'Oracle Certified Associate / Professional: Java Programmer (Paid)',
+      'Spring Certified Professional (VMware)',
+      'HackerRank Java Certificate (Free)'
+    ],
+    weeklyLearningPlan: [
+      'Week 1: Java environment setup (JDK, IDE like IntelliJ), compile cycle, variables, operators.',
+      'Week 2: Control flows: if/else, switch-case, loops (for, while), array structures.',
+      'Week 3: Java OOP basics: classes, objects, encapsulation, and constructors.',
+      'Week 4: Inheritance, polymorphism, abstract classes, and interfaces in Java.',
+      'Week 5: Java Collections Framework: ArrayList, HashMap, HashSet, and List iterators.',
+      'Week 6: Exception handling: try-catch, throw, throws, writing custom runtime exceptions.',
+      'Week 7: Java File I/O, streams, and introduction to Lambdas & Streams API (Java 8+).',
+      'Week 8: Build automation tools: understanding Maven structures, POM files, dependencies.',
+      'Week 9: Database fundamentals: table creation, primary/foreign keys, and relational constraints.',
+      'Week 10: SQL queries: SELECT, joins, grouping, and indexes in PostgreSQL or MySQL.',
+      'Week 11: Java Database Connectivity (JDBC) basics and SQL injection risks.',
+      'Week 12: Spring Framework core: Dependency Injection, Inversion of Control, and Bean scopes.',
+      'Week 13: Spring Boot: initializer, application properties, and auto-configuration details.',
+      'Week 14: RestController: writing endpoints, handling path variables and request bodies.',
+      'Week 15: Hibernate ORM: entity mapping, primary key generators, and entity relationships.',
+      'Week 16: Spring Data JPA: repository interfaces, query methods, and custom JPQL queries.',
+      'Week 17: Spring Security: basic authentication, password encoders, and custom user details.',
+      'Week 18: JWT integration in Spring Boot, route restriction filter configurations.',
+      'Week 19: REST validation: using Hibernate Validator, handling MethodArgumentNotValidException.',
+      'Week 20: Unit Testing: writing unit tests using JUnit 5 and mocking database layers with Mockito.',
+      'Week 21: Integration testing using Spring Boot Test and Testcontainers with real DBs.',
+      'Week 22: Microservices: overview of Spring Cloud, eureka service registry, and config server.',
+      'Week 23: Dockerizing Spring Boot apps: writing Dockerfiles and setting up multi-container docker-compose.',
+      'Week 24: Final Capstone: deploying the API to AWS/Render, connecting a production DB, and testing live traffic.'
+    ],
+    monthlyMilestones: [
+      {
+        month: 1,
+        title: 'Core Java Programming',
+        description: 'Learn Java syntax, file operations, collections framework, and OOP fundamentals.',
+        skills: ['Java Core', 'OOP Concepts', 'Java Collections']
+      },
+      {
+        month: 2,
+        title: 'Relational Databases & SQL',
+        description: 'Understand database schemas, write SQL queries, and connect Java using JDBC.',
+        skills: ['SQL Databases', 'Relational Schemas', 'JDBC']
+      },
+      {
+        month: 3,
+        title: 'Spring Framework & REST APIs',
+        description: 'Create API endpoints, manage beans, and handle request payloads using Spring Boot.',
+        skills: ['Dependency Injection', 'Spring Boot', 'REST APIs']
+      },
+      {
+        month: 4,
+        title: 'JPA, Hibernate & JPA Repos',
+        description: 'Map database entities, configure relations, and utilize JPA repository actions.',
+        skills: ['Hibernate ORM', 'Spring Data JPA', 'Entities']
+      },
+      {
+        month: 5,
+        title: 'Security, JWT & Testing',
+        description: 'Secure API endpoints with Spring Security and write automated JUnit test cases.',
+        skills: ['Spring Security', 'JWT Auth', 'JUnit & Mockito']
+      },
+      {
+        month: 6,
+        title: 'Microservices & Deployment',
+        description: 'Dockerize Spring Boot apps, understand microservice registers, and publish live builds.',
+        skills: ['Docker', 'AWS/Render', 'Eureka Discovery']
+      }
+    ],
+    pros: [
+      'Java is the dominant language in enterprise software, banking, and multinational corporations.',
+      'Extremely stable ecosystem with robust backwards compatibility and long-term support.',
+      'High demand for backend developers with strong Spring Boot and microservice design skills.'
+    ],
+    cons: [
+      'Java code can be verbose compared to languages like Python or JavaScript.',
+      'Slow startup times and high memory consumption compared to Go or Node.js.',
+      'Often requires understanding legacy enterprise setups, which can have steep learning curves.'
+    ]
+  }
+];
+
+const quizQuestions = [
+  {
+    id: 'education',
+    step: 1,
+    question: 'What is your current education status?',
+    required: true,
+    type: 'single',
+    options: [
+      { id: 'btech_cs', label: 'B.Tech / B.E. (Computer Science / IT)' },
+      { id: 'btech_other', label: 'B.Tech / B.E. (Other Branches)' },
+      { id: 'bca', label: 'BCA (Bachelor of Computer Applications)' },
+      { id: 'mca', label: 'MCA (Master of Computer Applications)' },
+      { id: 'bsc', label: 'B.Sc / M.Sc (Computer Science / IT)' },
+      { id: 'non_tech', label: 'Non-Technical Graduate (B.Com, B.A, BBA)' },
+      { id: 'self_taught', label: 'Self-Taught / School Student' }
+    ]
+  },
+  {
+    id: 'interests',
+    step: 2,
+    question: 'Select your key areas of interest (Select up to 3):',
+    required: true,
+    type: 'multiple',
+    options: [
+      { id: 'coding', label: 'Coding & Web Application Development' },
+      { id: 'ai', label: 'AI, Algorithms & Neural Networks' },
+      { id: 'security', label: 'Ethical Hacking & System Security' },
+      { id: 'data', label: 'Data Cleaning, Graphs & Insights' },
+      { id: 'design', label: 'UI/UX Visual Design & Prototyping' },
+      { id: 'servers', label: 'Server APIs & Database Systems' }
+    ]
+  },
+  {
+    id: 'goal',
+    step: 3,
+    question: 'What is your career goal?',
+    required: true,
+    type: 'single',
+    options: [
+      { id: 'mern-stack-dev', label: 'MERN Stack Developer' },
+      { id: 'ai-ml-engineer', label: 'AI/ML Engineer' },
+      { id: 'cybersecurity-analyst', label: 'Cybersecurity Analyst' },
+      { id: 'data-analyst', label: 'Data Analyst' },
+      { id: 'java-backend-dev', label: 'Java Backend Developer' }
+    ]
+  }
+];
+
+const scoringWeights = [
+  { optionValue: 'mern-stack-dev', careerId: 'mern-stack-dev', weight: 45 },
+  { optionValue: 'ai-ml-engineer', careerId: 'ai-ml-engineer', weight: 45 },
+  { optionValue: 'cybersecurity-analyst', careerId: 'cybersecurity-analyst', weight: 45 },
+  { optionValue: 'data-analyst', careerId: 'data-analyst', weight: 45 },
+  { optionValue: 'java-backend-dev', careerId: 'java-backend-dev', weight: 45 },
+  { optionValue: 'coding', careerId: 'mern-stack-dev', weight: 10 },
+  { optionValue: 'coding', careerId: 'java-backend-dev', weight: 10 },
+  { optionValue: 'ai', careerId: 'ai-ml-engineer', weight: 15 },
+  { optionValue: 'security', careerId: 'cybersecurity-analyst', weight: 15 },
+  { optionValue: 'data', careerId: 'data-analyst', weight: 15 },
+  { optionValue: 'design', careerId: 'mern-stack-dev', weight: 5 },
+  { optionValue: 'servers', careerId: 'java-backend-dev', weight: 10 }
+];
+
+const db = {
+  careers,
+  quizQuestions,
+  scoringWeights
+};
+
+fs.writeFileSync(dbPath, JSON.stringify(db, null, 2), 'utf-8');
+console.log('Seeded database with new 5 careers and onboarding questions!');

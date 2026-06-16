@@ -1,115 +1,293 @@
 import { useState, useEffect } from 'react';
-import { Layout } from '../components/Layout';
 import { Link, useNavigate } from 'react-router';
-import { User, Award, CheckCircle, Clock, BookOpen, FileText, ChevronRight, Briefcase, Star, Settings, ExternalLink } from 'lucide-react';
+import { 
+  User, Award, CheckCircle, Clock, BookOpen, FileText, 
+  ChevronRight, Briefcase, Star, Flame, Sparkles, 
+  TrendingUp, CheckCircle2, AlertTriangle, RefreshCw, 
+  UploadCloud, ListTodo, Activity, Plus 
+} from 'lucide-react';
+import { Layout } from '../components/Layout';
+import { careersData } from '../data/careersData';
+import { quizService } from '../services/api';
 
 export function Dashboard() {
   const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState<any>(null);
   const [activePlan, setActivePlan] = useState<any>(null);
-  const [analyzerHistory, setAnalyzerHistory] = useState<any[]>([]);
+  
+  // Resume analysis state
+  const [resumeText, setResumeText] = useState('');
+  const [targetCareer, setTargetCareer] = useState('mern-stack-dev');
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [resumeResult, setResumeResult] = useState<any>(null);
 
+  // Load state on mount
   useEffect(() => {
-    // Read user
-    const user = localStorage.getItem('careerpath_currentUser');
+    // Read or initialize user
+    let user = localStorage.getItem('careerpath_currentUser');
     if (!user) {
-      // Create a mock user if not logged in to showcase dashboard immediately
-      const mockUser = {
-        name: 'Amit Kumar',
-        email: 'amit.kumar@college.edu',
-        college: 'Aryabhatta Institute of Technology (GEC)',
-        year: '3rd Year B.Tech',
-        savedCareers: ['fullstack-web-dev'],
-        studyPlanProgress: 25
+      const defaultUser = {
+        name: 'Guest Scholar',
+        email: 'guest@college.edu',
+        college: 'Aryabhatta University of Tech',
+        year: 'B.Tech CS / IT',
+        savedCareers: ['mern-stack-dev'],
+        studyPlanProgress: 15,
+        streakCount: 5,
+        lastActiveDate: new Date().toDateString(),
+        badges: ['explorer']
       };
-      localStorage.setItem('careerpath_currentUser', JSON.stringify(mockUser));
-      setCurrentUser(mockUser);
+      localStorage.setItem('careerpath_currentUser', JSON.stringify(defaultUser));
+      setCurrentUser(defaultUser);
     } else {
       setCurrentUser(JSON.parse(user));
     }
 
-    // Read active plan
+    // Read active study plan
     const plan = localStorage.getItem('careerpath_activeStudyPlan');
     if (plan) {
       setActivePlan(JSON.parse(plan));
+    } else {
+      // Initialize a default plan for MERN Stack Dev if none exists
+      const target = careersData[0];
+      const defaultPlan = {
+        careerId: target.id,
+        careerTitle: target.title,
+        experienceLevel: 'Beginner',
+        hoursPerWeek: 15,
+        weeks: target.weeklyLearningPlan.slice(0, 8).map((desc, idx) => ({
+          week: idx + 1,
+          title: `Week ${idx + 1}: ${desc.split(':')[1]?.trim() || desc}`,
+          hoursAllocated: 15,
+          tasks: [
+            { id: `w${idx+1}-t1`, label: `Learn: ${desc.split(':')[1]?.trim() || desc}`, completed: idx < 1, hours: 5 },
+            { id: `w${idx+1}-t2`, label: `Build a mini application demonstrating this competency`, completed: false, hours: 6 },
+            { id: `w${idx+1}-t3`, label: `Submit project code and review with AI Career Mentor`, completed: false, hours: 4 }
+          ],
+          resources: [
+            { title: `${target.title} Free Tutorial`, provider: 'freeCodeCamp', url: 'https://freecodecamp.org' }
+          ]
+        })),
+        createdAt: new Date().toLocaleDateString()
+      };
+      localStorage.setItem('careerpath_activeStudyPlan', JSON.stringify(defaultPlan));
+      setActivePlan(defaultPlan);
     }
 
-    // Read analyzer history
-    const history = localStorage.getItem('careerpath_analyzerHistory');
-    if (history) {
-      setAnalyzerHistory(JSON.parse(history));
+    // Read resume result
+    const savedAnalyzerHistory = localStorage.getItem('careerpath_analyzerHistory');
+    if (savedAnalyzerHistory) {
+      const history = JSON.parse(savedAnalyzerHistory);
+      if (history.length > 0) {
+        setResumeResult(history[history.length - 1]);
+      }
     }
   }, []);
 
-  const handleLogout = () => {
-    localStorage.removeItem('careerpath_currentUser');
-    navigate('/auth');
+  if (!currentUser || !activePlan) return null;
+
+  // Extract next tasks
+  const getNextTasks = () => {
+    const next: any[] = [];
+    activePlan.weeks.forEach((week: any, wIdx: number) => {
+      week.tasks.forEach((task: any) => {
+        if (!task.completed && next.length < 3) {
+          next.push({
+            ...task,
+            weekNum: week.week,
+            weekIndex: wIdx
+          });
+        }
+      });
+    });
+    return next;
   };
 
-  // Badges logic
-  const badges = [
-    { id: 'quiz', name: 'Explorer', desc: 'Completed the Career Match Quiz', unlocked: true, icon: Star },
-    { id: 'plan', name: 'Planner', desc: 'Created an active week-by-week study plan', unlocked: !!activePlan, icon: Clock },
-    { id: 'resume', name: 'ATS Ready', desc: 'ATS Resume Match Score > 70%', unlocked: analyzerHistory.some(h => h.score >= 70), icon: FileText },
-    { id: 'finisher', name: 'Overachiever', desc: 'Completed all weeks in a study plan', unlocked: currentUser?.studyPlanProgress === 100, icon: Award }
+  const nextTasks = getNextTasks();
+
+  const handleToggleTask = (weekIndex: number, taskId: string) => {
+    const updatedWeeks = activePlan.weeks.map((w: any, idx: number) => {
+      if (idx === weekIndex) {
+        return {
+          ...w,
+          tasks: w.tasks.map((t: any) => {
+            if (t.id === taskId) {
+              return { ...t, completed: !t.completed };
+            }
+            return t;
+          })
+        };
+      }
+      return w;
+    });
+
+    const updatedPlan = { ...activePlan, weeks: updatedWeeks };
+    localStorage.setItem('careerpath_activeStudyPlan', JSON.stringify(updatedPlan));
+    setActivePlan(updatedPlan);
+
+    // Calculate new progress percentage
+    const total = updatedWeeks.reduce((sum: number, w: any) => sum + w.tasks.length, 0);
+    const completed = updatedWeeks.reduce((sum: number, w: any) => sum + w.tasks.filter((t: any) => t.completed).length, 0);
+    const percent = Math.round((completed / total) * 100);
+
+    const updatedUser = { ...currentUser, studyPlanProgress: percent };
+    // Automatically award badges if progress is updated
+    const updatedBadges = [...updatedUser.badges];
+    if (percent >= 50 && !updatedBadges.includes('achiever')) {
+      updatedBadges.push('achiever');
+    }
+    if (percent === 100 && !updatedBadges.includes('finisher')) {
+      updatedBadges.push('finisher');
+    }
+    updatedUser.badges = updatedBadges;
+
+    localStorage.setItem('careerpath_currentUser', JSON.stringify(updatedUser));
+    setCurrentUser(updatedUser);
+  };
+
+  // Extract skills categorization
+  const getSkillsState = () => {
+    const targetCareerObj = careersData.find(c => c.id === activePlan.careerId) || careersData[0];
+    const allSkills = targetCareerObj.requiredSkills;
+    
+    // Split skills: first 2 completed, next 3 in progress, rest not started
+    const completed = allSkills.slice(0, 2);
+    const inProgress = allSkills.slice(2, 5);
+    const notStarted = allSkills.slice(5);
+
+    return { completed, inProgress, notStarted };
+  };
+
+  const skillsState = getSkillsState();
+
+  // Career Score Calculation: based on progress, resume analysis, and badges
+  const calculateCareerScore = () => {
+    const progressWeight = currentUser.studyPlanProgress * 0.4; // max 40
+    const resumeWeight = (resumeResult?.score || 55) * 0.4; // max 40
+    const badgesWeight = (currentUser.badges?.length || 1) * 5; // max 20
+    return Math.min(100, Math.round(progressWeight + resumeWeight + badgesWeight));
+  };
+
+  const careerScore = calculateCareerScore();
+
+  // Badges lists
+  const availableBadges = [
+    { id: 'explorer', name: 'Roadmap Explorer', desc: 'Completed onboarding flow', icon: CompassIcon, unlocked: true },
+    { id: 'streak', name: 'Habit Builder', desc: 'Maintained a 5-day streak', icon: StreakIcon, unlocked: currentUser.streakCount >= 5 },
+    { id: 'achiever', name: 'Skill Master', desc: 'Achieved 50% roadmap progress', icon: StarIcon, unlocked: currentUser.studyPlanProgress >= 50 },
+    { id: 'resume', name: 'ATS Ready', desc: 'Attained a >70% resume score', icon: ATSIcon, unlocked: (resumeResult?.score || 0) >= 70 },
+    { id: 'finisher', name: 'Elite Graduate', desc: 'Completed all learning weeks', icon: EliteIcon, unlocked: currentUser.studyPlanProgress === 100 }
   ];
 
-  // Mock jobs recommendations based on saved or active career
-  const mockJobs = [
-    { title: 'Junior Frontend Developer (React)', company: 'TechSolutions Pvt. Ltd.', location: 'Indore, MP (Tier-2)', salary: '₹3.6 - ₹5 LPA', type: 'Full-time', match: '95%', careerId: 'fullstack-web-dev' },
-    { title: 'Full Stack Web Developer (Internship)', company: 'Inov8 Labs', location: 'Remote (India)', salary: '₹20,000 / month', type: 'Remote', match: '90%', careerId: 'fullstack-web-dev' },
-    { title: 'Junior Data Analyst', company: 'BizAnalytics Inc.', location: 'Jaipur, Rajasthan (Tier-2)', salary: '₹4 - ₹6 LPA', type: 'Full-time', match: '88%', careerId: 'data-analyst' },
-    { title: 'Digital Marketing Intern', company: 'BrandGlow Media', location: 'Patna, Bihar (Tier-3)', salary: '₹12,000 / month', type: 'Part-time', match: '85%', careerId: 'digital-marketing' },
-    { title: 'Junior UI/UX Designer', company: 'PixelPerfect Agency', location: 'Remote', salary: '₹3 - ₹4.8 LPA', type: 'Full-time', match: '92%', careerId: 'ui-ux-designer' }
-  ];
+  // Resume Upload / Paste Handler
+  const handleAnalyzeResume = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!resumeText.trim()) return;
 
-  // Filter jobs based on user active plan or default to first 3
-  const userCareerId = activePlan?.careerId || currentUser?.savedCareers?.[0] || 'fullstack-web-dev';
-  const matchingJobs = mockJobs.filter(j => j.careerId === userCareerId);
-  const displayJobs = matchingJobs.length > 0 ? matchingJobs : mockJobs.slice(0, 3);
+    setIsAnalyzing(true);
+    
+    setTimeout(() => {
+      const selectedCareerObj = careersData.find(c => c.id === targetCareer) || careersData[0];
+      const matched: string[] = [];
+      const missing: string[] = [];
+      
+      const testSkills = selectedCareerObj.requiredSkills;
+      testSkills.forEach((s, idx) => {
+        // Mock matching 60% of skills
+        if (idx % 2 === 0 || resumeText.toLowerCase().includes(s.toLowerCase())) {
+          matched.push(s);
+        } else {
+          missing.push(s);
+        }
+      });
 
-  if (!currentUser) return null;
+      const score = Math.round((matched.length / testSkills.length) * 100);
+      
+      const newResult = {
+        date: new Date().toLocaleDateString(),
+        careerId: targetCareer,
+        careerTitle: selectedCareerObj.title,
+        score,
+        matchedCount: matched.length,
+        missingCount: missing.length,
+        matchedSkills: matched,
+        missingSkills: missing,
+        recommendations: [
+          `Integrate more active verbs in your summary matching: ${missing.slice(0, 2).join(', ')}.`,
+          `Highlight projects built with ${selectedCareerObj.requiredSkills.slice(0, 3).join(', ')}.`,
+          `Include a specialized certifications tab listing the recommended credentials.`
+        ]
+      };
+
+      const history = JSON.parse(localStorage.getItem('careerpath_analyzerHistory') || '[]');
+      history.push(newResult);
+      localStorage.setItem('careerpath_analyzerHistory', JSON.stringify(history));
+
+      const updatedUser = { ...currentUser };
+      if (score >= 70 && !updatedUser.badges.includes('resume')) {
+        updatedUser.badges.push('resume');
+        localStorage.setItem('careerpath_currentUser', JSON.stringify(updatedUser));
+        setCurrentUser(updatedUser);
+      }
+
+      setResumeResult(newResult);
+      setIsAnalyzing(false);
+    }, 2500);
+  };
+
+  const triggerMockUpload = () => {
+    setResumeText(`BANDHAN SINGH
+Email: bandhan@gmail.com
+Education: B.Tech Computer Science, 2026
+Skills: HTML, CSS, JavaScript, Basic React, Git
+Projects: Todo Web Application using React.`);
+  };
+
+  const handleLogout = () => {
+    localStorage.clear();
+    navigate('/quiz');
+  };
 
   return (
     <Layout>
       <div className="container" style={{ padding: 'var(--space-8) var(--space-6)' }}>
-        {/* Profile Card */}
-        <div className="card" style={{
-          padding: 'var(--space-6)',
-          background: 'linear-gradient(135deg, var(--accent-bg) 0%, var(--bg-glass) 100%)',
-          border: '1px solid var(--accent-border)',
+        
+        {/* Welcome Banner */}
+        <div className="glass-card" style={{
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
           flexWrap: 'wrap',
           gap: 'var(--space-4)',
-          marginBottom: 'var(--space-8)'
+          marginBottom: 'var(--space-8)',
+          background: 'linear-gradient(135deg, var(--bg-card) 0%, var(--accent-bg) 100%)',
+          borderLeft: '4px solid var(--accent)'
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-4)' }}>
             <div style={{
-              width: 64,
-              height: 64,
+              width: 56,
+              height: 56,
               borderRadius: '50%',
               backgroundColor: 'var(--accent)',
-              color: 'var(--text-inverse)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              fontSize: '1.8rem',
-              fontWeight: 'var(--font-bold)'
+              color: 'var(--text-inverse)'
             }}>
-              <User style={{ width: 32, height: 32 }} />
+              <User style={{ width: 28, height: 28 }} />
             </div>
             <div>
-              <h2 style={{ margin: 0, fontSize: 'var(--text-xl)' }}>{currentUser.name}</h2>
+              <h2 style={{ margin: 0, fontSize: 'var(--text-xl)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                Welcome Back, {currentUser.name}! <Sparkles style={{ width: 18, height: 18, color: 'var(--accent)' }} />
+              </h2>
               <span style={{ fontSize: 'var(--text-sm)', color: 'var(--text-secondary)' }}>
-                {currentUser.college} • {currentUser.year}
+                Onboarding Status: Verified • Target Goal: <strong>{activePlan.careerTitle}</strong>
               </span>
             </div>
           </div>
           <div style={{ display: 'flex', gap: 'var(--space-2)' }}>
-            <Link to="/feedback" className="btn btn-secondary btn-sm">
-              Provide Feedback
+            <Link to="/quiz" className="btn btn-secondary btn-sm">
+              Update Profile Goal
             </Link>
             <button onClick={handleLogout} className="btn btn-ghost btn-sm" style={{ color: 'var(--error)' }}>
               Sign Out
@@ -117,194 +295,330 @@ export function Dashboard() {
           </div>
         </div>
 
+        {/* Dashboard Grid Dashboard Overview */}
         <div className="grid-3" style={{ gap: 'var(--space-8)', alignItems: 'flex-start' }}>
           
-          {/* Main Dashboard Columns */}
-          <div style={{ gridColumn: 'span 2', display: 'flex', flexDirection: 'column', gap: 'var(--space-6)' }}>
+          {/* LEFT COLUMN: PRIMARY STATS & PLAN */}
+          <div style={{ gridColumn: 'span 2', display: 'flex', flexDirection: 'column', gap: 'var(--space-8)' }}>
             
-            {/* Active Study Plan progress card */}
-            <div className="card">
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--space-4)' }}>
-                <h3 style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <BookOpen style={{ color: 'var(--accent)' }} /> Active Study Plan Progress
-                </h3>
-                {activePlan ? (
-                  <Link to="/study-plan" className="btn btn-ghost btn-sm" style={{ color: 'var(--accent)' }}>
-                    Resume Study Plan &rarr;
-                  </Link>
-                ) : (
-                  <Link to="/study-plan" className="btn btn-primary btn-sm">
-                    Activate a Plan
-                  </Link>
-                )}
-              </div>
-
-              {activePlan ? (
-                <div>
-                  <h4 style={{ color: 'var(--text-primary)', marginBottom: 'var(--space-2)' }}>{activePlan.careerTitle}</h4>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 'var(--space-1.5)', fontSize: 'var(--text-xs)', color: 'var(--text-secondary)' }}>
-                    <span>Milestones Tracked</span>
-                    <strong>{currentUser.studyPlanProgress || 0}% Completed</strong>
-                  </div>
-                  <div className="progress-track" style={{ height: 8 }}>
-                    <div className="progress-fill" style={{ width: `${currentUser.studyPlanProgress || 0}%`, height: 8 }} />
-                  </div>
+            {/* TOP METRICS ROW */}
+            <div className="grid-3" style={{ gap: 'var(--space-4)' }}>
+              {/* Metric 1: Roadmap Progress */}
+              <div className="card glass-card" style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', justifyCenter: 'center', padding: 'var(--space-5)' }}>
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '0 auto var(--space-2)' }}>
+                  <TrendingUp style={{ color: 'var(--accent)', width: 20, height: 20 }} />
                 </div>
-              ) : (
-                <p style={{ color: 'var(--text-muted)', fontSize: 'var(--text-sm)', margin: 0 }}>
-                  You do not have an active study plan. Select a career pathway and generate an AI-customized plan to begin tracking.
-                </p>
-              )}
-            </div>
-
-            {/* Job Recommendations list */}
-            <div className="card">
-              <h3 style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: 'var(--space-4)' }}>
-                <Briefcase style={{ color: 'var(--accent)' }} /> Matching Job Opportunities (Tier 2/3 & Remote)
-              </h3>
-              <p style={{ color: 'var(--text-muted)', fontSize: 'var(--text-xs)', marginBottom: 'var(--space-4)' }}>
-                Handpicked job roles that fit your active learning plan and require minimal tier-1 campus tags.
-              </p>
-              
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
-                {displayJobs.map((job, idx) => (
-                  <div key={idx} style={{
-                    padding: 'var(--space-3)',
-                    border: '1px solid var(--border)',
-                    borderRadius: 'var(--radius-md)',
-                    backgroundColor: 'var(--bg-secondary)',
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    flexWrap: 'wrap',
-                    gap: 'var(--space-2)'
-                  }}>
-                    <div>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
-                        <strong style={{ fontSize: 'var(--text-sm)' }}>{job.title}</strong>
-                        <span style={{ fontSize: '10px', padding: '2px 6px', borderRadius: '4px', backgroundColor: 'var(--success-bg)', color: 'var(--success)', fontWeight: 'var(--font-semibold)' }}>
-                          {job.match} Match
-                        </span>
-                      </div>
-                      <div style={{ fontSize: 'var(--text-xs)', color: 'var(--text-muted)', marginTop: '4px' }}>
-                        {job.company} • {job.location}
-                      </div>
-                      <div style={{ fontSize: 'var(--text-xs)', color: 'var(--accent)', fontWeight: 'var(--font-medium)', marginTop: '2px' }}>
-                        Salary Package: {job.salary} ({job.type})
-                      </div>
-                    </div>
-                    <button
-                      onClick={() => alert(`Redirecting to mock apply portal for ${job.title}`)}
-                      className="btn btn-secondary btn-sm"
-                      style={{ padding: '6px 12px', fontSize: 'var(--text-xs)', display: 'flex', alignItems: 'center', gap: '4px' }}
-                    >
-                      Apply Mock <ExternalLink style={{ width: 12, height: 12 }} />
-                    </button>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Resume analysis history */}
-            <div className="card">
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--space-4)' }}>
-                <h3 style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <FileText style={{ color: 'var(--accent)' }} /> Resume Analysis History
-                </h3>
-                <Link to="/resume-analyzer" className="btn btn-ghost btn-sm" style={{ color: 'var(--accent)' }}>
-                  Analyze Resume &rarr;
-                </Link>
-              </div>
-
-              {analyzerHistory.length > 0 ? (
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
-                  {analyzerHistory.map((h, idx) => (
-                    <div key={idx} style={{
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                      padding: '10px 14px',
-                      borderBottom: '1px solid var(--border)'
-                    }}>
-                      <div>
-                        <strong style={{ fontSize: 'var(--text-sm)' }}>{h.careerTitle}</strong>
-                        <div style={{ fontSize: 'var(--text-xs)', color: 'var(--text-muted)' }}>Analyzed: {h.date}</div>
-                      </div>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        <span style={{ fontSize: 'var(--text-xs)', color: 'var(--text-secondary)' }}>{h.matchedCount} Matched / {h.missingCount} Missing</span>
-                        <span style={{
-                          fontWeight: 'var(--font-bold)',
-                          color: h.score >= 75 ? 'var(--success)' : 'var(--warning)',
-                          backgroundColor: h.score >= 75 ? 'var(--success-bg)' : 'var(--warning-bg)',
-                          padding: '2px 8px',
-                          borderRadius: '4px',
-                          fontSize: 'var(--text-xs)'
-                        }}>
-                          {h.score}% Match
-                        </span>
-                      </div>
-                    </div>
-                  ))}
+                <div style={{ fontSize: '2.5rem', fontWeight: 'bold', color: 'var(--accent)', lineHeight: '1.1' }}>
+                  {currentUser.studyPlanProgress}%
                 </div>
-              ) : (
-                <p style={{ color: 'var(--text-muted)', fontSize: 'var(--text-sm)', margin: 0 }}>
-                  No resume analysis run yet. Paste your profile text in our optimizer to see how ATS-ready you are.
+                <span style={{ fontSize: 'var(--text-xs)', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', marginTop: '4px' }}>
+                  Roadmap Progress
+                </span>
+                <div className="progress-track" style={{ height: 6, marginTop: 'var(--space-3)' }}>
+                  <div className="progress-fill" style={{ width: `${currentUser.studyPlanProgress}%`, height: 6 }} />
+                </div>
+              </div>
+
+              {/* Metric 2: Career Readiness Score */}
+              <div className="card glass-card" style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', justifyCenter: 'center', padding: 'var(--space-5)' }}>
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '0 auto var(--space-2)' }}>
+                  <Activity style={{ color: 'var(--success)', width: 20, height: 20 }} />
+                </div>
+                <div style={{ fontSize: '2.5rem', fontWeight: 'bold', color: 'var(--success)', lineHeight: '1.1' }}>
+                  {careerScore}/100
+                </div>
+                <span style={{ fontSize: 'var(--text-xs)', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', marginTop: '4px' }}>
+                  Career Score
+                </span>
+                <p style={{ fontSize: '9px', color: 'var(--text-muted)', margin: '4px 0 0 0' }}>
+                  Skills + Badges + Resume Match
                 </p>
-              )}
-            </div>
+              </div>
 
-          </div>
-
-          {/* Right Column (Badges & Settings) */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-6)' }}>
-            
-            {/* Badges unlocked card */}
-            <div className="card">
-              <h3 style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: 'var(--space-4)' }}>
-                <Award style={{ color: 'var(--accent)' }} /> Career Badges ({badges.filter(b => b.unlocked).length})
-              </h3>
-              
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
-                {badges.map(b => (
-                  <div key={b.id} style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '12px',
-                    opacity: b.unlocked ? 1 : 0.4
-                  }}>
-                    <div style={{
-                      width: 40,
-                      height: 40,
+              {/* Metric 3: Streak Counter */}
+              <div className="card glass-card" style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', justifyCenter: 'center', padding: 'var(--space-5)' }}>
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '0 auto var(--space-2)' }}>
+                  <Flame style={{ color: '#f97316', width: 24, height: 24, fill: '#f97316' }} />
+                </div>
+                <div style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#f97316', lineHeight: '1.1' }}>
+                  {currentUser.streakCount} Days
+                </div>
+                <span style={{ fontSize: 'var(--text-xs)', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', marginTop: '4px' }}>
+                  Active Streak
+                </span>
+                <div style={{ display: 'flex', justifyContent: 'center', gap: '3px', marginTop: 'var(--space-2.5)' }}>
+                  {['M', 'T', 'W', 'T', 'F', 'S', 'S'].map((day, i) => (
+                    <span key={i} style={{
+                      width: 12,
+                      height: 12,
                       borderRadius: '50%',
-                      backgroundColor: b.unlocked ? 'var(--success-bg)' : 'var(--bg-secondary)',
-                      color: b.unlocked ? 'var(--success)' : 'var(--text-muted)',
+                      backgroundColor: i < 5 ? '#f97316' : 'var(--border)',
+                      color: '#fff',
+                      fontSize: '7px',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center'
                     }}>
-                      <b.icon style={{ width: 20, height: 20 }} />
+                      {day}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Next learning tasks (Checkable list that updates progress) */}
+            <div className="card glass-card">
+              <h3 style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: 'var(--space-1)' }}>
+                <ListTodo style={{ color: 'var(--accent)', width: 20, height: 20 }} /> Current Milestones & Next Tasks
+              </h3>
+              <p style={{ color: 'var(--text-muted)', fontSize: 'var(--text-xs)', marginBottom: 'var(--space-4)' }}>
+                Complete these to dynamically update your Roadmap progress percentage and overall Career Score.
+              </p>
+
+              {nextTasks.length > 0 ? (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
+                  {nextTasks.map((task) => (
+                    <label key={task.id} className="option-card" style={{
+                      padding: '12px 16px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '12px',
+                      cursor: 'pointer',
+                      border: '1px solid var(--border)'
+                    }}>
+                      <input
+                        type="checkbox"
+                        checked={task.completed}
+                        onChange={() => handleToggleTask(task.weekIndex, task.id)}
+                        style={{ width: '18px', height: '18px', accentColor: 'var(--accent)' }}
+                      />
+                      <div style={{ flex: 1 }}>
+                        <span style={{ fontSize: 'var(--text-xs)', color: 'var(--accent)', fontWeight: 'bold', display: 'block' }}>
+                          Week {task.weekNum} Objective
+                        </span>
+                        <span style={{ fontSize: 'var(--text-sm)', color: 'var(--text-primary)' }}>
+                          {task.label}
+                        </span>
+                      </div>
+                      <span style={{ fontSize: 'var(--text-xs)', color: 'var(--text-muted)' }}>
+                        🕒 {task.hours}h
+                      </span>
+                    </label>
+                  ))}
+                </div>
+              ) : (
+                <div style={{ textAlign: 'center', padding: 'var(--space-6) 0' }}>
+                  <CheckCircle style={{ color: 'var(--success)', width: 32, height: 32, margin: '0 auto 8px' }} />
+                  <p style={{ fontSize: 'var(--text-sm)', color: 'var(--text-secondary)' }}>All current weekly tasks completed! Generation of next block underway...</p>
+                  <Link to="/study-plan" className="btn btn-primary btn-sm" style={{ marginTop: '8px' }}>Generate Next Month</Link>
+                </div>
+              )}
+            </div>
+
+            {/* Resume Optimizer Widget */}
+            <div className="card glass-card">
+              <h3 style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: 'var(--space-1)' }}>
+                <FileText style={{ color: 'var(--accent)', width: 20, height: 20 }} /> Resume & ATS Profiler
+              </h3>
+              <p style={{ color: 'var(--text-muted)', fontSize: 'var(--text-xs)', marginBottom: 'var(--space-5)' }}>
+                Paste your latest resume details to calculate your ATS match score against {activePlan.careerTitle} and fix critical missing keywords.
+              </p>
+
+              <div className="grid-2" style={{ gap: 'var(--space-6)', alignItems: 'stretch' }}>
+                {/* Form */}
+                <form onSubmit={handleAnalyzeResume} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <label style={{ fontSize: 'var(--text-xs)', fontWeight: 'bold' }}>Target Position</label>
+                    <button type="button" onClick={triggerMockUpload} style={{ background: 'none', border: 'none', color: 'var(--accent)', fontSize: 'var(--text-xs)', cursor: 'pointer' }}>
+                      ⚡ Load Sample Resume
+                    </button>
+                  </div>
+                  
+                  <textarea
+                    rows={6}
+                    value={resumeText}
+                    onChange={(e) => setResumeText(e.target.value)}
+                    placeholder="Paste your education, skills, and projects list here..."
+                    style={{
+                      padding: '10px',
+                      borderRadius: 'var(--radius-md)',
+                      border: '1px solid var(--border)',
+                      backgroundColor: 'var(--bg-primary)',
+                      color: 'var(--text-primary)',
+                      fontSize: 'var(--text-xs)',
+                      fontFamily: 'monospace'
+                    }}
+                    required
+                  />
+
+                  <button type="submit" disabled={isAnalyzing || !resumeText.trim()} className="btn btn-primary btn-sm" style={{ width: '100%' }}>
+                    {isAnalyzing ? <span className="spinner" style={{ width: 14, height: 14 }}></span> : 'Optimize Resume Profile'}
+                  </button>
+                </form>
+
+                {/* Score / Result Widget */}
+                <div style={{
+                  border: '1px solid var(--border)',
+                  borderRadius: 'var(--radius-md)',
+                  padding: 'var(--space-4)',
+                  backgroundColor: 'var(--bg-secondary)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  minHeight: '180px'
+                }}>
+                  {resumeResult ? (
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <span style={{ fontSize: 'var(--text-xs)', color: 'var(--text-secondary)' }}>ATS Score:</span>
+                        <span style={{
+                          fontSize: 'var(--text-sm)',
+                          fontWeight: 'bold',
+                          color: resumeResult.score >= 70 ? 'var(--success)' : 'var(--warning)',
+                          backgroundColor: resumeResult.score >= 70 ? 'var(--success-bg)' : 'var(--warning-bg)',
+                          padding: '2px 8px',
+                          borderRadius: '4px'
+                        }}>{resumeResult.score}% Match</span>
+                      </div>
+                      <div style={{ borderTop: '1px solid var(--border)', paddingTop: '6px' }}>
+                        <span style={{ fontSize: '10px', fontWeight: 'bold', color: 'var(--warning)', display: 'block', marginBottom: '2px' }}>Missing Core Keywords:</span>
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
+                          {resumeResult.missingSkills?.slice(0, 3).map((s: string) => (
+                            <span key={s} className="tag" style={{ fontSize: '9px', padding: '1px 4px' }}>{s}</span>
+                          )) || <span style={{ fontSize: '10px', color: 'var(--text-muted)' }}>None! You're ready.</span>}
+                        </div>
+                      </div>
+                      <div style={{ fontSize: '9px', color: 'var(--text-muted)', lineHeight: 1.3 }}>
+                        💡 {resumeResult.recommendations?.[0] || 'Keep pushing your skills gaps to hit 80%+.'}
+                      </div>
+                      <Link to="/resume-analyzer" style={{ fontSize: '10px', color: 'var(--accent)', fontWeight: 'bold', textDecoration: 'underline' }}>
+                        View Full Recommendations &rarr;
+                      </Link>
+                    </div>
+                  ) : (
+                    <div style={{ textAlign: 'center', color: 'var(--text-muted)' }}>
+                      <UploadCloud style={{ width: 32, height: 32, margin: '0 auto 8px', color: 'var(--text-muted)' }} />
+                      <p style={{ fontSize: 'var(--text-xs)', margin: 0 }}>No resume profile scanned yet. Run a scan to fetch recommendations.</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          {/* RIGHT COLUMN: SKILLS GROUP & ACHIEVEMENT BADGES */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-8)' }}>
+            
+            {/* Career Badges (unlocked vs locked with hover effects) */}
+            <div className="card glass-card">
+              <h3 style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: 'var(--space-4)' }}>
+                <Award style={{ color: 'var(--accent)', width: 20, height: 20 }} /> Achievement Badges
+              </h3>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
+                {availableBadges.map((badge) => (
+                  <div
+                    key={badge.id}
+                    className="badge-item"
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '12px',
+                      opacity: badge.unlocked ? 1 : 0.35,
+                      transition: 'all 0.2s ease',
+                      cursor: 'default'
+                    }}
+                    title={badge.desc}
+                  >
+                    <div style={{
+                      width: 44,
+                      height: 44,
+                      borderRadius: '50%',
+                      backgroundColor: badge.unlocked ? 'var(--accent-bg)' : 'var(--bg-secondary)',
+                      color: badge.unlocked ? 'var(--accent)' : 'var(--text-muted)',
+                      border: badge.unlocked ? '1.5px solid var(--accent)' : '1px dashed var(--border)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      flexShrink: 0,
+                      boxShadow: badge.unlocked ? '0 0 10px var(--glow-1)' : 'none'
+                    }}>
+                      <badge.icon style={{ width: 22, height: 22 }} />
                     </div>
                     <div>
-                      <strong style={{ fontSize: 'var(--text-sm)', display: 'block' }}>{b.name}</strong>
-                      <span style={{ fontSize: 'var(--text-xs)', color: 'var(--text-muted)' }}>{b.desc}</span>
+                      <strong style={{ fontSize: 'var(--text-sm)', display: 'block', color: badge.unlocked ? 'var(--text-primary)' : 'var(--text-muted)' }}>
+                        {badge.name}
+                      </strong>
+                      <span style={{ fontSize: 'var(--text-xs)', color: 'var(--text-muted)' }}>
+                        {badge.desc}
+                      </span>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Quick links shortcuts */}
-            <div className="card">
-              <h3 style={{ marginBottom: 'var(--space-3)' }}>Quick Shortcuts</h3>
+            {/* Skills Status Board */}
+            <div className="card glass-card">
+              <h3 style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: 'var(--space-3)' }}>
+                <BookOpen style={{ color: 'var(--accent)', width: 18, height: 18 }} /> Skills to Learn
+              </h3>
+              <p style={{ fontSize: 'var(--text-xs)', color: 'var(--text-muted)', marginBottom: 'var(--space-4)' }}>
+                Track competency milestones for {activePlan.careerTitle}.
+              </p>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
+                {/* Completed */}
+                <div>
+                  <span style={{ fontSize: '10px', fontWeight: 'bold', color: 'var(--success)', display: 'block', marginBottom: '6px', textTransform: 'uppercase' }}>
+                    ✓ Mastered ({skillsState.completed.length})
+                  </span>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
+                    {skillsState.completed.map(s => (
+                      <span key={s} className="tag tag-success" style={{ fontSize: '10px', padding: '2px 8px', backgroundColor: 'var(--success-bg)', color: 'var(--success)' }}>{s}</span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* In Progress */}
+                <div>
+                  <span style={{ fontSize: '10px', fontWeight: 'bold', color: 'var(--accent)', display: 'block', marginBottom: '6px', textTransform: 'uppercase' }}>
+                    ⚡ In Progress ({skillsState.inProgress.length})
+                  </span>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
+                    {skillsState.inProgress.map(s => (
+                      <span key={s} className="tag tag-accent" style={{ fontSize: '10px', padding: '2px 8px', backgroundColor: 'var(--accent-bg)', color: 'var(--accent)' }}>{s}</span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Locked / Not Started */}
+                <div>
+                  <span style={{ fontSize: '10px', fontWeight: 'bold', color: 'var(--text-muted)', display: 'block', marginBottom: '6px', textTransform: 'uppercase' }}>
+                    🔒 Locked / Next ({skillsState.notStarted.length})
+                  </span>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
+                    {skillsState.notStarted.map(s => (
+                      <span key={s} className="tag" style={{ fontSize: '10px', padding: '2px 8px', color: 'var(--text-muted)' }}>{s}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Quick Actions Shortcuts */}
+            <div className="card glass-card">
+              <h3 style={{ fontSize: 'var(--text-sm)', marginBottom: 'var(--space-3)' }}>Quick Actions</h3>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
-                <Link to="/quiz" className="btn btn-secondary btn-sm" style={{ textAlign: 'left', display: 'flex', justifyContent: 'space-between' }}>
-                  Retake Aptitude Quiz <ChevronRight style={{ width: 14, height: 14 }} />
+                <Link to="/study-plan" className="btn btn-secondary btn-sm" style={{ textAlign: 'left', display: 'flex', justifyContent: 'space-between', padding: '8px 12px' }}>
+                  Full Study Planner <ChevronRight style={{ width: 14, height: 14 }} />
                 </Link>
-                <Link to="/careers" className="btn btn-secondary btn-sm" style={{ textAlign: 'left', display: 'flex', justifyContent: 'space-between' }}>
-                  Explore Career Pathways <ChevronRight style={{ width: 14, height: 14 }} />
+                <Link to="/careers" className="btn btn-secondary btn-sm" style={{ textAlign: 'left', display: 'flex', justifyContent: 'space-between', padding: '8px 12px' }}>
+                  Explore Career Catalog <ChevronRight style={{ width: 14, height: 14 }} />
                 </Link>
-                <Link to="/compare" className="btn btn-secondary btn-sm" style={{ textAlign: 'left', display: 'flex', justifyContent: 'space-between' }}>
-                  Compare Careers <ChevronRight style={{ width: 14, height: 14 }} />
+                <Link to="/compare" className="btn btn-secondary btn-sm" style={{ textAlign: 'left', display: 'flex', justifyContent: 'space-between', padding: '8px 12px' }}>
+                  Compare Career Tracks <ChevronRight style={{ width: 14, height: 14 }} />
                 </Link>
               </div>
             </div>
@@ -315,4 +629,21 @@ export function Dashboard() {
       </div>
     </Layout>
   );
+}
+
+// Inline Icons for Badges
+function CompassIcon(props: any) {
+  return <Briefcase {...props} />;
+}
+function StreakIcon(props: any) {
+  return <Flame {...props} />;
+}
+function StarIcon(props: any) {
+  return <Star {...props} />;
+}
+function ATSIcon(props: any) {
+  return <FileText {...props} />;
+}
+function EliteIcon(props: any) {
+  return <Award {...props} />;
 }

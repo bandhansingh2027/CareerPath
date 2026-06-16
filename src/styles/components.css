@@ -1081,3 +1081,134 @@
   40% { transform: scale(1); }
 }
 
+/* ---------- Premium Glassmorphism Cards ---------- */
+.glass-card {
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.08);
+  transition: all var(--transition-base);
+}
+
+.glass-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.12);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+[data-theme="dark"] .glass-card {
+  background: rgba(30, 41, 59, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+[data-theme="dark"] .glass-card:hover {
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.45);
+}
+
+[data-theme="cosmic"] .glass-card {
+  background: rgba(21, 16, 53, 0.45);
+  border: 1px solid rgba(168, 85, 247, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(168, 85, 247, 0.1);
+}
+[data-theme="cosmic"] .glass-card:hover {
+  border-color: rgba(168, 85, 247, 0.3);
+  box-shadow: 0 12px 40px 0 rgba(168, 85, 247, 0.2);
+}
+
+[data-theme="blueprint"] .glass-card {
+  background: rgba(10, 46, 84, 0.45);
+  border: 1px solid rgba(30, 96, 163, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(0, 40, 80, 0.2);
+}
+[data-theme="blueprint"] .glass-card:hover {
+  border-color: rgba(30, 96, 163, 0.4);
+  box-shadow: 0 12px 40px 0 rgba(0, 40, 80, 0.35);
+}
+
+/* ---------- Visual Timeline Layout ---------- */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  gap: var(--space-4);
+}
+
+.timeline-item {
+  display: flex;
+  position: relative;
+  gap: var(--space-5);
+}
+
+.timeline-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.timeline-dot {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  color: var(--text-inverse);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-xs);
+  font-weight: var(--font-bold);
+  z-index: 2;
+  box-shadow: 0 0 10px var(--glow-1);
+}
+
+.timeline-line {
+  width: 3px;
+  background: linear-gradient(to bottom, var(--accent) 0%, var(--border) 100%);
+  flex: 1;
+  margin-top: 4px;
+  margin-bottom: -16px;
+}
+
+.timeline-content {
+  flex: 1;
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid var(--border);
+}
+
+.timeline-item:last-child .timeline-content {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.timeline-title {
+  font-size: var(--text-base);
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
+}
+
+.timeline-description {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+/* ---------- Badge & Task Micro-animations ---------- */
+.badge-item {
+  transition: all var(--transition-base);
+}
+.badge-item:hover {
+  transform: scale(1.03) translateX(4px);
+}
+
+.option-card {
+  transition: all var(--transition-fast) !important;
+}
+.option-card:hover {
+  border-color: var(--accent) !important;
+  background-color: var(--surface-hover) !important;
+}
+
+
