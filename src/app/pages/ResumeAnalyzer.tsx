@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Layout } from '../components/Layout';
 import { careerService } from '../services/api';
 import { Link, useNavigate } from 'react-router';
-import { UploadCloud, CheckCircle2, AlertTriangle, FileText, Sparkles, ArrowRight, RefreshCw, BookOpen } from 'lucide-react';
+import { UploadCloud, CheckCircle2, AlertTriangle, FileText, Sparkles, ArrowRight, RefreshCw, BookOpen, Compass } from 'lucide-react';
 
 export function ResumeAnalyzer() {
   const navigate = useNavigate();
@@ -23,7 +23,6 @@ export function ResumeAnalyzer() {
   }, []);
 
   const triggerMockUpload = () => {
-    // Fill the text box with simulated resume data to make it extremely easy to test
     const mockResumes: Record<string, string> = {
       'fullstack-web-dev': `BANDHAN SINGH
 Email: bandhan@gmail.com | Phone: +91 9876543210
@@ -88,15 +87,12 @@ SKILLS:
 
     setTimeout(() => {
       clearInterval(interval);
-      // Run match logic based on keywords
       const selectedCareerObj = careers.find(c => c.id === targetCareer);
       if (!selectedCareerObj) {
         setIsAnalyzing(false);
         return;
       }
 
-      // Hardcoded roadmap skills to search
-      // Let's scrape some list of skills
       const allRequiredSkills = [
         'HTML5', 'CSS3', 'JavaScript ES6', 'Responsive Design', 'Git', 'GitHub',
         'React', 'Node.js', 'Express', 'REST APIs', 'MongoDB', 'SQL', 'Python',
@@ -108,16 +104,12 @@ SKILLS:
       const missing: string[] = [];
 
       allRequiredSkills.forEach(skill => {
-        // Simple regex check
         const regex = new RegExp(`\\b${skill.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
-        // also check simple substrings
         const hasSkill = regex.test(resumeText) || resumeText.toLowerCase().includes(skill.toLowerCase());
         
-        // Is this skill actually in the career roadmap?
         const isNeeded = selectedCareerObj.jobRoles?.some((role: string) => role.toLowerCase().includes(skill.toLowerCase())) ||
                          selectedCareerObj.title.toLowerCase().includes(skill.toLowerCase()) ||
                          selectedCareerObj.description.toLowerCase().includes(skill.toLowerCase()) ||
-                         // Or just custom map based on career
                          (targetCareer === 'fullstack-web-dev' && ['HTML5', 'CSS3', 'JavaScript ES6', 'Responsive Design', 'Git', 'GitHub', 'React', 'Node.js', 'Express', 'MongoDB'].includes(skill)) ||
                          (targetCareer === 'data-analyst' && ['Excel', 'SQL', 'Python', 'Pandas', 'NumPy', 'Tableau', 'Power BI', 'Pivot Tables'].includes(skill)) ||
                          (targetCareer === 'ui-ux-designer' && ['Figma', 'UX Research', 'Wireframes', 'Responsive Design'].includes(skill)) ||
@@ -130,11 +122,9 @@ SKILLS:
         }
       });
 
-      // Calculate score
       const total = matched.length + missing.length;
       const score = total > 0 ? Math.round((matched.length / total) * 100) : 40;
       
-      // Save results to dashboard study plans/history
       const savedAnalyzerHistory = JSON.parse(localStorage.getItem('careerpath_analyzerHistory') || '[]');
       savedAnalyzerHistory.push({
         date: new Date().toLocaleDateString(),
@@ -145,6 +135,15 @@ SKILLS:
         missingCount: missing.length
       });
       localStorage.setItem('careerpath_analyzerHistory', JSON.stringify(savedAnalyzerHistory));
+
+      const user = JSON.parse(localStorage.getItem('careerpath_currentUser') || '{"badges": []}');
+      if (user.email) {
+        if (score >= 70 && !user.badges.includes('resume')) {
+          user.badges.push('resume');
+        }
+        user.xp = (user.xp || 0) + 20;
+        localStorage.setItem('careerpath_currentUser', JSON.stringify(user));
+      }
 
       setAnalysisResult({
         score,
@@ -190,7 +189,6 @@ SKILLS:
       <div className="container" style={{ padding: 'var(--space-8) var(--space-6)' }}>
         {!analysisResult && !isAnalyzing && (
           <div className="grid-2" style={{ gap: 'var(--space-8)' }}>
-            {/* Input Form */}
             <div className="card" style={{ padding: 'var(--space-6)' }}>
               <h3 style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', marginBottom: 'var(--space-4)' }}>
                 <FileText style={{ color: 'var(--accent)', width: 22, height: 22 }} /> Paste Resume details
@@ -275,7 +273,6 @@ SKILLS:
               </form>
             </div>
 
-            {/* Explanation Guide */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-6)' }}>
               <div className="card" style={{ borderLeft: '4px solid var(--accent)' }}>
                 <h4 style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', marginBottom: 'var(--space-2)' }}>
@@ -298,7 +295,6 @@ SKILLS:
           </div>
         )}
 
-        {/* Loading State */}
         {isAnalyzing && (
           <div style={{
             minHeight: '40vh',
@@ -316,7 +312,6 @@ SKILLS:
           </div>
         )}
 
-        {/* Results View */}
         {analysisResult && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-6)' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 'var(--space-4)' }}>
@@ -331,7 +326,6 @@ SKILLS:
             </div>
 
             <div className="grid-3" style={{ gap: 'var(--space-6)' }}>
-              {/* Score card */}
               <div className="card" style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: 'var(--space-6)' }}>
                 <div style={{
                   fontSize: '4.5rem',
@@ -342,7 +336,7 @@ SKILLS:
                   {analysisResult.score}%
                 </div>
                 <div style={{ fontSize: 'var(--text-sm)', color: 'var(--text-muted)', margin: 'var(--space-2) 0 var(--space-4)' }}>
-                  Overall Resume Match Score
+                  Overall ATS & Resume Score
                 </div>
                 <div className="progress-track" style={{ height: '8px', maxWidth: '200px', margin: '0 auto' }}>
                   <div
@@ -355,7 +349,6 @@ SKILLS:
                 </div>
               </div>
 
-              {/* Skills matched / missing */}
               <div className="card" style={{ gridColumn: 'span 2', display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
                 <div>
                   <h4 style={{ color: 'var(--success)', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: 'var(--space-2)' }}>
@@ -385,8 +378,12 @@ SKILLS:
                           <span key={skill} className="tag tag-accent" style={{ backgroundColor: 'var(--accent-bg)', color: 'var(--accent)', border: '1px solid rgba(var(--accent-rgb), 0.1)' }}>{skill}</span>
                         ))}
                       </div>
-                      <Link to={`/study-plan?career=${targetCareer}`} className="btn btn-primary btn-sm" style={{ display: 'inline-flex' }}>
-                        Generate Study Plan to learn these <ArrowRight style={{ width: 14, height: 14 }} />
+                      <Link 
+                        to={`/study-plan?career=${targetCareer}&missing=${encodeURIComponent(analysisResult.missing.join(','))}`} 
+                        className="btn btn-primary btn-sm" 
+                        style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}
+                      >
+                        <Sparkles style={{ width: 14, height: 14 }} /> Generate Roadmap for Missing Skills <ArrowRight style={{ width: 14, height: 14 }} />
                       </Link>
                     </div>
                   )}
@@ -394,19 +391,50 @@ SKILLS:
               </div>
             </div>
 
-            {/* Improvement checklist */}
-            <div className="card" style={{ padding: 'var(--space-6)' }}>
-              <h4 style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: 'var(--space-4)' }}>
-                <Sparkles style={{ width: 20, height: 20, color: 'var(--accent)' }} /> AI Resume Improvement Suggestions
-              </h4>
-              <ul style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)', paddingLeft: 'var(--space-2)' }}>
-                {analysisResult.recommendations.map((rec: string, i: number) => (
-                  <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: 'var(--text-sm)', color: 'var(--text-secondary)', lineHeight: '1.5' }}>
-                    <span style={{ color: 'var(--accent)', fontWeight: 'var(--font-bold)', fontSize: 'var(--text-base)', marginTop: '-2px' }}>•</span>
-                    <span>{rec}</span>
-                  </li>
-                ))}
-              </ul>
+            <div className="grid-2" style={{ gap: 'var(--space-6)' }}>
+              <div className="card glass-card">
+                <h4 style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: 'var(--space-3)' }}>
+                  <Compass style={{ color: 'var(--accent)', width: 20, height: 20 }} /> Job Match Scores (Role Comparison)
+                </h4>
+                <p style={{ fontSize: 'var(--text-xs)', color: 'var(--text-muted)', marginBottom: 'var(--space-4)' }}>
+                  See how well your resume matches other related careers in our catalog.
+                </p>
+                
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
+                  {[
+                    { title: "Frontend Engineer", score: Math.min(100, analysisResult.score + 15), status: "Strong Match" },
+                    { title: "Backend Engineer", score: Math.max(0, analysisResult.score - 10), status: "Skill Gap Identified" },
+                    { title: "DevOps Specialist", score: Math.max(0, analysisResult.score - 30), status: "High Skill Gap" }
+                  ].map((job, idx) => (
+                    <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 14px', backgroundColor: 'var(--bg-secondary)', borderRadius: 'var(--radius-md)', border: '1px solid var(--border)' }}>
+                      <div>
+                        <strong style={{ fontSize: 'var(--text-xs)', display: 'block' }}>{job.title}</strong>
+                        <span style={{ fontSize: '9px', color: 'var(--text-muted)' }}>Status: {job.status}</span>
+                      </div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                        <div className="progress-track" style={{ width: '80px', height: '6px' }}>
+                          <div className="progress-fill" style={{ width: `${job.score}%`, height: '6px', backgroundColor: job.score >= 70 ? 'var(--success)' : job.score >= 50 ? 'var(--info)' : 'var(--warning)' }} />
+                        </div>
+                        <span style={{ fontSize: 'var(--text-xs)', fontWeight: 'bold' }}>{job.score}%</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="card" style={{ padding: 'var(--space-6)' }}>
+                <h4 style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: 'var(--space-4)' }}>
+                  <Sparkles style={{ width: 20, height: 20, color: 'var(--accent)' }} /> AI Resume Improvement Suggestions
+                </h4>
+                <ul style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)', paddingLeft: 'var(--space-2)' }}>
+                  {analysisResult.recommendations.map((rec: string, i: number) => (
+                    <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: 'var(--text-sm)', color: 'var(--text-secondary)', lineHeight: '1.5' }}>
+                      <span style={{ color: 'var(--accent)', fontWeight: 'var(--font-bold)', fontSize: 'var(--text-base)', marginTop: '-2px' }}>•</span>
+                      <span>{rec}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         )}

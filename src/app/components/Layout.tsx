@@ -42,6 +42,8 @@ export function Layout({ children, showNav = true, showFooter = true }: LayoutPr
               <Link to="/compare" className="btn btn-ghost btn-sm">Compare</Link>
               <Link to="/resume-analyzer" className="btn btn-ghost btn-sm">Resume Match</Link>
               <Link to="/study-plan" className="btn btn-ghost btn-sm">Study Plan</Link>
+              <Link to="/mock-interview" className="btn btn-ghost btn-sm">AI Interview</Link>
+              <Link to="/mentor" className="btn btn-ghost btn-sm">AI Mentor</Link>
               <ThemeToggle />
               {currentUser ? (
                 <Link to="/dashboard" className="btn btn-primary btn-sm" style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
@@ -81,6 +83,8 @@ export function Layout({ children, showNav = true, showFooter = true }: LayoutPr
               <Link to="/compare" className="btn btn-ghost">Compare</Link>
               <Link to="/resume-analyzer" className="btn btn-ghost">Resume Match</Link>
               <Link to="/study-plan" className="btn btn-ghost">Study Plan</Link>
+              <Link to="/mock-interview" className="btn btn-ghost">AI Interview</Link>
+              <Link to="/mentor" className="btn btn-ghost">AI Mentor</Link>
               <div style={{ display: 'flex', padding: 'var(--space-2) var(--space-4)' }}>
                 <ThemeToggle />
               </div>

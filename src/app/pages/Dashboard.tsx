@@ -37,12 +37,18 @@ export function Dashboard() {
         studyPlanProgress: 15,
         streakCount: 5,
         lastActiveDate: new Date().toDateString(),
-        badges: ['explorer']
+        badges: ['explorer'],
+        xp: 120
       };
       localStorage.setItem('careerpath_currentUser', JSON.stringify(defaultUser));
       setCurrentUser(defaultUser);
     } else {
-      setCurrentUser(JSON.parse(user));
+      const parsed = JSON.parse(user);
+      if (parsed.xp === undefined) {
+        parsed.xp = 120;
+      }
+      localStorage.setItem('careerpath_currentUser', JSON.stringify(parsed));
+      setCurrentUser(parsed);
     }
 
     // Read active study plan
@@ -291,9 +297,22 @@ Projects: Todo Web Application using React.`);
               <h2 style={{ margin: 0, fontSize: 'var(--text-xl)', display: 'flex', alignItems: 'center', gap: '8px' }}>
                 Welcome Back, {currentUser.name}! <Sparkles style={{ width: 18, height: 18, color: 'var(--accent)' }} />
               </h2>
-              <span style={{ fontSize: 'var(--text-sm)', color: 'var(--text-secondary)' }}>
+              <span style={{ fontSize: 'var(--text-sm)', color: 'var(--text-secondary)', display: 'block', marginBottom: '8px' }}>
                 Onboarding Status: Verified • Target Goal: <strong>{activePlan.careerTitle}</strong>
               </span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <span style={{ fontSize: '10px', fontWeight: 'bold', backgroundColor: 'var(--accent)', color: 'var(--text-inverse)', padding: '2px 8px', borderRadius: '4px' }}>
+                  LVL {Math.floor((currentUser.xp || 120) / 100) + 1}
+                </span>
+                <div style={{ width: '150px' }}>
+                  <div className="progress-track" style={{ height: 6, backgroundColor: 'var(--border)' }}>
+                    <div className="progress-fill" style={{ width: `${(currentUser.xp || 120) % 100}%`, height: 6 }} />
+                  </div>
+                </div>
+                <span style={{ fontSize: '10px', color: 'var(--text-secondary)' }}>
+                  {(currentUser.xp || 120) % 100}/100 XP
+                </span>
+              </div>
             </div>
           </div>
           <div style={{ display: 'flex', gap: 'var(--space-2)' }}>
@@ -617,10 +636,49 @@ Projects: Todo Web Application using React.`);
               </div>
             </div>
 
+            {/* Daily Career Missions */}
+            <div className="card glass-card">
+              <h3 style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: 'var(--space-2)' }}>
+                <Award style={{ color: 'var(--accent)', width: 20, height: 20 }} /> Daily Missions
+              </h3>
+              <p style={{ fontSize: 'var(--text-xs)', color: 'var(--text-muted)', marginBottom: 'var(--space-4)' }}>
+                Earn bonus XP by completing these daily training objectives.
+              </p>
+              
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
+                {[
+                  { name: "Ask AI Mentor a Career Query", xp: 10, done: (currentUser.xp || 120) > 120, link: "/mentor" },
+                  { name: "Check Resume ATS Score", xp: 20, done: !!resumeResult, link: "/resume-analyzer" },
+                  { name: "Attempt a Mock Interview Question", xp: 50, done: currentUser.badges?.includes('interview_complete'), link: "/mock-interview" }
+                ].map((mission, i) => (
+                  <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px', backgroundColor: 'var(--bg-secondary)', borderRadius: 'var(--radius-md)', border: '1px solid var(--border)' }}>
+                    <div>
+                      <strong style={{ fontSize: 'var(--text-xs)', display: 'block', textDecoration: mission.done ? 'line-through' : 'none', color: mission.done ? 'var(--text-muted)' : 'var(--text-primary)' }}>{mission.name}</strong>
+                      <span style={{ fontSize: '9px', color: 'var(--accent)', fontWeight: 'bold' }}>+{mission.xp} XP</span>
+                    </div>
+                    {mission.done ? (
+                      <span style={{ fontSize: '10px', color: 'var(--success)', fontWeight: 'bold' }}>Done ✓</span>
+                    ) : (
+                      <Link to={mission.link} className="btn btn-primary btn-sm" style={{ padding: '2px 8px', fontSize: '9px' }}>Go</Link>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+
             {/* Quick Actions Shortcuts */}
             <div className="card glass-card">
               <h3 style={{ fontSize: 'var(--text-sm)', marginBottom: 'var(--space-3)' }}>Quick Actions</h3>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
+                <Link to="/placement-dashboard" className="btn btn-secondary btn-sm" style={{ textAlign: 'left', display: 'flex', justifyContent: 'space-between', padding: '8px 12px' }}>
+                  Placement Readiness Hub <ChevronRight style={{ width: 14, height: 14 }} />
+                </Link>
+                <Link to="/mock-interview" className="btn btn-secondary btn-sm" style={{ textAlign: 'left', display: 'flex', justifyContent: 'space-between', padding: '8px 12px' }}>
+                  AI Mock Interview <ChevronRight style={{ width: 14, height: 14 }} />
+                </Link>
+                <Link to="/mentor" className="btn btn-secondary btn-sm" style={{ textAlign: 'left', display: 'flex', justifyContent: 'space-between', padding: '8px 12px' }}>
+                  AI Career Mentor Chat <ChevronRight style={{ width: 14, height: 14 }} />
+                </Link>
                 <Link to="/study-plan" className="btn btn-secondary btn-sm" style={{ textAlign: 'left', display: 'flex', justifyContent: 'space-between', padding: '8px 12px' }}>
                   Full Study Planner <ChevronRight style={{ width: 14, height: 14 }} />
                 </Link>

@@ -15,6 +15,9 @@ import { ResumeAnalyzer } from './pages/ResumeAnalyzer';
 import { StudyPlan } from './pages/StudyPlan';
 import { CareerReport } from './pages/CareerReport';
 import { Feedback } from './pages/Feedback';
+import { MockInterview } from './pages/MockInterview';
+import { MentorChat } from './pages/MentorChat';
+import { PlacementDashboard } from './pages/PlacementDashboard';
 
 export const router = createBrowserRouter([
   { path: '/', Component: Home },
@@ -32,6 +35,10 @@ export const router = createBrowserRouter([
   { path: '/study-plan', Component: StudyPlan },
   { path: '/career-report/:careerId', Component: CareerReport },
   { path: '/feedback', Component: Feedback },
+  { path: '/mock-interview', Component: MockInterview },
+  { path: '/mentor', Component: MentorChat },
+  { path: '/placement-dashboard', Component: PlacementDashboard },
   { path: '*', Component: NotFound },
 ]);
+
 
