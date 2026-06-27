@@ -6,6 +6,10 @@ import { careerService, statsService } from '../services/api';
 import { CareerIcon } from '../components/CareerIcon';
 import { ScrollReveal } from '../components/ScrollReveal';
 import { AnimatedCounter } from '../components/AnimatedCounter';
+import { ParticleBackground } from '../components/ParticleBackground';
+import { InteractiveGlobe } from '../components/InteractiveGlobe';
+import { TypingText } from '../components/TypingText';
+import { FloatingCareerCard } from '../components/FloatingCareerCard';
 
 export function Home() {
   const [careers, setCareers] = useState<any[]>([]);
@@ -31,32 +35,94 @@ export function Home() {
     { name: 'Sneha M.', location: 'Nagpur, MH', text: 'The free resources section saved me from spending money on expensive courses. I found everything I needed to start my UI/UX journey.', career: 'UI/UX Designer' }
   ];
 
+  const handleHeroMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    e.currentTarget.style.setProperty('--hero-mouse-x', `${x}px`);
+    e.currentTarget.style.setProperty('--hero-mouse-y', `${y}px`);
+  };
+
   return (
     <Layout>
       {/* Hero */}
-      <section className="hero">
+      <section className="hero" onMouseMove={handleHeroMouseMove}>
+        <div className="hero-glow-spotlight" />
+        <ParticleBackground />
+
         <div className="container">
-          <ScrollReveal direction="up" delay={0}>
-            <div className="hero-badge">
-              <MapPin style={{ width: 16, height: 16 }} />
-              <span>Built for Tier 2/3 Students</span>
+          <div className="hero-grid">
+            {/* Left Content */}
+            <div className="hero-content">
+              <ScrollReveal direction="up" delay={0}>
+                <div className="hero-badge">
+                  <MapPin style={{ width: 16, height: 16 }} />
+                  <span>AI-Driven Career Discovery Platform</span>
+                </div>
+              </ScrollReveal>
+              
+              <ScrollReveal direction="up" delay={150}>
+                <h1>Discover Your Future<br />With AI</h1>
+              </ScrollReveal>
+              
+              <ScrollReveal direction="up" delay={300}>
+                <p>
+                  Unlock customized roadmaps based on your skills. Explore salaries and career opportunities in{' '}
+                  <TypingText
+                    words={[
+                      'Software Engineering',
+                      'Artificial Intelligence',
+                      'Data Science',
+                      'UI/UX Design',
+                      'Cloud Architecture',
+                    ]}
+                  />
+                  . Structured study plans, ATS checking, and AI mentorship included.
+                </p>
+              </ScrollReveal>
+              
+              <ScrollReveal direction="up" delay={450}>
+                <div style={{ display: 'flex', gap: 'var(--space-4)', flexWrap: 'wrap' }}>
+                  <Link to="/quiz" className="btn btn-primary btn-lg">Take the Quiz (5 min) <ArrowRight /></Link>
+                  <Link to="/careers" className="btn btn-secondary btn-lg">Browse Careers</Link>
+                </div>
+              </ScrollReveal>
             </div>
-          </ScrollReveal>
-          
-          <ScrollReveal direction="up" delay={150}>
-            <h1>Find Your Perfect<br /><span className="hero-accent">Career Path</span></h1>
-          </ScrollReveal>
-          
-          <ScrollReveal direction="up" delay={300}>
-            <p>Get personalized career recommendations based on your interests, skills, and constraints. Discover realistic paths with free resources, roadmaps, and salary insights.</p>
-          </ScrollReveal>
-          
-          <ScrollReveal direction="up" delay={450}>
-            <div style={{ display: 'flex', gap: 'var(--space-4)', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <Link to="/quiz" className="btn btn-primary btn-lg">Take the Quiz (5 min) <ArrowRight /></Link>
-              <Link to="/careers" className="btn btn-secondary btn-lg">Browse Careers</Link>
+
+            {/* Right Visual Collage */}
+            <div className="hero-visual">
+              <ScrollReveal direction="none" delay={250}>
+                <InteractiveGlobe />
+              </ScrollReveal>
+
+              <ScrollReveal direction="left" delay={400} className="card-position-1" style={{ position: 'absolute', zIndex: 10 }}>
+                <FloatingCareerCard
+                  title="AI Research Scientist"
+                  baseSalary={185000}
+                  currency="USD"
+                  demand="Critical"
+                />
+              </ScrollReveal>
+
+              <ScrollReveal direction="right" delay={550} className="card-position-2" style={{ position: 'absolute', zIndex: 10 }}>
+                <FloatingCareerCard
+                  title="UX Product Designer"
+                  baseSalary={122000}
+                  currency="USD"
+                  demand="Trending"
+                />
+              </ScrollReveal>
+
+              <ScrollReveal direction="up" delay={700} className="card-position-3" style={{ position: 'absolute', zIndex: 10 }}>
+                <FloatingCareerCard
+                  title="Cloud Systems Architect"
+                  baseSalary={158000}
+                  currency="USD"
+                  demand="High"
+                />
+              </ScrollReveal>
             </div>
-          </ScrollReveal>
+          </div>
         </div>
       </section>
 
